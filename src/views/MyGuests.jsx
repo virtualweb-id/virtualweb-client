@@ -1,12 +1,12 @@
 import React from 'react'
 import { DashboardProfile, Sidebar } from '../components'
 
-const Undanganku = () => {
+const MyGuests = () => {
   return (
     <>
       <div className="flex w-full flex-row h-screen">
-        <div className="h-full flex flex-col w-1/6 bg-gray-200">
-        <Sidebar />
+        <div className="h-full flex flex-col w-1/6 bg-gray-200 cursor-pointer">
+         <Sidebar />
         </div>
         <div className="h-full flex flex-col w-full">
           <nav className="flex w-full justify-between bg-gray-400 p-2">
@@ -23,4 +23,4 @@ const Undanganku = () => {
   )
 }
 
-export default Undanganku
+export default MyGuests

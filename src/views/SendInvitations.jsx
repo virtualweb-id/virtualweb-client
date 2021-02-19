@@ -1,12 +1,12 @@
 import React from 'react'
-import { DashboardProfile, Sidebar } from '../components'
+import { DashboardFinish, Sidebar } from '../components'
 
-const Undanganku = () => {
+const SendInvitations = () => {
   return (
     <>
       <div className="flex w-full flex-row h-screen">
         <div className="h-full flex flex-col w-1/6 bg-gray-200">
-        <Sidebar />
+          <Sidebar />
         </div>
         <div className="h-full flex flex-col w-full">
           <nav className="flex w-full justify-between bg-gray-400 p-2">
@@ -15,7 +15,7 @@ const Undanganku = () => {
           </nav>
           <div className="w-full h-full flex flex-row "
           style={{overflowY: 'auto'}}>
-           <DashboardProfile />
+            <DashboardFinish />
           </div>
         </div>
       </div>
@@ -23,4 +23,4 @@ const Undanganku = () => {
   )
 }
 
-export default Undanganku
+export default SendInvitations
