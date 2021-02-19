@@ -1,25 +1,24 @@
-import Home from "./views/Home"
-import Login from "./views/Login"
-import Register from "./views/Register"
+import React from 'react';
+import { Home, Undanganku, Register, Login } from './views'
+// import "tailwindcss/tailwind.css"
 
-import { Switch, Route, BrowserRouter as Router, Link } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
 function App() {
   return (
     <Router>
       <Switch>
-      <Route path="/register">
-        <Register/>
-      </Route>
-      <Route path="/login">
-        <Login/>
-      </Route>
-        <Route path="/">
-          <Home/>
-        </Route>
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/undanganku" component={Undanganku} />
+        <Route exact path="/" component={Home} />
       </Switch>
     </Router>
-  )
+  );
 }
 
 export default App;
