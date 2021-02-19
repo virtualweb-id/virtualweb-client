@@ -1,8 +1,22 @@
-import Home from "./views/Home";
+import React from 'react';
+import { Home, Undanganku } from './views'
+// import "tailwindcss/tailwind.css"
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+
 
 function App() {
   return (
-    <Home />
+    <Router>
+      <Switch>
+        <Route exact path="/undanganku" component={Undanganku} />
+        <Route exact path="/" component={Home} />
+      </Switch>
+    </Router>
   );
 }
 
