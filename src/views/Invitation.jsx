@@ -35,7 +35,7 @@ const Invitation = ({ hours, minutes, seconds }) => {
 
   return (
     <>
-      <div className="relative pt-16 pb-32 flex content-center items-center justify-center"
+      <div className="relative pt-16 pb-32 flex content-center items-center justify-center "
           style={{
             minHeight: "75vh",
             overflow: 'hidden'
@@ -46,13 +46,13 @@ const Invitation = ({ hours, minutes, seconds }) => {
             }}>
           <span id="blackOverlay" className="w-full h-full absolute opacity-75 bg-black"></span>
         </div>
-        <div className="container relative mx-auto flex flex-col justify-center items-center font-bold"
+        <div className="container relative mx-auto flex flex-col justify-center items-center font-bold allura"
         style={{ color: holder.textColor }}>
-            <p style={{ color: holder.textColor }}>The wedding of</p>
-            <h1 className="text-white italic font-semibold text-5xl m-5" style={{ color: holder.textColor }}>
+            <p style={{ color: holder.textColor }} className="text-2xl">The wedding of</p>
+            <h1 className="text-white italic font-semibold text-6xl m-5" style={{ color: holder.textColor }}>
               {holder.groomNickname} &  {holder.brigeNickname}
             </h1>
-            <p style={{ color: holder.textColor }}>{wedding.date}</p>
+            <p style={{ color: holder.textColor }} className="text-2xl">{wedding.date}</p>
         </div>
       </div>
 
@@ -71,7 +71,7 @@ const Invitation = ({ hours, minutes, seconds }) => {
             {/* End of story section */}
 
             {/* Bride groom information */}
-            <div className="w-full mt-5 flex flex-col flex-wrap justify-center items-center p-5"
+            <div className="w-full mt-5 flex flex-col flex-wrap justify-center items-center p-5 allura text-3xl"
             style={{ backgroundColor: holder.backgroundColor, color: holder.textColor, minHeight: '500px' }}>
               <div className="flex  flex-col md:flex-row  justify-center items-center">
                 <div className="flex flex-col justify-center items-center m-3">
