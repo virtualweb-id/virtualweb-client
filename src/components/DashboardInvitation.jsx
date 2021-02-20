@@ -4,11 +4,11 @@ import { Invitation } from '../views'
 const DashboardInvitation = () => {
   return (
     <>
-      <div className="w-full h-full flex flex-row">
-        <div className="w-1/2 bg-gray-200 m-3 py-2 px-2 overflow-y-auto">
-
+      <div className="w-full h-full flex md:flex-row flex-col">
+        <div className="md:w-1/2 w-full h-full m-3 px-2 p-5 ">
           {/* Couple Name */}
-          <form className="container-small">
+          <h1 className="text-2xl font-bold text-gray-700  my-5 text-center">FORM </h1>
+          <form className="container-small overflow-y-scroll bg-gray-200 rounded-lg shadow p-5 overflow-x-hidden h-3/4">
             <p className="font-small">Couple Name</p>
             <div className=" mb-4 border border-gray-200 rounded-lg">
               <input 
@@ -130,14 +130,13 @@ const DashboardInvitation = () => {
               name="brideImg"
               className=" w-44 px-1 my-2 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Bride Photo"/>
             </div>
-
-
           </form>
         </div>
-
-
-        <div className="w-1/2 bg-gray-200 m-3 overflow-y-auto">
+        <div className="md:w-1/2 w-full rounded m-3  px-2 p-5 ">
+        <h1 className="text-2xl font-bold text-gray-700 my-5 text-center">My Invitation </h1>
+        <div className="overflow-y-scroll rounded-lg shadow p-5 overflow-x-hidden h-3/4">
           <Invitation/>
+          </div>
         </div>
       </div>
     </>

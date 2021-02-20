@@ -35,7 +35,7 @@ const Invitation = ({ hours, minutes, seconds }) => {
 
   return (
     <>
-      <div className="relative pt-16 pb-32 flex content-center items-center justify-center"
+      <div className="relative pt-16 pb-32 flex content-center items-center justify-center "
           style={{
             minHeight: "75vh",
             overflow: 'hidden'
@@ -46,55 +46,17 @@ const Invitation = ({ hours, minutes, seconds }) => {
             }}>
           <span id="blackOverlay" className="w-full h-full absolute opacity-75 bg-black"></span>
         </div>
-        <div className="container relative mx-auto flex flex-col justify-center items-center font-bold"
+        <div className="container relative mx-auto flex flex-col justify-center items-center font-bold allura"
         style={{ color: holder.textColor }}>
-            <p style={{ color: holder.textColor }}>The wedding of</p>
-            <h1 className="text-white italic font-semibold text-5xl m-5" style={{ color: holder.textColor }}>
+            <p style={{ color: holder.textColor }} className="text-2xl">The wedding of</p>
+            <h1 className="text-white italic font-semibold text-6xl m-5" style={{ color: holder.textColor }}>
               {holder.groomNickname} &  {holder.brigeNickname}
             </h1>
-            <p style={{ color: holder.textColor }}>{wedding.date}</p>
-        </div>
-        <div
-          className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden"
-          style={{ height: "70px", transform: "translateZ(0)" }}
-        >
-          <svg
-            className="absolute bottom-0 overflow-hidden"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none"
-            version="1.1"
-            viewBox="0 0 2560 100"
-            x="0"
-            y="0"
-          >
-            <polygon
-              className="text-gray-300 fill-current"
-              points="2560 0 2560 100 0 100"
-            ></polygon>
-          </svg>
+            <p style={{ color: holder.textColor }} className="text-2xl">{wedding.date}</p>
         </div>
       </div>
 
       <section className="relative py-20">
-        <div
-          className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
-          style={{ height: "80px", transform: "translateZ(0)" }}
-        >
-          <svg
-            className="absolute bottom-0 overflow-hidden"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none"
-            version="1.1"
-            viewBox="0 0 2560 100"
-            x="0"
-            y="0"
-          >
-            <polygon
-              className="text-white fill-current"
-              points="2560 0 2560 100 0 100"
-            ></polygon>
-          </svg>
-        </div>
             {/* End of hero section */}
          <div className="body-font"
           style={{ color: holder.backgroundColor }}>
@@ -109,34 +71,33 @@ const Invitation = ({ hours, minutes, seconds }) => {
             {/* End of story section */}
 
             {/* Bride groom information */}
-            <div className="w-full mt-5 flex flex-col flex-wrap justify-center items-center p-5"
+            <div className="w-full mt-5 flex flex-col flex-wrap justify-center items-center p-5 allura text-3xl"
             style={{ backgroundColor: holder.backgroundColor, color: holder.textColor, minHeight: '500px' }}>
-            <div className="flex flex-row flex-wrap justify-center items-center">
-              <div className="flex flex-col justify-center items-center m-3">
-                <img
-                  alt="..."
-                  className="max-w-full shadow-lg m-2"
-                  src={wedding.brideImg}
-                  style={{ borderRadius: '50%', width: '250px', height: '250px' }}
-                />
-                <p className="font-extrabold mt-3 "
-                >{wedding.brideName}</p>
+              <div className="flex  flex-col md:flex-row  justify-center items-center">
+                <div className="flex flex-col justify-center items-center m-3">
+                  <img
+                    alt="..."
+                    className="max-w-full shadow-lg m-2"
+                    src={wedding.brideImg}
+                    style={{ borderRadius: '50%', width: '210px', height: '210px' }}
+                  />
+                  <p className="font-extrabold mt-3 "
+                  >{wedding.brideName}</p>
+                </div>
+                <div className="flex flex-col justify-center items-center m-3 text-3xl font-extrabold italic">
+                  &
+                </div>
+                <div className="flex flex-col justify-center items-center m-3">
+                  <img
+                    alt="..."
+                    className="max-w-full shadow-lg m-2 "
+                    src={wedding.groomImg}
+                    style={{ borderRadius: '50%', width: '210px', height: '210px' }}
+                  />
+                  <p className="font-extrabold mt-3"
+                  >{wedding.groomName}</p>
+                </div>
               </div>
-              <div className=" flex flex-col justify-center items-center text-3xl font-extrabold italic m-3 sm:block">
-                &
-              </div>
-              <div className="flex flex-col justify-center items-center m-3">
-                <img
-                  alt="..."
-                  className="max-w-full shadow-lg m-2 "
-                  src={wedding.groomImg}
-                  style={{ borderRadius: '50%', width: '250px', height: '250px' }}
-                />
-                <p className="font-extrabold mt-3"
-                >{wedding.groomName}</p>
-              </div>
-              </div>
-              
             </div>
             {/* End of Bride groom information */}
 
@@ -158,8 +119,8 @@ const Invitation = ({ hours, minutes, seconds }) => {
                   src={holder.additionalImg}
                   style={{ maxHeight: '500px', maxWidth: '90%'}}
                 />
-                <div className="flex flex-col justify-center items-center py-10 md:my-0 my-10 md:rounded-none rounded"
-                style={{backgroundColor: holder.textColor, color: holder.backgroundColor, minWidth: '40%'}}>
+                <div className="flex flex-col justify-center items-center px-20 py-10 md:my-0  md:rounded-none rounded"
+                style={{backgroundColor: holder.textColor, color: holder.backgroundColor, maxWidth: '90%'}}>
                   <p className="m-3">Akan Menikah</p>
                   <Countdown date={wedding.date}
                   daysInHours={false}

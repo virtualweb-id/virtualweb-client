@@ -1,7 +1,7 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom"
-import { Sidebar } from "../components"
+import { Sidebar, SidebarMobile } from "../components"
 import { DashboardNavbar } from "../components"
 import RouterView from "../routes/RouterView"
 import { fetchGuest } from "../store/action/guest"
@@ -17,10 +17,28 @@ export default ({ routes }) => {
     }
   }, [])
 
+  const [mobile, setMobile] = useState(false)
+  
+  useEffect(() => {
+    const setLarge = () => {
+      if (window.innerWidth > 768 && !mobile) {
+        setMobile(false)
+      }
+    }
+
+    window.addEventListener('resize', setLarge)
+
+    return () => {
+      window.removeEventListener('resize', setLarge)
+    }
+  }, [mobile])
+
   return (
     <div className="flex w-full flex-row h-screen">
       <div className="h-full flex flex-col w-1/6 bg-gray-200">
-      <Sidebar />
+        { mobile ? 
+      <SidebarMobile /> : 
+      <Sidebar /> }
       </div>
       <div className="h-full flex flex-col w-full">
         <DashboardNavbar />
