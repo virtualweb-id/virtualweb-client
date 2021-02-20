@@ -14,7 +14,7 @@ const changeError = (payload) => {
   }
 }
 
-export const signUp = (input) => {
+export const signUp = (input, history) => {
   return async (dispatch) => {
     try {
       await axios({
@@ -22,6 +22,7 @@ export const signUp = (input) => {
         url: '/register',
         data: input
       })
+      history.push('/login')
     } catch (err) {
       dispatch(changeError(err.response.data.message))
     }
@@ -37,6 +38,9 @@ export const signIn = (input, history) => {
         data: input
       })
       dispatch(changeUser(data))
+      localStorage.access_token = data.access_token
+      localStorage.name = data.name
+      history.push('/undanganku')
     } catch (err) {
       dispatch(changeError(err.response.data.message))
     }
