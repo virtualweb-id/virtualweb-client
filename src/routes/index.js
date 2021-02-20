@@ -1,4 +1,4 @@
-import { DashboardFinish, DashboardInvitation, DashboardProfile } from "../components";
+import { DashboardFinish, DashboardGuest, DashboardInvitation, DashboardProfile } from "../components";
 import { Dashboard, Home, Login, Register, Undanganku } from "../views";
 
 const routes = [
@@ -12,7 +12,7 @@ const routes = [
       },
       {
         path: '/dashboard/guests',
-        component: DashboardProfile,
+        component: DashboardGuest,
       },
       {
         path: '/dashboard/invitation',

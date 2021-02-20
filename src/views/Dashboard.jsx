@@ -1,14 +1,20 @@
 import { useEffect } from "react"
+import { useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom"
 import { Sidebar } from "../components"
 import { DashboardNavbar } from "../components"
 import RouterView from "../routes/RouterView"
+import { fetchGuest } from "../store/action/guest"
 
 export default ({ routes }) => {
   const history = useHistory()
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if(!localStorage.access_token) history.push('/')
+    else {
+      dispatch(fetchGuest())
+    }
   }, [])
 
   return (
