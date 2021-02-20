@@ -15,7 +15,6 @@ const Navbar = ({toggle}) => {
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
       </div>
       <div className="pr-8 md:block hidden text-gray-800">
-        <Link className="p-4 mr-4" to="/undanganku">Undanganku</Link>
         <Link className="p-4 mr-4"  to="/login">Login</Link>
         <Link className="p-4 mr-4"  to="/register">Register</Link>
       </div>

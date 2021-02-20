@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { Navbar, Dropdown } from '../components'
 import { LandingHero, Content } from '../components'
 
 
 const Home = () => {
-  const { name } = useSelector(state => state.user)
   const [dropdown, setDropdown] = useState(false)
   const history = useHistory()
 
@@ -15,7 +13,7 @@ const Home = () => {
   }
 
   useEffect(() => {
-    if(name) history.push('/undanganku')
+    if(localStorage.access_token) history.push('/undanganku')
   }, [])
 
   useEffect(() => {

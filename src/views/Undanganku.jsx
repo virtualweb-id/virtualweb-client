@@ -1,7 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { DashboardProfile, Sidebar } from '../components'
+import DashboardNavbar from '../components/DashboardNavbar'
 
 const Undanganku = () => {
+  const history = useHistory()
+
+  useEffect(() => {
+    if(!localStorage.access_token) history.push('/login')
+  }, [])
+
   return (
     <>
       <div className="flex w-full flex-row h-screen">
@@ -9,10 +18,7 @@ const Undanganku = () => {
         <Sidebar />
         </div>
         <div className="h-full flex flex-col w-full">
-          <nav className="flex w-full justify-between bg-gray-400 p-2">
-            <div>Nobita & Sizuka</div>
-            <div>Logout</div>
-          </nav>
+          <DashboardNavbar />
           <div className="w-full h-full flex flex-row "
           style={{overflowY: 'auto'}}>
            <DashboardProfile />

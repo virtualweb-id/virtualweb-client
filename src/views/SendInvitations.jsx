@@ -1,5 +1,6 @@
 import React from 'react'
 import { DashboardFinish, Sidebar } from '../components'
+import DashboardNavbar from '../components/DashboardNavbar'
 
 const SendInvitations = () => {
   return (
@@ -9,10 +10,7 @@ const SendInvitations = () => {
           <Sidebar />
         </div>
         <div className="h-full flex flex-col w-full">
-          <nav className="flex w-full justify-between bg-gray-400 p-2">
-            <div>Nobita & Sizuka</div>
-            <div>Logout</div>
-          </nav>
+          <DashboardNavbar />
           <div className="w-full h-full flex flex-row "
           style={{overflowY: 'auto'}}>
             <DashboardFinish />
