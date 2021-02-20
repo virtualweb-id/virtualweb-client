@@ -1,0 +1,136 @@
+import React, { useState, useEffect} from 'react'
+import ImageUploader from 'react-images-upload'
+import axios from 'axios'
+
+
+const Wedding = () => {
+  const [ inputUser, setInputUser] = useState({
+    email: '',
+    password: ''
+  })
+
+  const [pictures, setPicture] = useState('') 
+  const [picturesGroom, setpicturesGroom] = useState('') 
+
+  const onDropGroom = async (pictureFiles, pictureDataURLs) => {
+    try {
+      console.log(picturesGroom, pictureDataURLs, 'ini datanya<<<<<<<<<<<<<')
+      if (picturesGroom.length === 0) {
+        await setpicturesGroom(pictureDataURLs)
+      } else {
+        await setpicturesGroom('')
+        await setpicturesGroom(pictureDataURLs)
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  
+  const onDrop = async (pictureFiles, pictureDataURLs) => {
+    try {
+      // console.log(pictures, pictureDataURLs, 'ini datanya<<<<<<<<<<<<<')
+      if (pictures.length === 0) {
+        await setPicture(pictureDataURLs)
+      } else {
+        await setPicture('')
+        await setPicture(pictureDataURLs)
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+
+  const onChange = (e) => {
+    let { name, value } = e.target
+    const newInput = { ...inputUser, [name]: value }
+    setInputUser(newInput)
+  }
+
+  const onSubmit = async (e) => {
+    e.preventDefault()
+    const { title, date, address, groomName, brideName } = inputUser
+    const brideImg = 'ini gambar bride'
+    const groomImg = 'ini gambar groom'
+    console.log({
+      title,
+      date, 
+      address, 
+      groomName, 
+      brideName,
+      brideImg,
+      groomImg
+    })
+    try {
+      const add = await axios({
+        method: 'post',
+        url: 'http://localhost:3000/weddings',
+        headers: {
+          'content-type': 'application/json',
+          access_token: localStorage.getItem('access_token')
+        },
+        data: {
+          title,
+          date, 
+          address, 
+          groomName, 
+          brideName,
+          brideImg,
+          groomImg
+        }
+      })
+      console.log(add)
+    } catch (err) {
+      // console.log(err)
+    }
+  }
+
+  // title
+  // , address, date, groomName, brideName, groomIng, brideImg, status
+
+  return (
+    <form onSubmit={ onSubmit }>
+      <div className="block mb-4 border border-gray-200 rounded-lg">
+        <input type="text" onChange={ onChange } name='title' value={ inputUser.title } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Title"/>
+      </div>
+      <div className="block mb-4 border border-gray-200 rounded-lg">
+        <input type="text" onChange={ onChange } name='address' value={ inputUser.address } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Address"/>
+      </div>
+      <div className="block mb-4 border border-gray-200 rounded-lg">
+        <input type="date" onChange={ onChange } name='date' value={ inputUser.date } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Date"/>
+      </div>
+      <div className="block mb-4 border border-gray-200 rounded-lg">
+        <input type="text" onChange={ onChange } name='groomName' value={ inputUser.groomName } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Groom Name"/>
+      </div>
+      <div className="block mb-4 border border-gray-200 rounded-lg">
+        <input type="text" onChange={ onChange } name='brideName' value={ inputUser.brideName } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Bride Name"/>
+      </div>
+      <div className="block">
+        <button className="w-full px-3 py-4 font-medium text-white bg-red-400 rounded-lg">Sign in</button>
+      </div>
+      <ImageUploader
+            withIcon={true}
+            buttonText='Choose images'
+            onChange={onDrop}
+            imgExtension={['.jpg', '.gif', '.png', '.gif']}
+            maxFileSize={5242880}
+        />
+        <img alt="" src={pictures[pictures.length - 1]}>
+
+        </img>
+
+        <ImageUploader
+            withIcon={true}
+            buttonText='Choose images'
+            onChange={onDropGroom}
+            imgExtension={['.jpg', '.gif', '.png', '.gif']}
+            maxFileSize={5242880}
+        />
+        <img alt="" src={picturesGroom[picturesGroom.length - 1]}>
+
+        </img>
+    </form>
+  )
+}
+
+export default Wedding

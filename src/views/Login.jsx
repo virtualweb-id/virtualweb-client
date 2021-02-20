@@ -1,6 +1,39 @@
-import React from 'react'
+import React, { useState, useEffect} from 'react'
+import axios from 'axios'
+
 
 const Login = () => {
+  const [ inputUser, setInputUser] = useState({
+    email: '',
+    password: ''
+  })
+
+  const onChange = (e) => {
+    let { name, value } = e.target
+    const newInput = { ...inputUser, [name]: value }
+    setInputUser(newInput)
+  }
+
+  const onSubmit = async (e) => {
+    e.preventDefault()
+    // console.log(inputUser)
+    try {
+      const login = await axios({
+        method: 'post',
+        url: 'http://localhost:3000/login',
+        data: inputUser
+      })
+      console.log(login.data)
+      await localStorage.setItem(
+        'access_token', login.data.access_token
+      )
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+
+
   return (
     <section className="container-fluid bg-red-300">
       <div className="text">
@@ -14,20 +47,22 @@ const Login = () => {
                 </h3>
                 <p className="text-xl text-gray-600 md:pr-16"> A successful marriage requires requires falling in love many times, always with <span className="font-extrabold italic">"The Same Person"</span></p>
               </div>
+              <form onSubmit={ onSubmit }>
               <div className="w-full mt-16 md:mt-0 md:w-2/5">
                 <div className="relative z-10 h-auto p-8 py-10 overflow-hidden bg-white border-b-2 border-gray-300 rounded-lg shadow-2xl px-7">
-                <h4 className="mb-6 text-2xl font-medium text-center">Signin to your account</h4>
-                <div className="block mb-4 border border-gray-200 rounded-lg">
-                  <input type="text" className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Email address"/>
-                </div>
-                <div className="block mb-4 border border-gray-200 rounded-lg">
-                  <input type="password" className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Password"/>
-                </div>
-                <div className="block">
-                  <button className="w-full px-3 py-4 font-medium text-white bg-red-400 rounded-lg">Sign in</button>
+                  <h4 className="mb-6 text-2xl font-medium text-center">Signin to your account</h4>
+                  <div className="block mb-4 border border-gray-200 rounded-lg">
+                    <input type="text" onChange={ onChange } name='email' value={ inputUser.email } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Email address"/>
+                  </div>
+                  <div className="block mb-4 border border-gray-200 rounded-lg">
+                    <input type="password" onChange={ onChange } name='password' value={ inputUser.password } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Password"/>
+                  </div>
+                  <div className="block">
+                    <button className="w-full px-3 py-4 font-medium text-white bg-red-400 rounded-lg">Sign in</button>
+                  </div>
                 </div>
               </div>
-              </div>
+            </form>
             </div>
           </div>
         </section>
