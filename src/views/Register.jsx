@@ -1,6 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { signUp } from '../store/action/auth'
+import { useDispatch } from 'react-redux'
 
 const Register = () => {
+  const [input, setInput] = useState({
+    email: '',
+    password: '',
+    name: '',
+    phoneNumber: ''
+  })
+  const dispatch = useDispatch()
+
+  const handleOnChange = (e) => {
+    const { name, value } = e.target
+    setInput({
+      ...input,
+      [name]: value
+    })
+  }
+
+  const handleSignUp = () => {
+    dispatch(signUp(input))
+  }
+
   return (
     <section className="container-fluid bg-red-300">
       <div className="text">
@@ -18,13 +40,41 @@ const Register = () => {
                 <div className="relative z-10 h-auto p-8 py-10 overflow-hidden bg-white border-b-2 border-gray-300 rounded-lg shadow-2xl px-7">
                 <h4 className="mb-6 text-2xl font-medium text-center">Sign up your Account</h4>
                 <div className="block mb-4 border border-gray-200 rounded-lg">
-                  <input type="text" className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Email address"/>
+                  <input 
+                    type="text" 
+                    name="name"
+                    value={input.name}
+                    onChange={handleOnChange}
+                    className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Name"/>
                 </div>
                 <div className="block mb-4 border border-gray-200 rounded-lg">
-                  <input type="password" className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Password"/>
+                  <input 
+                    type="text" 
+                    name="phoneNumber"
+                    value={input.phoneNumber}
+                    onChange={handleOnChange}
+                    className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Phone number"/>
+                </div>
+                <div className="block mb-4 border border-gray-200 rounded-lg">
+                  <input 
+                    type="text" 
+                    name="email"
+                    value={input.email}
+                    onChange={handleOnChange}
+                    className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Email address"/>
+                </div>
+                <div className="block mb-4 border border-gray-200 rounded-lg">
+                  <input 
+                    type="password"
+                    name="password"
+                    value={input.password}
+                    onChange={handleOnChange} 
+                    className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Password"/>
                 </div>
                 <div className="block">
-                  <button className="w-full px-3 py-4 font-medium text-white bg-red-400 rounded-lg">Sign up</button>
+                  <button 
+                    onClick={handleSignUp}
+                    className="w-full px-3 py-4 font-medium text-white bg-red-400 rounded-lg">Sign up</button>
                 </div>
               </div>
               </div>
