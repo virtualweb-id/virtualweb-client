@@ -1,0 +1,1 @@
+export {weddingReducer as wedding} from '../reducers/wedding'
