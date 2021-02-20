@@ -40,7 +40,7 @@ export const signIn = (input, history) => {
       dispatch(changeUser(data))
       localStorage.access_token = data.access_token
       localStorage.name = data.name
-      history.push('/undanganku')
+      history.push('/dashboard')
     } catch (err) {
       dispatch(changeError(err.response.data.message))
     }
