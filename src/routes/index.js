@@ -1,5 +1,5 @@
-import { DashboardFinish, DashboardGuest, DashboardInvitation, DashboardProfile } from "../components";
-import { Dashboard, Home, Invitation, Login, Register, Wedding } from "../views";
+import { DashboardFinish, DashboardGuest, DashboardInvitation, DashboardProfile, DashboardWedding } from "../components";
+import { Dashboard, Home, Invitation, Login, Register } from "../views";
 
 const routes = [
   {
@@ -19,18 +19,19 @@ const routes = [
         component: DashboardInvitation,
       },
       {
+        path: '/dashboard/wedding',
+        component: DashboardWedding,
+      },
+      {
         path: '/dashboard',
         component: DashboardProfile,
       },
+      
     ]
   },
   {
     path: '/invitation',
     component: Invitation,
-  },
-  {
-    path: '/wedding',
-    component: Wedding,
   },
   {
     path: '/register',

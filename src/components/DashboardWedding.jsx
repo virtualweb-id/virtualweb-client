@@ -2,7 +2,7 @@ import React, { useState, useEffect} from 'react'
 import ImageUploader from 'react-images-upload'
 import axios from 'axios'
 
-const Wedding = () => {
+const DashboardWedding = () => {
   const [ inputUser, setInputUser] = useState({
     email: '',
     password: ''
@@ -127,4 +127,4 @@ const Wedding = () => {
   )
 }
 
-export default Wedding
+export default DashboardWedding
