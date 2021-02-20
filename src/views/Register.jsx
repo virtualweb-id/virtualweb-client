@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { signUp } from '../store/action/auth'
 import { useDispatch } from 'react-redux'
+import { Link, useHistory } from 'react-router-dom'
 
 const Register = () => {
   const [input, setInput] = useState({
@@ -10,6 +11,11 @@ const Register = () => {
     phoneNumber: ''
   })
   const dispatch = useDispatch()
+  const history = useHistory()
+
+  useEffect(() => {
+    if(localStorage.access_token) history.push('/undanganku')
+  }, [])
 
   const handleOnChange = (e) => {
     const { name, value } = e.target
@@ -20,7 +26,7 @@ const Register = () => {
   }
 
   const handleSignUp = () => {
-    dispatch(signUp(input))
+    dispatch(signUp(input, history))
   }
 
   return (
@@ -76,6 +82,7 @@ const Register = () => {
                     onClick={handleSignUp}
                     className="w-full px-3 py-4 font-medium text-white bg-red-400 rounded-lg">Sign up</button>
                 </div>
+                <div className="text-center mt-3">Have an account? <Link to='/login' className="text-red-400">Sign in</Link></div>
               </div>
               </div>
             </div>
