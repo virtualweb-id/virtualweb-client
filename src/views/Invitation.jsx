@@ -119,8 +119,8 @@ const Invitation = ({ hours, minutes, seconds }) => {
                   src={holder.additionalImg}
                   style={{ maxHeight: '500px', maxWidth: '90%'}}
                 />
-                <div className="flex flex-col justify-center items-center py-10 md:my-0 my-10 md:rounded-none rounded"
-                style={{backgroundColor: holder.textColor, color: holder.backgroundColor, minWidth: '40%'}}>
+                <div className="flex flex-col justify-center items-center px-20 py-10 md:my-0  md:rounded-none rounded"
+                style={{backgroundColor: holder.textColor, color: holder.backgroundColor, maxWidth: '90%'}}>
                   <p className="m-3">Akan Menikah</p>
                   <Countdown date={wedding.date}
                   daysInHours={false}
