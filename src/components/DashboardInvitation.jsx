@@ -132,7 +132,7 @@ const DashboardInvitation = () => {
             </div>
           </form>
         </div>
-        <div className="md:w-1/2 w-full rounded m-3 overflow-y-auto  px-2 p-5 ">
+        <div className="md:w-1/2 w-full rounded m-3  px-2 p-5 ">
         <h1 className="text-2xl font-bold text-gray-700 my-5 text-center">My Invitation </h1>
         <div className="overflow-y-scroll rounded-lg shadow p-5 overflow-x-hidden h-3/4">
           <Invitation/>
