@@ -111,7 +111,7 @@ const Invitation = ({ hours, minutes, seconds }) => {
             {/* Bride groom information */}
             <div className="w-full mt-5 flex flex-col flex-wrap justify-center items-center p-5"
             style={{ backgroundColor: holder.backgroundColor, color: holder.textColor, minHeight: '500px' }}>
-            <div className="flex flex-row justify-center items-center">
+            <div className="flex flex-row flex-wrap justify-center items-center">
               <div className="flex flex-col justify-center items-center m-3">
                 <img
                   alt="..."
@@ -119,10 +119,10 @@ const Invitation = ({ hours, minutes, seconds }) => {
                   src={wedding.brideImg}
                   style={{ borderRadius: '50%', width: '250px', height: '250px' }}
                 />
-                <p className="font-extrabold mt-3"
+                <p className="font-extrabold mt-3 "
                 >{wedding.brideName}</p>
               </div>
-              <div className=" flex flex-col justify-center items-center text-3xl font-extrabold italic m-3">
+              <div className=" flex flex-col justify-center items-center text-3xl font-extrabold italic m-3 sm:block">
                 &
               </div>
               <div className="flex flex-col justify-center items-center m-3">
@@ -143,7 +143,7 @@ const Invitation = ({ hours, minutes, seconds }) => {
             {/* prawed video */}
            
             <div className="flex flex-row justify-center my-20"
-            style={{minWidth: '700px', minHeight: '400px'}}>
+            style={{minWidth: '400px', minHeight: '400px'}}>
               <ReactPlayer
                 url={holder.videoUrl}
               />
@@ -156,9 +156,9 @@ const Invitation = ({ hours, minutes, seconds }) => {
                   alt="..."
                   className=" h-full"
                   src={holder.additionalImg}
-                  style={{ maxHeight: '400px', maxWidth: '50%'}}
+                  style={{ maxHeight: '500px', maxWidth: '90%'}}
                 />
-                <div className="flex flex-col justify-center items-center py-10"
+                <div className="flex flex-col justify-center items-center py-10 md:my-0 my-10 md:rounded-none rounded"
                 style={{backgroundColor: holder.textColor, color: holder.backgroundColor, minWidth: '40%'}}>
                   <p className="m-3">Akan Menikah</p>
                   <Countdown date={wedding.date}
@@ -184,7 +184,7 @@ const Invitation = ({ hours, minutes, seconds }) => {
 
             {/* Livestream video */}
             <div className="flex flex-row justify-center my-20"
-            style={{minWidth: '700px', minHeight: '400px'}}>
+            style={{minWidth: '400px', minHeight: '400px'}}>
               <ReactPlayer
                 url={holder.youtubeUrl}
               />
