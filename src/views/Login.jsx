@@ -1,6 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { signIn } from '../store/action/auth'
 
 const Login = () => {
+  const user = useSelector(state => state.user)
+  const [input, setInput] = useState({
+    email: '',
+    password: ''
+  })
+  const dispatch = useDispatch()
+  
+  const handleOnChange = (e) => {
+    const { name, value } = e.target
+    setInput({
+      ...input,
+      [name]: value
+    })
+  }
+
+  const onSubmit = () => {
+    dispatch(signIn(input))
+  }
+
   return (
     <section className="container-fluid bg-red-300">
       <div className="text">
@@ -17,14 +38,27 @@ const Login = () => {
               <div className="w-full mt-16 md:mt-0 md:w-2/5">
                 <div className="relative z-10 h-auto p-8 py-10 overflow-hidden bg-white border-b-2 border-gray-300 rounded-lg shadow-2xl px-7">
                 <h4 className="mb-6 text-2xl font-medium text-center">Signin to your account</h4>
+                <div>{user.user.name}</div>
                 <div className="block mb-4 border border-gray-200 rounded-lg">
-                  <input type="text" className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Email address"/>
+                  <input 
+                    type="text"
+                    name="email"
+                    value={input.email}
+                    onChange={handleOnChange} 
+                    className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Email address"/>
                 </div>
                 <div className="block mb-4 border border-gray-200 rounded-lg">
-                  <input type="password" className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Password"/>
+                  <input 
+                    type="password" 
+                    name="password"
+                    value={input.password}
+                    onChange={handleOnChange} 
+                    className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Password"/>
                 </div>
                 <div className="block">
-                  <button className="w-full px-3 py-4 font-medium text-white bg-red-400 rounded-lg">Sign in</button>
+                  <button 
+                    onClick={onSubmit}
+                    className="w-full px-3 py-4 font-medium text-white bg-red-400 rounded-lg">Sign in</button>
                 </div>
               </div>
               </div>
