@@ -5,7 +5,7 @@ const Entertainme = () => {
   const history = useHistory()
 
   const redirectDashboard = () => {
-    history.push('/undanganku')
+    history.push('/dashboard')
   }
 
     return (

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
-import { Navbar, Dropdown } from '../components'
+import { Navbar, Dropdown, Footer } from '../components'
 import { LandingHero, Content } from '../components'
 
 
@@ -13,7 +13,7 @@ const Home = () => {
   }
 
   useEffect(() => {
-    if(localStorage.access_token) history.push('/undanganku')
+    if(localStorage.access_token) history.push('/')
   }, [])
 
   useEffect(() => {
@@ -31,12 +31,13 @@ const Home = () => {
   }, [dropdown])
 
   return (
-    <>
-      <Navbar toggle={toggle} />
-      <Dropdown dropdown={dropdown} toggle={toggle} />
+    <div style={{position: 'relative', overflow:'hidden'}}>
+      {/* <Navbar toggle={toggle} /> */}
+      {/* <Dropdown dropdown={dropdown} toggle={toggle} /> */}
       <LandingHero />
       <Content />
-    </>
+      <Footer />
+    </div>
   )
 }
 

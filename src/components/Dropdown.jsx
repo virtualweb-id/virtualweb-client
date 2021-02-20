@@ -7,7 +7,6 @@ const Dropdown = ({dropdown, toggle}) => {
     style={{ color: '#091c29'}} 
     onClick={toggle}>
        <Link className="p-4 mr-4" to="/">Home</Link>
-       <Link className="p-4 mr-4" to="/">Home</Link>
        <Link className="p-4 mr-4 " to="/link3">Dashboard</Link>
        <Link className="p-4 mr-4" to="/link1">Login</Link>
        <Link className="p-4 mr-4 " to="/link2">Register</Link>
