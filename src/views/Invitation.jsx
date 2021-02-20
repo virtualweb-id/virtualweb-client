@@ -73,32 +73,31 @@ const Invitation = ({ hours, minutes, seconds }) => {
             {/* Bride groom information */}
             <div className="w-full mt-5 flex flex-col flex-wrap justify-center items-center p-5"
             style={{ backgroundColor: holder.backgroundColor, color: holder.textColor, minHeight: '500px' }}>
-            <div className="flex flex-row flex-wrap justify-center items-center">
-              <div className="flex flex-col justify-center items-center m-3">
-                <img
-                  alt="..."
-                  className="max-w-full shadow-lg m-2"
-                  src={wedding.brideImg}
-                  style={{ borderRadius: '50%', width: '250px', height: '250px' }}
-                />
-                <p className="font-extrabold mt-3 "
-                >{wedding.brideName}</p>
+              <div className="flex  flex-col md:flex-row  justify-center items-center">
+                <div className="flex flex-col justify-center items-center m-3">
+                  <img
+                    alt="..."
+                    className="max-w-full shadow-lg m-2"
+                    src={wedding.brideImg}
+                    style={{ borderRadius: '50%', width: '210px', height: '210px' }}
+                  />
+                  <p className="font-extrabold mt-3 "
+                  >{wedding.brideName}</p>
+                </div>
+                <div className="flex flex-col justify-center items-center m-3 text-3xl font-extrabold italic">
+                  &
+                </div>
+                <div className="flex flex-col justify-center items-center m-3">
+                  <img
+                    alt="..."
+                    className="max-w-full shadow-lg m-2 "
+                    src={wedding.groomImg}
+                    style={{ borderRadius: '50%', width: '210px', height: '210px' }}
+                  />
+                  <p className="font-extrabold mt-3"
+                  >{wedding.groomName}</p>
+                </div>
               </div>
-              <div className=" flex flex-col justify-center items-center text-3xl font-extrabold italic m-3 sm:block">
-                &
-              </div>
-              <div className="flex flex-col justify-center items-center m-3">
-                <img
-                  alt="..."
-                  className="max-w-full shadow-lg m-2 "
-                  src={wedding.groomImg}
-                  style={{ borderRadius: '50%', width: '250px', height: '250px' }}
-                />
-                <p className="font-extrabold mt-3"
-                >{wedding.groomName}</p>
-              </div>
-              </div>
-              
             </div>
             {/* End of Bride groom information */}
 
