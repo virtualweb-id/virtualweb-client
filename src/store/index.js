@@ -1,8 +1,9 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux'
 import thunk from 'redux-thunk'
-import { wedding } from './reducers'
+import { user, wedding } from './reducers'
 
 const rootRaducer = combineReducers({
+  user,
   wedding
 })
 
