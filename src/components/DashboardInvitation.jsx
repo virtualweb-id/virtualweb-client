@@ -8,7 +8,11 @@ const DashboardInvitation = () => {
             <div>Form edit</div>
         </div>
         <div className="w-1/2 bg-gray-200 m-3">
-            <div>Halaman invitation</div>
+
+
+            <div className="content-center">Halaman invitation
+            <iframe src="http://localhost:3000/invitation" width="100%" height="600" style={{border:'1'}}></iframe>
+            </div>
         </div>
       </div>
     </>
