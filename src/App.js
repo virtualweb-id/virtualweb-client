@@ -7,19 +7,13 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import RouterView from './routes/RouterView'
+import routes from './routes'
 
 function App() {
   return (
     <Router>
-      <Switch>
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/undanganku" component={Undanganku} />
-        <Route exact path="/myinvitation" component={MyInvitation} />
-        <Route exact path="/myguests" component={MyGuests} />
-        <Route exact path="/sendinvitations" component={SendInvitations} />
-        <Route exact path="/" component={Home} />
-      </Switch>
+      <RouterView routes={routes} />
     </Router>
   );
 }
