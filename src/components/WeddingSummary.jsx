@@ -25,10 +25,10 @@ const WeddingSummary = () => {
               <span class="ml-3 mb-3">Event <span className="text-gray-700">{dummy.title}</span></span>
             </li>
             <li class="flex">
-              <span class="ml-3 my-3">Location: <span className="text-gray-700">{dummy.address}</span></span>
+              <span class="ml-3 my-3">Date of the event: <span className="text-gray-700">{dummy.date}</span></span>
             </li>
             <li class="flex">
-              <span class="ml-3 my-3">Date of the event: <span className="text-gray-700">{dummy.date}</span></span>
+              <span class="ml-3 my-3">Location: <span className="text-gray-700">{dummy.address}</span></span>
             </li>
             <li class="flex">
               <span class="ml-3 my-3">Groom's Full Name: <span className="text-gray-700">{dummy.groomName}</span></span>
@@ -37,7 +37,7 @@ const WeddingSummary = () => {
               <span class="ml-3 my-3">Bride's Full Name: <span className="text-gray-700">{dummy.brideName}</span></span>
             </li>
             <li class="flex flex-col">
-              <span class="ml-3 my-1">Bride & Groom's picture: </span>
+              <span class="ml-3 my-3">Bride & Groom's picture: </span>
               <div className="flex w-full items-center">
                   <img src={dummy.groomImg}  alt="" class="rounded-3xl mx-5 my-2" style={{ width: '120px', height: '120px'}}/>
                   <img src={dummy.brideImg}  alt="" class="rounded-3xl mx-5 my-2" style={{ width: '120px', height: '120px'}} />
