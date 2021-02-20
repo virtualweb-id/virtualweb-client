@@ -1,5 +1,4 @@
 import { useHistory } from "react-router-dom"
-import user from '../assets/user.png'
 
 export default () => {
   const history = useHistory()
@@ -11,7 +10,7 @@ export default () => {
   }
 
   return (
-    <nav class="relative w-full max-w-screen-xl flex items-center px-6 h-16 bg-gray-900 rounded shadow-2xl text-gray-50">
+    <nav class="relative w-full max-w-screen-xl flex items-center px-6 h-16 bg-gray-900 shadow-2xl text-gray-50">
       <div class="ml-6 space-x-2 md:flex">
         <p class="h-10 flex items-center px-4 rounded font-medium font-bold" href="#">{username}</p>
       </div>
