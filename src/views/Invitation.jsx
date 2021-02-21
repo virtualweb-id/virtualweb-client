@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import imgholder from '../assets/couple1.jpg'
 import imgholder2 from '../assets/couple2.jpg'
 import gift from '../assets/wedding-gift.png'
+import moment from 'moment'
 
 const Invitation = ({ hours, minutes, seconds }) => {
   const { invitation:holder } = useSelector(state => state.invitation)
@@ -56,7 +57,7 @@ const Invitation = ({ hours, minutes, seconds }) => {
             <h1 className="text-white italic font-semibold text-6xl m-5" style={{ color: holder.textColor }}>
               {holder.groomNickname} &  {holder.brigeNickname}
             </h1>
-            <p style={{ color: holder.textColor }} className="text-2xl">{wedding.date}</p>
+            <p style={{ color: holder.textColor }} className="text-2xl">{moment(wedding.date).format("YYYY-MM-DD")}</p>
         </div>
       </div>
 
@@ -132,7 +133,7 @@ const Invitation = ({ hours, minutes, seconds }) => {
                     className="text-3xl font-extrabold"
                   >
                   </Countdown>
-                  <p className="m-3">{wedding.date}</p>
+                  <p className="m-3">{moment(wedding.date).format("YYYY-MM-DD")}</p>
                   <p className="m-3"><svg className="w-6 h-6 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" /></svg>{wedding.address}</p>
                   <div className="flex flex-row justify-center">
                   <div className="mt-5 mx-5 p-3 rounded-lg shadow-lg flex flex-col justify-center items-center" style={{ backgroundColor: holder.backgroundColor, color: holder.textColor,  minWidth: '150px'}}>
