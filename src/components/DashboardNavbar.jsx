@@ -17,6 +17,6 @@ export default () => {
       <button class="flex items-center h-10 pl-2 pr-2 sm:pr-4 rounded bg-gray-800 ml-auto hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
         <span class="font-medium ml-1 leading-none sm:block" onClick={handleLogout}>Logout</span>
       </button>
-	</nav>
+	  </nav>
   )
 }

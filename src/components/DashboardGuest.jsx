@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { useHistory } from "react-router-dom"
 import { addGuest, deleteGuest, editGuest, showOneGuest } from "../store/action/guest"
 
 export default () => {
+  const { wedding } = useSelector(state => state.wedding)
+  const history = useHistory()
   const { guests, guest } = useSelector(state => state.guest)
   const dispatch = useDispatch()
   const [isAdd, setIsAdd] = useState(false)
@@ -15,6 +18,10 @@ export default () => {
   }
   const [input, setInput] = useState(defaultValue)
   const [edit, setEdit] = useState(defaultValue)
+
+  useEffect(() => {
+    if(!wedding.title) history.push('/dashboard/wedding')
+  }, [])
 
   useEffect(() => {
     setEdit({

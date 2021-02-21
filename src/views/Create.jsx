@@ -1,13 +1,18 @@
-import React, { useState, useEffect} from 'react'
+import { useState } from "react"
+import { useHistory } from "react-router-dom"
 import ImageUploader from 'react-images-upload'
 import axios from 'axios'
-import WeddingSummary from './WeddingSummary'
 
-const DashboardWedding = () => {
-  const [ inputUser, setInputUser] = useState({
-    email: '',
-    password: ''
-  })
+
+export default () => {
+  const history = useHistory()
+
+  const [ inputUser, setInputUser] = useState({})
+
+  const handleLogout = () => {
+    localStorage.clear()
+    history.push('/')
+  }
 
   const [pictures, setPicture] = useState('') 
   const [picturesGroom, setpicturesGroom] = useState('') 
@@ -59,37 +64,39 @@ const DashboardWedding = () => {
       brideImg,
       groomImg
     })
-    // try {
-    //   const add = await axios({
-    //     method: 'post',
-    //     url: 'http://localhost:3000/weddings',
-    //     headers: {
-    //       'content-type': 'application/json',
-    //       access_token: localStorage.getItem('access_token')
-    //     },
-    //     data: {
-    //       title,
-    //       date, 
-    //       address, 
-    //       groomName, 
-    //       brideName,
-    //       brideImg,
-    //       groomImg
-    //     }
-    //   })
-    //   console.log(add)
-    // } catch (err) {
-    //   console.log(err)
-    // }
+    try {
+      const { data } = await axios({
+        method: 'post',
+        url: 'http://localhost:3001/weddings',
+        headers: {
+          access_token: localStorage.getItem('access_token')
+        },
+        data: {
+          title,
+          date, 
+          address, 
+          groomName, 
+          brideName,
+          brideImg,
+          groomImg
+        }
+      })
+      console.log(data)
+    } catch (err) {
+      console.log(err.response.data)
+    }
   }
-
+  
   return (
     <>
-    <div className="w-full h-full flex md:flex-row flex-col">
-      <div className="md:w-1/2 m-3 p-4">
-          <WeddingSummary />
-      </div>
-      {/* FORM EDIT/ADD */}
+      <nav class="w-full flex items-center h-12 bg-gray-900 shadow-2xl text-gray-50">
+        <div class="ml-6 space-x-2 md:flex">
+          <p class="h-10 flex items-center rounded font-medium font-bold" href="#">{localStorage.name}</p>
+        </div>
+        <button class="flex items-center h-10 pl-2 pr-2 sm:pr-4 rounded bg-gray-800 ml-auto hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
+          <span class="font-medium ml-1 leading-none sm:block" onClick={handleLogout}>Logout</span>
+        </button>
+	    </nav>
       <div className="md:w-1/2 m-3 p-4">
       <div class="w-full flex-1 p-8 order-1  text-gray-400 sm:w-96 lg:w-full lg:order-2 lg:mt-0">
         <div class="mb-8 pb-8 flex items-center border-b border-gray-600">
@@ -138,10 +145,6 @@ const DashboardWedding = () => {
         </form>
       </div>
     </div>
-    </div>
-  </>
-    
+    </>
   )
 }
-
-export default DashboardWedding

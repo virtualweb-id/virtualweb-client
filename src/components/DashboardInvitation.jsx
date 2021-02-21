@@ -1,7 +1,24 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { changeState } from '../store/action/invitation'
+import { changeWeddingState } from '../store/action/wedding'
 import { Invitation } from '../views'
 
 const DashboardInvitation = () => {
+  const { wedding } = useSelector(state => state.wedding)
+  const { invitation } = useSelector(state => state.invitation)
+  const dispatch = useDispatch()
+
+  const onChange = (e) => {
+    const { name, value } = e.target
+    dispatch(changeState(name, value))
+  }
+
+  const onWeddingChange = e => {
+    const { name, value } = e.target
+    dispatch(changeWeddingState(name, value))
+  }
+
   return (
     <>
       <div className="w-full h-full flex md:flex-row flex-col">
@@ -14,11 +31,15 @@ const DashboardInvitation = () => {
               <input 
                 type="text"
                 name="brigeNickname"
+                value={invitation.brigeNickname}
+                onChange={onChange}
                 className=" w-44 px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Bride Name"/>
 
               <input 
                 type="text"
                 name="groomNickname"
+                value={invitation.groomNickname}
+                onChange={onChange}
                 className=" w-44 px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Groom Name"/>                        
             </div>
 
@@ -28,11 +49,15 @@ const DashboardInvitation = () => {
               <input 
                 type="text"
                 name="title"
+                value={invitation.title}
+                onChange={onChange}
                 className=" font-large w-45 px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Story Title"/>
 
               <textarea 
                 rows='3'
                 name="story"
+                value={invitation.story}
+                onChange={onChange}
                 className=" block w-full my-2  px-2 px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Your Story"/>                        
             </div>
             
@@ -42,11 +67,15 @@ const DashboardInvitation = () => {
               <input 
                 type="text"
                 name="backgroundImg"
+                value={invitation.backgroundImg}
+                onChange={onChange}
                 className=" w-44 px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Set Background Color"/>
 
               <input 
                 type="text"
                 name="additionalImg"
+                value={invitation.additionalImg}
+                onChange={onChange}
                 className=" w-44 px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Additional Image"/>                        
             </div>
 
@@ -56,11 +85,15 @@ const DashboardInvitation = () => {
               <input 
                 type="text"
                 name="videoUrl"
+                value={invitation.videoUrl}
+                onChange={onChange}
                 className=" w-full px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Ex: Your prewed video URL"/>
 
               <input 
                 type="text"
                 name="youtubeUrl"
+                value={invitation.youtubeUrl}
+                onChange={onChange}
                 className=" w-full my-2  px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Your Wedding live URL"/>                        
             </div>
 
@@ -70,11 +103,15 @@ const DashboardInvitation = () => {
               <input 
                 type="text"
                 name="backgroundColor"
+                value={invitation.backgroundColor}
+                onChange={onChange}
                 className=" w-44 px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Background Color"/>
 
               <input 
                 type="text"
                 name="textColor"
+                value={invitation.textColor}
+                onChange={onChange}
                 className=" w-44 px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Font Color"/>                        
             </div>
 
@@ -84,11 +121,15 @@ const DashboardInvitation = () => {
               <input 
                 type="text"
                 name="timeEvent1"
+                value={invitation.timeEvent1}
+                onChange={onChange}
                 className=" w-44 px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Akad Time"/>
 
               <input 
                 type="text"
                 name="timeEvent2"
+                value={invitation.timeEvent2}
+                onChange={onChange}
                 className=" w-44 px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Main Event"/>                        
             </div>
 
@@ -98,37 +139,51 @@ const DashboardInvitation = () => {
               <input 
                 type="text"
                 name="title"
+                onChange={onWeddingChange}
+                value={wedding.title}
                 className=" w-44 px-1 my-2 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Ex: Wedding"/>
 
               <input 
                 type="text"
                 name="date"
+                onChange={onWeddingChange}
+                value={wedding.date}
                 className=" w-44 px-1 my-2 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Wedding Date"/>
 
               <input 
-              type="text"
-              name="address"
-              className="block w-full my-2 px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Wedding Location"/>     
+                type="text"
+                name="address"
+                onChange={onWeddingChange}
+                value={wedding.address}
+                className="block w-full my-2 px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Wedding Location"/>     
 
               <input 
                 type="text"
                 name="groomName"
+                onChange={onWeddingChange}
+                value={wedding.groomName}
                 className=" w-44 px-1 my-2 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Groom Name"/>
 
               <input 
-              type="text"
-              name="brideName"
-              className=" w-44 px-1 my-2 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Bride Name"/>
+                type="text"
+                name="brideName"
+                onChange={onWeddingChange}
+                value={wedding.brideName}
+                className=" w-44 px-1 my-2 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Bride Name"/>
 
               <input 
                 type="text"
                 name="groomImg"
+                onChange={onWeddingChange}
+                value={wedding.groomImg}
                 className=" w-44 px-1 my-2 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Groom Photo"/>
 
               <input 
-              type="text"
-              name="brideImg"
-              className=" w-44 px-1 my-2 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Bride Photo"/>
+                type="text"
+                name="brideImg"
+                onChange={onWeddingChange}
+                value={wedding.brideImg}
+                className=" w-44 px-1 my-2 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Bride Photo"/>
             </div>
           </form>
         </div>
