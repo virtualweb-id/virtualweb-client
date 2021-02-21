@@ -1,16 +1,48 @@
-import React, { useState, useEffect} from 'react'
+import { useState } from "react"
+import { useHistory } from "react-router-dom"
 import ImageUploader from 'react-images-upload'
 import axios from 'axios'
-import WeddingSummary from './WeddingSummary'
 
-const DashboardWedding = () => {
-  const [ inputUser, setInputUser] = useState({
-    email: '',
-    password: ''
-  })
 
-  const [previewSourceGroom, setPreviewResultGroom] = useState('')
-  const [previewSourceBride, setPreviewResultBride] = useState('')
+export default () => {
+  const history = useHistory()
+
+  const [ inputUser, setInputUser] = useState({})
+
+  const handleLogout = () => {
+    localStorage.clear()
+    history.push('/')
+  }
+
+  const [pictures, setPicture] = useState('') 
+  const [picturesGroom, setpicturesGroom] = useState('') 
+
+  const onDropGroom = async (pictureFiles, pictureDataURLs) => {
+    try {
+      if (picturesGroom.length === 0) {
+        await setpicturesGroom(pictureDataURLs)
+      } else {
+        await setpicturesGroom('')
+        await setpicturesGroom(pictureDataURLs)
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  
+  const onDrop = async (pictureFiles, pictureDataURLs) => {
+    try {
+      if (pictures.length === 0) {
+        await setPicture(pictureDataURLs)
+      } else {
+        await setPicture('')
+        await setPicture(pictureDataURLs)
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
 
   const onChange = (e) => {
     let { name, value } = e.target
@@ -18,29 +50,11 @@ const DashboardWedding = () => {
     setInputUser(newInput)
   }
 
-  const onChangeGroomImg = e => {
-    const file = e.target.files[0]
-    const reader = new FileReader()
-    reader.readAsDataURL(file)
-    reader.onloadend = () => {
-      setPreviewResultGroom(reader.result)
-    }
-  }
-
-  const onChangeBrideImg = e => {
-    const file = e.target.files[0]
-    const reader = new FileReader()
-    reader.readAsDataURL(file)
-    reader.onloadend = () => {
-      setPreviewResultBride(reader.result)
-    }
-  }
-
   const onSubmit = async (e) => {
     e.preventDefault()
     const { title, date, address, groomName, brideName } = inputUser
-    const brideImg = previewSourceBride
-    const groomImg = previewSourceGroom
+    const brideImg = 'ini gambar bride'
+    const groomImg = 'ini gambar groom'
     console.log({
       title,
       date, 
@@ -50,15 +64,39 @@ const DashboardWedding = () => {
       brideImg,
       groomImg
     })
+    try {
+      const { data } = await axios({
+        method: 'post',
+        url: 'http://localhost:3001/weddings',
+        headers: {
+          access_token: localStorage.getItem('access_token')
+        },
+        data: {
+          title,
+          date, 
+          address, 
+          groomName, 
+          brideName,
+          brideImg,
+          groomImg
+        }
+      })
+      console.log(data)
+    } catch (err) {
+      console.log(err.response.data)
+    }
   }
-
+  
   return (
     <>
-    <div className="w-full h-full flex md:flex-row flex-col">
-      <div className="md:w-1/2 m-3 p-4">
-          <WeddingSummary />
-      </div>
-      {/* FORM EDIT/ADD */}
+      <nav class="w-full flex items-center h-12 bg-gray-900 shadow-2xl text-gray-50">
+        <div class="ml-6 space-x-2 md:flex">
+          <p class="h-10 flex items-center rounded font-medium font-bold" href="#">{localStorage.name}</p>
+        </div>
+        <button class="flex items-center h-10 pl-2 pr-2 sm:pr-4 rounded bg-gray-800 ml-auto hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
+          <span class="font-medium ml-1 leading-none sm:block" onClick={handleLogout}>Logout</span>
+        </button>
+	    </nav>
       <div className="md:w-1/2 m-3 p-4">
       <div class="w-full flex-1 p-8 order-1  text-gray-400 sm:w-96 lg:w-full lg:order-2 lg:mt-0">
         <div class="mb-8 pb-8 flex items-center border-b border-gray-600">
@@ -82,60 +120,31 @@ const DashboardWedding = () => {
         <div className="block mb-4 border border-gray-200 rounded-lg">
           <input type="text" onChange={ onChange } name='brideName' value={ inputUser.brideName } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Bride Name"/>
         </div>
-        <div className="block mb-4 border border-gray-200 rounded-lg">
-            <input type='file' onChange={onChangeGroomImg} name='brideImg' accept='file/*' />
-            {
-              previewSourceGroom && (
-                <img 
-                src={previewSourceGroom}
-                alt='chosen'
-                style={{height:'300px'}}
-                />
-              )
-            }
-        </div>
-        <div className="block mb-4 border border-gray-200 rounded-lg">
-            <input type='file' onChange={onChangeBrideImg} name='groomImg' accept='file/*' />
-            {
-              previewSourceBride && (
-                <img 
-                src={previewSourceBride}
-                alt='chosen'
-                style={{height:'300px'}}
-                />
-              )
-            }
-        </div>
         <div className="block">
           <button className="w-full px-3 py-2 font-medium bg-red-400 text-white hover:bg-red-300 hover:text-gray-600 rounded-lg">SUBMIT</button>
         </div>
-            
-        {/* <ImageUploader
+        <ImageUploader
               withIcon={true}
               buttonText='Choose images'
               onChange={onDrop}
               imgExtension={['.jpg', '.gif', '.png', '.gif']}
               maxFileSize={5242880}
           />
-          <img alt="" src={pictures[pictures.length - 1]}> */}
+          <img alt="" src={pictures[pictures.length - 1]}>
 
-          {/* </img> */}
+          </img>
 
-          {/* <ImageUploader
+          <ImageUploader
               withIcon={true}
               buttonText='Choose images'
               onChange={onDropGroom}
               imgExtension={['.jpg', '.gif', '.png', '.gif']}
               maxFileSize={5242880}
           />
-          <img alt="" src={picturesGroom[picturesGroom.length - 1]}></img> */}
+          <img alt="" src={picturesGroom[picturesGroom.length - 1]}></img>
         </form>
       </div>
     </div>
-    </div>
-  </>
-    
+    </>
   )
 }
-
-export default DashboardWedding

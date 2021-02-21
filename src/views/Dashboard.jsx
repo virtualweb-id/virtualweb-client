@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
 import { Sidebar, SidebarMobile } from "../components"
 import { DashboardNavbar } from "../components"
@@ -7,12 +7,14 @@ import RouterView from "../routes/RouterView"
 import { fetchGuest } from "../store/action/guest"
 
 export default ({ routes }) => {
+  const { weddings } = useSelector(state => state.wedding)
   const history = useHistory()
   const dispatch = useDispatch()
 
   useEffect(() => {
     if(!localStorage.access_token) history.push('/')
     else {
+      // if(!weddings.title) history.push('/create')
       dispatch(fetchGuest())
     }
   }, [])
