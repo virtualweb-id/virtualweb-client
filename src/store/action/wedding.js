@@ -1,3 +1,5 @@
+import axios from "../../api/axios"
+
 export const changeWeddingState = (name, payload) => {
   return {
     type: `CHANGE_WEDDING_STATE_${name}`,
@@ -5,3 +7,49 @@ export const changeWeddingState = (name, payload) => {
     payload
   }
 }
+
+export const changeWeddingInfo = (name, payload) => {
+  return {
+    type: 'CHANGE_WEDDING',
+    name,
+    payload
+  }
+}
+
+// export const creatWedding = (input) => {
+//   const { title, date, address, groomName, groomImg, brideImg, brideName, status } = input
+//   return async (dispatch, getState) => {
+//     try {
+//       const { data } = await axios({
+//         method: 'post',
+//         url: '/weddings',
+//         data: { title, date, address, groomName, groomImg, brideImg, brideName, status: status === 'true' ? true : false},
+//         headers: {
+//           access_token: localStorage.access_token
+//         }
+//       })
+//       dispatch(changeWeddingInfo(data))
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   }
+// }
+
+export const showOneWedding = () => {
+  return async (dispatch, getState) => {
+    try {
+      const { data:wedding } = await axios({
+        method: 'get',
+        url: '/weddings',
+        headers: {
+          access_token: localStorage.access_token
+        }
+      })
+      console.log(wedding, 'ini wedding')
+      dispatch(changeWeddingInfo(wedding))
+    } catch (err) {
+      console.log(err.response.data);
+    }
+  }
+}
+

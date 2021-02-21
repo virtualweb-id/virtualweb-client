@@ -7,7 +7,8 @@ import RouterView from "../routes/RouterView"
 import { fetchGuest } from "../store/action/guest"
 
 export default ({ routes }) => {
-  const { weddings } = useSelector(state => state.wedding)
+  const { wedding } = useSelector(state => state.wedding)
+  console.log(wedding, 'dashboard')
   const history = useHistory()
   const dispatch = useDispatch()
 

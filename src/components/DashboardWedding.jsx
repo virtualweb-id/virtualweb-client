@@ -1,13 +1,49 @@
 import React, { useState, useEffect} from 'react'
-import ImageUploader from 'react-images-upload'
+import { useSelector, useDispatch } from 'react-redux'
 import axios from 'axios'
 import WeddingSummary from './WeddingSummary'
+import { showOneWedding } from '../store/action/wedding'
 
 const DashboardWedding = () => {
+  const dispatch = useDispatch()
+  const { wedding } = useSelector(state => state.wedding)
+
+  useEffect(() => {
+    dispatch(showOneWedding())
+  }, [dispatch])
+
+
   const [ inputUser, setInputUser] = useState({
     email: '',
     password: ''
   })
+  const [userWedding, setUserWedding] = useState({
+    id: 0,
+    WeddingId: 0,
+    title: '' ,
+    date: '',
+    address: '',
+    groomName: '',
+    brideName: '',
+    groomImg: '',
+    brideImg: '',
+    status: false,
+  })
+
+  useEffect(() => {
+    setUserWedding({
+      id: wedding.id,
+      WeddingId: wedding.WeddingId,
+      title: wedding.title,
+      date: wedding.date,
+      address: wedding.address,
+      groomName: wedding.groomName,
+      brideName: wedding.brideName,
+      groomImg: wedding.groomImg,
+      brideImg: wedding.brideImg,
+      status: false,
+    })
+  }, [wedding])
 
   const [previewSourceGroom, setPreviewResultGroom] = useState('')
   const [previewSourceBride, setPreviewResultBride] = useState('')
@@ -50,6 +86,28 @@ const DashboardWedding = () => {
       brideImg,
       groomImg
     })
+    try {
+      const add = await axios({
+        method: 'post',
+        url: 'http://localhost:3001/weddings',
+        headers: {
+          'content-type': 'application/json',
+          access_token: localStorage.getItem('access_token')
+        },
+        data: {
+          title,
+          date, 
+          address, 
+          groomName, 
+          brideName,
+          brideImg,
+          groomImg
+        }
+      })
+      console.log(add)
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return (
