@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { changeState, editInvitation } from '../store/action/invitation'
 import { changeWeddingState } from '../store/action/wedding'
 import { Invitation } from '../views'
@@ -7,6 +8,7 @@ import { Invitation } from '../views'
 const DashboardInvitation = () => {
   const { wedding } = useSelector(state => state.wedding)
   const { invitation } = useSelector(state => state.invitation)
+  const [previewSourceGroom, setPreviewResultGroom] = useState('')
   const dispatch = useDispatch()
 
   const onChange = (e) => {
@@ -22,6 +24,17 @@ const DashboardInvitation = () => {
   const handleSave = (e) => {
     e.preventDefault()
     dispatch(editInvitation())
+  }
+
+  const onChangeBackgoundImg = e => {
+    const file = e.target.files[0]
+    const name = e.target.name
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onloadend = () => {
+      console.log(reader.result);
+      dispatch(changeState(name, reader.result))
+    }
   }
 
   return (
@@ -68,19 +81,28 @@ const DashboardInvitation = () => {
             {/* Image Set */}
             <p className="font-small text-sm">Image Set</p>
             <div className=" mb-4 border-t border-gray-900 py-2">
-              <input 
+              {/* <input 
                 type="text"
                 name="backgroundImg"
                 value={invitation.backgroundImg}
                 onChange={onChange}
-                className="text-sm w-full px-1 py-1 my-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Set Background Color"/>
-
-              <input 
+                className="text-sm w-full px-1 py-1 my-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Set Background Color"/> */}
+              <div className="block mb-4 border border-gray-200 rounded-lg">
+                <input 
+                  className="text-sm"
+                  type='file' onChange={onChangeBackgoundImg} name='backgroundImg' accept='file/*' />
+              </div>
+              <div className="block mb-4 border border-gray-200 rounded-lg">
+                <input 
+                  className="text-sm"
+                  type='file' onChange={onChangeBackgoundImg} name='additionalImg' accept='file/*' />
+              </div>
+              {/* <input 
                 type="text"
                 name="additionalImg"
                 value={invitation.additionalImg}
                 onChange={onChange}
-                className="text-sm w-full px-1 py-1 my-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Additional Image"/>                        
+                className="text-sm w-full px-1 py-1 my-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Additional Image"/>                         */}
             </div>
 
             {/* Video URL */}
@@ -209,7 +231,7 @@ const DashboardInvitation = () => {
           </form>
         </div>
         <div className="md:w-1/2 w-full rounded m-3  px-2 p-5 ">
-          <h1 className="text-2xl font-bold text-gray-700 my-5 text-center">My Invitation </h1>
+          <h1 className="text-2xl font-bold text-gray-700 my-5 text-center"><Link to="/invitation">My Invitation</Link> </h1>
           <div className="overflow-y-scroll rounded-lg shadow p-5 overflow-x-hidden h-3/4">
             <Invitation/>
             </div>

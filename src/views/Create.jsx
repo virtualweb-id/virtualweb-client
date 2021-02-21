@@ -139,7 +139,7 @@ export default () => {
                     />
                   </div>
                   <div className="md:ml-2">
-                    <label className="block mb-2 text-sm font-bold text-gray-700" for="lastName">
+                    <label className="block mb-2 text-sm font-bold text-gray-700">
                       Bride Name
                     </label>
                     <input
@@ -151,7 +151,7 @@ export default () => {
 
                 <div className="mb-4 md:flex md:justify-between">
                   <div className="mb-4 md:mr-2 md:mb-0">
-                    <label className="block mb-2 text-sm font-bold text-gray-700" for="lastName">
+                    <label className="block mb-2 text-sm font-bold text-gray-700" >
                       Groom's Picture
                     </label>
                     <div className="mb-4 md:mr-2 md:mb-0 flex justify-center flex-col items-center">
@@ -170,7 +170,7 @@ export default () => {
                     </div>
                   </div>
                   <div className="md:ml-2">
-                    <label className="block mb-2 text-sm font-bold text-gray-700" for="lastName">
+                    <label className="block mb-2 text-sm font-bold text-gray-700" >
                       Bride's Picture
                     </label>
                     <div className="mb-4 md:mr-2 md:mb-0 flex justify-center flex-col items-center">
@@ -190,9 +190,9 @@ export default () => {
                   </div>
                 </div>
 
-                <div class="mb-6 mt-3 text-center">
+                <div className="mb-6 mt-3 text-center">
                       <button
-                        class="w-full px-4 py-2 font-bold text-white bg-red-400 rounded-full hover:bg-red-300 focus:outline-none focus:shadow-outline"
+                        className="w-full px-4 py-2 font-bold text-white bg-red-400 rounded-full hover:bg-red-300 focus:outline-none focus:shadow-outline"
                         type="submit"
                       >
                         Submit
