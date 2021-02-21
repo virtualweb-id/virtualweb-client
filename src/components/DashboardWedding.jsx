@@ -5,7 +5,7 @@ import WeddingSummary from './WeddingSummary'
 
 const DashboardWedding = () => {
   const { wedding } = useSelector(state => state.wedding)
-  console.log(wedding, 'ini dari dashboard wedding')
+  console.log(wedding, 'ini dari dashboard')
 
   const [ inputUser, setInputUser] = useState({
     email: '',
@@ -23,13 +23,14 @@ const DashboardWedding = () => {
     brideImg: '',
     status: false,
   })
+  
 
   useEffect(() => {
     setUserWedding({
       id: wedding.id,
       WeddingId: wedding.WeddingId,
       title: wedding.title,
-      date: wedding.date,
+      date: wedding.date.slice(0, 10),
       address: wedding.address,
       groomName: wedding.groomName,
       brideName: wedding.brideName,
@@ -120,22 +121,22 @@ const DashboardWedding = () => {
         </div>
         <form onSubmit={ onSubmit }>
         <div className="block mb-4 border border-gray-200 rounded-lg">
-          <input type="text" onChange={ onChange } name='title' value={ inputUser.title } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Title"/>
+          <input type="text" onChange={ onChange } name='title' value={ userWedding.title } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Title"/>
         </div>
         <div className="block mb-4 border border-gray-200 rounded-lg">
-          <input type="text" onChange={ onChange } name='address' value={ inputUser.address } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Address"/>
+          <input type="text" onChange={ onChange } name='address' value={ userWedding.address } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Address"/>
         </div>
         <div className="block mb-4 border border-gray-200 rounded-lg">
-          <input type="date" onChange={ onChange } name='date' value={ inputUser.date } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Date"/>
+          <input type="date" onChange={ onChange } name='date' value={ userWedding.date } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Date"/>
         </div>
         <div className="block mb-4 border border-gray-200 rounded-lg">
-          <input type="text" onChange={ onChange } name='groomName' value={ inputUser.groomName } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Groom Name"/>
+          <input type="text" onChange={ onChange } name='groomName' value={ userWedding.groomName } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Groom Name"/>
         </div>
         <div className="block mb-4 border border-gray-200 rounded-lg">
-          <input type="text" onChange={ onChange } name='brideName' value={ inputUser.brideName } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Bride Name"/>
+          <input type="text" onChange={ onChange } name='brideName' value={ userWedding.brideName } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Bride Name"/>
         </div>
         <div className="block mb-4 border border-gray-200 rounded-lg">
-            <input type='file' onChange={onChangeGroomImg} name='brideImg' accept='file/*' />
+            <input type='file' onChange={onChangeGroomImg} name='brideImg' accept='file/*'  />
             {
               previewSourceGroom && (
                 <img 
