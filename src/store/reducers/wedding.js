@@ -1,16 +1,5 @@
 const initialState = {
-  wedding: {
-    id: 0,
-    WeddingId: 0,
-    title: '' ,
-    date: '',
-    address: '',
-    groomName: '',
-    brideName: '',
-    groomImg: '',
-    brideImg: '',
-    status: false,
-  },
+  wedding: {},
   isLoading: false,
   isError: '',
 }
@@ -27,9 +16,12 @@ export const weddingReducer = (state = initialState, action) => {
         }
       }
     case "CHANGE_WEDDING":
+      console.log(payload, 'ini reducer')
       return {
         ...state,
-        wedding: payload
+        wedding: payload,
+        isLoading: false, 
+        isError: ''
       } 
     default:
       return state

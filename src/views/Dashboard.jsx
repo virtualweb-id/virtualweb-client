@@ -5,10 +5,10 @@ import { Sidebar, SidebarMobile } from "../components"
 import { DashboardNavbar } from "../components"
 import RouterView from "../routes/RouterView"
 import { fetchGuest } from "../store/action/guest"
+import { fetchInvitation } from "../store/action/invitation"
+import { fetchWedding } from "../store/action/wedding"
 
 export default ({ routes }) => {
-  const { wedding } = useSelector(state => state.wedding)
-  console.log(wedding, 'dashboard')
   const history = useHistory()
   const dispatch = useDispatch()
 
@@ -17,6 +17,8 @@ export default ({ routes }) => {
     else {
       // if(!weddings.title) history.push('/create')
       dispatch(fetchGuest())
+      dispatch(fetchInvitation())
+      dispatch(fetchWedding())
     }
   }, [])
 

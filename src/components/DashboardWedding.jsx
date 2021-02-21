@@ -2,16 +2,10 @@ import React, { useState, useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import axios from 'axios'
 import WeddingSummary from './WeddingSummary'
-import { showOneWedding } from '../store/action/wedding'
 
 const DashboardWedding = () => {
-  const dispatch = useDispatch()
   const { wedding } = useSelector(state => state.wedding)
-
-  useEffect(() => {
-    dispatch(showOneWedding())
-  }, [dispatch])
-
+  console.log(wedding, 'ini dari dashboard wedding')
 
   const [ inputUser, setInputUser] = useState({
     email: '',
