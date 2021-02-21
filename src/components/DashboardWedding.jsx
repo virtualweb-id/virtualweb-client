@@ -38,7 +38,6 @@ const DashboardWedding = () => {
     }
   }
 
-
   const onChange = (e) => {
     let { name, value } = e.target
     const newInput = { ...inputUser, [name]: value }
