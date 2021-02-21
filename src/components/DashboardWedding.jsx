@@ -9,34 +9,8 @@ const DashboardWedding = () => {
     password: ''
   })
 
-  const [pictures, setPicture] = useState('') 
-  const [picturesGroom, setpicturesGroom] = useState('') 
-
-  const onDropGroom = async (pictureFiles, pictureDataURLs) => {
-    try {
-      if (picturesGroom.length === 0) {
-        await setpicturesGroom(pictureDataURLs)
-      } else {
-        await setpicturesGroom('')
-        await setpicturesGroom(pictureDataURLs)
-      }
-    } catch (err) {
-      console.log(err)
-    }
-  }
-  
-  const onDrop = async (pictureFiles, pictureDataURLs) => {
-    try {
-      if (pictures.length === 0) {
-        await setPicture(pictureDataURLs)
-      } else {
-        await setPicture('')
-        await setPicture(pictureDataURLs)
-      }
-    } catch (err) {
-      console.log(err)
-    }
-  }
+  const [previewSourceGroom, setPreviewResultGroom] = useState('')
+  const [previewSourceBride, setPreviewResultBride] = useState('')
 
   const onChange = (e) => {
     let { name, value } = e.target
@@ -44,11 +18,29 @@ const DashboardWedding = () => {
     setInputUser(newInput)
   }
 
+  const onChangeGroomImg = e => {
+    const file = e.target.files[0]
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onloadend = () => {
+      setPreviewResultGroom(reader.result)
+    }
+  }
+
+  const onChangeBrideImg = e => {
+    const file = e.target.files[0]
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onloadend = () => {
+      setPreviewResultBride(reader.result)
+    }
+  }
+
   const onSubmit = async (e) => {
     e.preventDefault()
     const { title, date, address, groomName, brideName } = inputUser
-    const brideImg = 'ini gambar bride'
-    const groomImg = 'ini gambar groom'
+    const brideImg = previewSourceBride
+    const groomImg = previewSourceGroom
     console.log({
       title,
       date, 
@@ -58,28 +50,6 @@ const DashboardWedding = () => {
       brideImg,
       groomImg
     })
-    // try {
-    //   const add = await axios({
-    //     method: 'post',
-    //     url: 'http://localhost:3000/weddings',
-    //     headers: {
-    //       'content-type': 'application/json',
-    //       access_token: localStorage.getItem('access_token')
-    //     },
-    //     data: {
-    //       title,
-    //       date, 
-    //       address, 
-    //       groomName, 
-    //       brideName,
-    //       brideImg,
-    //       groomImg
-    //     }
-    //   })
-    //   console.log(add)
-    // } catch (err) {
-    //   console.log(err)
-    // }
   }
 
   return (
@@ -112,28 +82,53 @@ const DashboardWedding = () => {
         <div className="block mb-4 border border-gray-200 rounded-lg">
           <input type="text" onChange={ onChange } name='brideName' value={ inputUser.brideName } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Bride Name"/>
         </div>
+        <div className="block mb-4 border border-gray-200 rounded-lg">
+            <input type='file' onChange={onChangeGroomImg} name='brideImg' accept='file/*' />
+            {
+              previewSourceGroom && (
+                <img 
+                src={previewSourceGroom}
+                alt='chosen'
+                style={{height:'300px'}}
+                />
+              )
+            }
+        </div>
+        <div className="block mb-4 border border-gray-200 rounded-lg">
+            <input type='file' onChange={onChangeBrideImg} name='groomImg' accept='file/*' />
+            {
+              previewSourceBride && (
+                <img 
+                src={previewSourceBride}
+                alt='chosen'
+                style={{height:'300px'}}
+                />
+              )
+            }
+        </div>
         <div className="block">
           <button className="w-full px-3 py-2 font-medium bg-red-400 text-white hover:bg-red-300 hover:text-gray-600 rounded-lg">SUBMIT</button>
         </div>
-        <ImageUploader
+            
+        {/* <ImageUploader
               withIcon={true}
               buttonText='Choose images'
               onChange={onDrop}
               imgExtension={['.jpg', '.gif', '.png', '.gif']}
               maxFileSize={5242880}
           />
-          <img alt="" src={pictures[pictures.length - 1]}>
+          <img alt="" src={pictures[pictures.length - 1]}> */}
 
-          </img>
+          {/* </img> */}
 
-          <ImageUploader
+          {/* <ImageUploader
               withIcon={true}
               buttonText='Choose images'
               onChange={onDropGroom}
               imgExtension={['.jpg', '.gif', '.png', '.gif']}
               maxFileSize={5242880}
           />
-          <img alt="" src={picturesGroom[picturesGroom.length - 1]}></img>
+          <img alt="" src={picturesGroom[picturesGroom.length - 1]}></img> */}
         </form>
       </div>
     </div>
