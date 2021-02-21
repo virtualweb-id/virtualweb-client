@@ -86,6 +86,24 @@ export const editGuest = (id, input) => {
   }
 }
 
+export const confirmGuest = (input) => {
+  const { id, email, status } = input
+  return async (dispatch, getState) => {
+    try {
+      const { data } = await axios({
+        method: 'patch',
+        url: '/guests/' + id,
+        data: { status, email }
+      })
+      const { guests } = getState().guest
+      const newGuests = guests.filter(guest => guest.id !== id)
+      dispatch(guestChange([...newGuests, data]))
+    } catch (err) {
+      console.log(err);
+    }
+  }
+}
+
 export const deleteGuest = (id) => {
   return async (dispatch, getState) => {
     try {
