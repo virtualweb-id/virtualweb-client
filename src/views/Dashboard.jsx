@@ -32,6 +32,7 @@ export default ({ routes }) => {
       window.removeEventListener('resize', setLarge)
     }
   }, [mobile])
+  
 
   return (
     <div className="flex w-full flex-row h-screen">
