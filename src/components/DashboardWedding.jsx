@@ -1,83 +1,73 @@
 import React, { useState, useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import WeddingSummary from './WeddingSummary'
-import { updateWedding } from '../store/action/wedding'
+import { changeWeddingState, updateWedding } from '../store/action/wedding'
 
 const DashboardWedding = () => {
   const dispatch = useDispatch()
-  const { wedding } = useSelector(state => state.wedding)
+  const { wedding, isLoading } = useSelector(state => state.wedding)
 
-  const [ inputUser, setInputUser] = useState({
-    email: '',
-    password: ''
-  })
-  
-  const [userWedding, setUserWedding] = useState({
-    id: 0,
-    WeddingId: 0,
-    title: '' ,
-    date: '',
-    address: '',
-    groomName: '',
-    brideName: '',
-    groomImg: '',
-    brideImg: '',
-    status: false,
-  })
-  console.log(userWedding, 'ini dari dashboard')
+  // const [userWedding, setUserWedding] = useState({
+  //   id: 0,
+  //   WeddingId: 0,
+  //   title: '' ,
+  //   date: '',
+  //   address: '',
+  //   groomName: '',
+  //   brideName: '',
+  //   groomImg: '',
+  //   brideImg: '',
+  //   status: false,
+  // })
+  // console.log(userWedding, 'ini dari dashboard')
 
-  useEffect(() => {
-    setUserWedding({
-      id: wedding.id,
-      WeddingId: wedding.WeddingId,
-      title: wedding.title,
-      date: wedding.date.slice(0, 10),
-      address: wedding.address,
-      groomName: wedding.groomName,
-      brideName: wedding.brideName,
-      groomImg: wedding.groomImg,
-      brideImg: wedding.brideImg,
-      status: wedding.status,
-    })
-  }, [wedding])
+  // useEffect(() => {
+  //   setUserWedding({
+  //     id: wedding.id,
+  //     WeddingId: wedding.WeddingId,
+  //     title: wedding.title,
+  //     date: wedding.date.slice(0, 10),
+  //     address: wedding.address,
+  //     groomName: wedding.groomName,
+  //     brideName: wedding.brideName,
+  //     groomImg: wedding.groomImg,
+  //     brideImg: wedding.brideImg,
+  //     status: wedding.status,
+  //   })
+  // }, [wedding])
 
-  const [previewSourceGroom, setPreviewResultGroom] = useState('')
-  const [previewSourceBride, setPreviewResultBride] = useState('')
+  // const [previewSourceGroom, setPreviewResultGroom] = useState('')
+  // const [previewSourceBride, setPreviewResultBride] = useState('')
 
   const onChange = (e) => {
     let { name, value } = e.target
-    const newInput = { ...userWedding, [name]: value }
-    setUserWedding(newInput)
+    // const newInput = { ...userWedding, [name]: value }
+    // setUserWedding(newInput)
+    dispatch(changeWeddingState(name, value))
   }
 
-  const onChangeGroomImg = e => {
+  const onChangeImg = e => {
     const file = e.target.files[0]
+    const name = e.target.name
     const reader = new FileReader()
     reader.readAsDataURL(file)
     reader.onloadend = () => {
-      setPreviewResultGroom(reader.result)
-    }
-  }
-
-  const onChangeBrideImg = e => {
-    const file = e.target.files[0]
-    const reader = new FileReader()
-    reader.readAsDataURL(file)
-    reader.onloadend = () => {
-      setPreviewResultBride(reader.result)
+      console.log(reader.result);
+      dispatch(changeWeddingState(name, reader.result))
     }
   }
 
   const onSubmit = e => {
     e.preventDefault()
-    const { id, WeddingId, title, date, address, groomName, brideName } = userWedding
-    const brideImg = previewSourceBride
-    const groomImg = previewSourceGroom
-    const userWedding = { id, WeddingId, title, date, address, groomName, brideName, brideImg, groomImg }
-    console.log(userWedding)
-    dispatch(updateWedding(userWedding))
+    // const { id, WeddingId, title, date, address, groomName, brideName } = userWedding
+    // const brideImg = previewSourceBride
+    // const groomImg = previewSourceGroom
+    // const userWedding = { id, WeddingId, title, date, address, groomName, brideName, brideImg, groomImg }
+    // console.log(userWedding)
+    dispatch(updateWedding())
   }
-
+  console.log(isLoading);
+  if(isLoading) return <h1>Loading..</h1>
   return (
     <>
     <div className="w-full h-full flex md:flex-row flex-col">
@@ -94,26 +84,26 @@ const DashboardWedding = () => {
         </div>
         <form onSubmit={ onSubmit }>
         <div className="block mb-4 border border-gray-200 rounded-lg">
-          <input type="text" onChange={ onChange } name='title' value={ userWedding.title } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Title"/>
+          <input type="text" onChange={ onChange } name='title' value={ wedding.title } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Title"/>
         </div>
         <div className="block mb-4 border border-gray-200 rounded-lg">
-          <input type="text" onChange={ onChange } name='address' value={ userWedding.address } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Address"/>
+          <input type="text" onChange={ onChange } name='address' value={ wedding.address } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Address"/>
         </div>
         <div className="block mb-4 border border-gray-200 rounded-lg">
-          <input type="date" onChange={ onChange } name='date' value={ userWedding.date } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Date"/>
+          <input type="date" onChange={ onChange } name='date' value={ wedding.date.slice(0,10) } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Date"/>
         </div>
         <div className="block mb-4 border border-gray-200 rounded-lg">
-          <input type="text" onChange={ onChange } name='groomName' value={ userWedding.groomName } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Groom Name"/>
+          <input type="text" onChange={ onChange } name='groomName' value={ wedding.groomName } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Groom Name"/>
         </div>
         <div className="block mb-4 border border-gray-200 rounded-lg">
-          <input type="text" onChange={ onChange } name='brideName' value={ userWedding.brideName } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Bride Name"/>
+          <input type="text" onChange={ onChange } name='brideName' value={ wedding.brideName } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Bride Name"/>
         </div>
         <div className="block mb-4 border border-gray-200 rounded-lg">
-            <input type='file' onChange={onChangeGroomImg} name='brideImg' accept='file/*'  />
+            <input type='file' onChange={onChangeImg} name='brideImg' accept='file/*'  />
             {
-              previewSourceGroom && (
+              wedding.brideImg && (
                 <img 
-                src={previewSourceGroom}
+                src={wedding.brideImg}
                 alt='chosen'
                 style={{height:'300px'}}
                 />
@@ -121,11 +111,11 @@ const DashboardWedding = () => {
             }
         </div>
         <div className="block mb-4 border border-gray-200 rounded-lg">
-            <input type='file' onChange={onChangeBrideImg} name='groomImg' accept='file/*' />
+            <input type='file' onChange={onChangeImg} name='groomImg' accept='file/*' />
             {
-              previewSourceBride && (
+              wedding.groomImg && (
                 <img 
-                src={previewSourceBride}
+                src={wedding.groomImg}
                 alt='chosen'
                 style={{height:'300px'}}
                 />
