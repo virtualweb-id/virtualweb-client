@@ -1,37 +1,41 @@
 import React from 'react'
 import Countdown, { zeroPad, calcTimeDelta, formatTimeDelta } from 'react-countdown';
 import ReactPlayer from "react-player"
+import { useSelector } from 'react-redux';
 import imgholder from '../assets/couple1.jpg'
 import imgholder2 from '../assets/couple2.jpg'
 import gift from '../assets/wedding-gift.png'
 
 const Invitation = ({ hours, minutes, seconds }) => {
-  const holder = {
-    brigeNickname: 'Amanda', 
-    groomNickname: 'Eunwoo', 
-    story: `❝ Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berfikir. ❞
+  const { invitation:holder } = useSelector(state => state.invitation)
+  const { wedding } = useSelector(state => state.wedding)
+  
+  // const holder = {
+  //   brigeNickname: 'Amanda', 
+  //   groomNickname: 'Eunwoo', 
+  //   story: `❝ Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berfikir. ❞
 
-    (Ar-Rum: 21)`, 
-    title: 'Bismillah', 
-    backgroundImg: imgholder, 
-    additionalImg: imgholder2, 
-    videoUrl: 'https://www.youtube.com/watch?v=3-NBA3aSMqc&ab_channel=WildOakFilms-WeddingVideo%2CVideography', 
-    backgroundColor: '#1687a7', 
-    textColor: '#d3e0ea', 
-    timeEvent1: '18.00', 
-    timeEvent2: '19.00', 
-    youtubeUrl: 'https://www.youtube.com/watch?v=gIB2egm7tL8&ab_channel=KOMPASTV'
-  }
-  const wedding = {
-    title: 'Pernikahan' ,
-    date: '05-05-2021',
-    address: 'Jakarta Selatan',
-    groomName: 'Cha Eun WOo',
-    brideName: 'Amanda Rizqi',
-    groomImg: 'http://res.heraldm.com/phpwas/restmb_jhidxmake.php?idx=5&simg=201811201728261782524_20181120173103_01.jpg',
-    brideImg: 'https://cdn1-production-images-kly.akamaized.net/U-BtD9FAg3Y6_QPoW6E7IpQLnrQ=/1x155:1080x763/640x360/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/2291108/original/036690600_1532512066-22344544_139057696659969_8328654710428925952_n.jpg',
-    status: false,
-  }
+  //   (Ar-Rum: 21)`, 
+  //   title: 'Bismillah', 
+  //   backgroundImg: imgholder, 
+  //   additionalImg: imgholder2, 
+  //   videoUrl: 'https://www.youtube.com/watch?v=3-NBA3aSMqc&ab_channel=WildOakFilms-WeddingVideo%2CVideography', 
+  //   backgroundColor: '#1687a7', 
+  //   textColor: '#d3e0ea', 
+  //   timeEvent1: '18.00', 
+  //   timeEvent2: '19.00', 
+  //   youtubeUrl: 'https://www.youtube.com/watch?v=gIB2egm7tL8&ab_channel=KOMPASTV'
+  // }
+  // const wedding = {
+  //   title: 'Pernikahan' ,
+  //   date: '05-05-2021',
+  //   address: 'Jakarta Selatan',
+  //   groomName: 'Cha Eun WOo',
+  //   brideName: 'Amanda Rizqi',
+  //   groomImg: 'http://res.heraldm.com/phpwas/restmb_jhidxmake.php?idx=5&simg=201811201728261782524_20181120173103_01.jpg',
+  //   brideImg: 'https://cdn1-production-images-kly.akamaized.net/U-BtD9FAg3Y6_QPoW6E7IpQLnrQ=/1x155:1080x763/640x360/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/2291108/original/036690600_1532512066-22344544_139057696659969_8328654710428925952_n.jpg',
+  //   status: false,
+  // }
 
   return (
     <>
@@ -122,9 +126,10 @@ const Invitation = ({ hours, minutes, seconds }) => {
                 <div className="flex flex-col justify-center items-center px-20 py-10 md:my-0  md:rounded-none rounded"
                 style={{backgroundColor: holder.textColor, color: holder.backgroundColor, maxWidth: '90%'}}>
                   <p className="m-3">Akan Menikah</p>
-                  <Countdown date={wedding.date}
-                  daysInHours={false}
-                  className="text-3xl font-extrabold"
+                  <Countdown 
+                    date={wedding.date}
+                    daysInHours={false}
+                    className="text-3xl font-extrabold"
                   >
                   </Countdown>
                   <p className="m-3">{wedding.date}</p>
