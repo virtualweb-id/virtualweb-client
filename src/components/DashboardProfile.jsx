@@ -15,15 +15,42 @@ const DashboardProfile = () => {
 
   return (
     <>
-      <div className="h-full w-1/2 flex flex-col">
-        <div className="h-1/2  m-3">
-        <div className="flex flex-col justify-center items-center py-10 md:my-0 my-10 md:rounded-none rounded"
-          style={{backgroundColor: 'white', color: 'gray', minWidth: '40%'}}>
-            <Countdown date={wedding.date}
-            daysInHours={false}
-            className="text-3xl font-extrabold"
-            >
-            </Countdown>
+      <div className="h-full w-1/2 d-flex flex-col">
+        <div className="h-1/2 m-3">
+          <div className="flex flex-col justify-center items-center md:my-0 md:rounded-none rounded"
+            style={{backgroundColor: 'white', color: 'white'}}>
+            
+            
+                              
+                                    <div class="relative py-10 m-auto">
+                                      <div class="z-50 p-3 mt-10 max-w-xs w-xs grid grid-cols-1 cursor-default select-none rounded bg-gray-400 dark:bg-gray-900 shadow-lg">
+                                        <div class="font-semibold text-xl mb-2 ml-2 text-gray-900 dark:text-white">Invitation Settings</div>
+                                        <div class="flex">
+                                          <button
+                                            class="transform mouse-pointer bg-gray-900 text-sm text-white mx-2 py-1 px-2 font-semibold rounded hover:bg-gray-700 dark:hover:bg-gray-600 hover:scale-90   focus:bg-gray-700 dark:focus:bg-gray-600 focus:outline-none">Settings</button>
+ 
+                                        </div>
+                                        <div class="my-5 mx-2 mr-5">
+                                          <p class="text-gray-900 text-sm">
+                                            Customize your Invitation here
+                                          </p>
+                                        </div>
+                                      </div>
+                                          <iframe
+                                          width="45%" height="120"
+                                        class="relative z-0 mx-72 -my-56 h-64 object-cover object-top transform hover:scale-125 border-gray-600 border border-opacity-50 rounded-xl shadow-lg transition-all duration-150"
+                                        src="http://localhost:3000/invitation">
+                                      </iframe>
+                                    </div>
+              
+
+
+
+
+
+
+
+
           </div>
         </div>
         <div className="h-1/2 bg-gray-200 m-3">
