@@ -1,150 +1,213 @@
 import { useState } from "react"
 import { useHistory } from "react-router-dom"
-import ImageUploader from 'react-images-upload'
-import axios from 'axios'
-
+import { useDispatch } from 'react-redux'
+import image from '../assets/card1.jpg'
+import { creatWedding } from '../store/action/wedding'
 
 export default () => {
+  const dispatch = useDispatch()
   const history = useHistory()
-
-  const [ inputUser, setInputUser] = useState({})
 
   const handleLogout = () => {
     localStorage.clear()
     history.push('/')
   }
 
-  const [pictures, setPicture] = useState('') 
-  const [picturesGroom, setpicturesGroom] = useState('') 
-
-  const onDropGroom = async (pictureFiles, pictureDataURLs) => {
-    try {
-      if (picturesGroom.length === 0) {
-        await setpicturesGroom(pictureDataURLs)
-      } else {
-        await setpicturesGroom('')
-        await setpicturesGroom(pictureDataURLs)
-      }
-    } catch (err) {
-      console.log(err)
-    }
-  }
-  
-  const onDrop = async (pictureFiles, pictureDataURLs) => {
-    try {
-      if (pictures.length === 0) {
-        await setPicture(pictureDataURLs)
-      } else {
-        await setPicture('')
-        await setPicture(pictureDataURLs)
-      }
-    } catch (err) {
-      console.log(err)
-    }
+  const redirectHome = () => {
+    history.push('/')
   }
 
+  const [userWedding, setUserWedding] = useState({
+    title: '' ,
+    date: '',
+    address: '',
+    groomName: '',
+    brideName: '',
+    groomImg: '',
+    brideImg: '',
+    status: false,
+  })
+  console.log(userWedding)
+
+  const [previewSourceGroom, setPreviewResultGroom] = useState('')
+  const [previewSourceBride, setPreviewResultBride] = useState('')
 
   const onChange = (e) => {
     let { name, value } = e.target
-    const newInput = { ...inputUser, [name]: value }
-    setInputUser(newInput)
+    const newInput = { ...userWedding, [name]: value }
+    setUserWedding(newInput)
   }
 
-  const onSubmit = async (e) => {
-    e.preventDefault()
-    const { title, date, address, groomName, brideName } = inputUser
-    const brideImg = 'ini gambar bride'
-    const groomImg = 'ini gambar groom'
-    console.log({
-      title,
-      date, 
-      address, 
-      groomName, 
-      brideName,
-      brideImg,
-      groomImg
-    })
-    try {
-      const { data } = await axios({
-        method: 'post',
-        url: 'http://localhost:3001/weddings',
-        headers: {
-          access_token: localStorage.getItem('access_token')
-        },
-        data: {
-          title,
-          date, 
-          address, 
-          groomName, 
-          brideName,
-          brideImg,
-          groomImg
-        }
-      })
-      console.log(data)
-    } catch (err) {
-      console.log(err.response.data)
+  const onChangeGroomImg = e => {
+    const file = e.target.files[0]
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onloadend = () => {
+      setPreviewResultGroom(reader.result)
     }
+  }
+
+  const onChangeBrideImg = e => {
+    const file = e.target.files[0]
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onloadend = () => {
+      setPreviewResultBride(reader.result)
+    }
+  }
+
+  const onSubmit = e => {
+    e.preventDefault()
+    const weddingInput = { 
+      title: userWedding.title, 
+      date: userWedding.date, 
+      address: userWedding.address, 
+      groomName: userWedding.groomName, 
+      brideName: userWedding.brideName, 
+      brideImg: previewSourceBride, 
+      groomImg: previewSourceGroom }
+    dispatch(creatWedding(weddingInput))
+    history.push('/dashboard')
   }
   
   return (
     <>
-      <nav class="w-full flex items-center h-12 bg-gray-900 shadow-2xl text-gray-50">
-        <div class="ml-6 space-x-2 md:flex">
-          <p class="h-10 flex items-center rounded font-medium font-bold" href="#">{localStorage.name}</p>
+      <nav className="w-full flex items-center h-12 bg-gray-900 shadow-2xl text-gray-50">
+        <div className="ml-6 space-x-2 md:flex">
+          <svg className="w-6 h-6 m-2" fill="currentColor" viewBox="0 0 20 20" onClick={redirectHome} xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" /></svg>
+          <p className="h-10 flex items-center rounded font-medium font-bold" href="#">{localStorage.name}</p>
         </div>
-        <button class="flex items-center h-10 pl-2 pr-2 sm:pr-4 rounded bg-gray-800 ml-auto hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
-          <span class="font-medium ml-1 leading-none sm:block" onClick={handleLogout}>Logout</span>
+        <button className="flex items-center h-10 pl-2 pr-2 sm:pr-4 rounded bg-gray-800 ml-auto hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
+          <span className="font-medium ml-1 leading-none sm:block" onClick={handleLogout}>Logout</span>
         </button>
 	    </nav>
-      <div className="md:w-1/2 m-3 p-4">
-      <div class="w-full flex-1 p-8 order-1  text-gray-400 sm:w-96 lg:w-full lg:order-2 lg:mt-0">
-        <div class="mb-8 pb-8 flex items-center border-b border-gray-600">
-          <div class="ml-5 flex flex-col justify-center items-center">
-            <span class="block  text-2xl text-gray-700 font-extrabold text-center">Add or edit wedding information</span>
+
+      <div className="font-sans">
+		
+      <div className="container mx-auto">
+        <div className="flex justify-center px-6 my-12">
+          
+          <div className="w-full xl:w-3/4 lg:w-11/12 flex">
+            
+            <div
+              className="w-full h-auto bg-gray-400 hidden lg:block lg:w-5/12 bg-cover rounded-l-lg"
+              style={{backgroundImage: `url(${image})`}}
+            ></div>
+            
+            <div className="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
+              <h3 className="pt-4 text-2xl text-center">Write your wedding information!</h3>
+              <form className="px-8 pt-6 pb-8 mb-4 bg-white rounded"  onSubmit={ onSubmit }>
+              <div className="mb-4">
+                  <label className="block mb-2 text-sm font-bold text-gray-700" >
+                    Name of the Event
+                  </label>
+                  <input
+                    className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                    type="text" onChange={ onChange } name='title' 
+                    value={ userWedding.title } placeholder="ex: Pernikahan"
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label className="block mb-2 text-sm font-bold text-gray-700" >
+                    Event Location
+                  </label>
+                  <input
+                    className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                    type="text" onChange={ onChange } name='address' value={ userWedding.address } placeholder="ex: Puri Setiabudhi - Jl. Dr. Setiabudi No.378, Kota Bandung, Jawa Barat"
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label className="block mb-2 text-sm font-bold text-gray-700" >
+                    Event Date
+                  </label>
+                  <input
+                    className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                    type="date" onChange={ onChange } name='date' value={ userWedding.date } 
+                  />
+                </div>
+
+                <div className="mb-4 md:flex md:justify-between">
+                  <div className="mb-4 md:mr-2 md:mb-0">
+                    <label className="block mb-2 text-sm font-bold text-gray-700">
+                      Groom Name
+                    </label>
+                    <input
+                      className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                      type="text" onChange={ onChange } name='groomName' value={ userWedding.groomName } placeholder="Semmi Verian Putra"
+                    />
+                  </div>
+                  <div className="md:ml-2">
+                    <label className="block mb-2 text-sm font-bold text-gray-700">
+                      Bride Name
+                    </label>
+                    <input
+                      className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                      type="text" onChange={ onChange } name='brideName' value={ userWedding.brideName } placeholder="Sophia Latjuba"
+                    />
+                  </div>
+                </div>
+
+                <div className="mb-4 md:flex md:justify-between">
+                  <div className="mb-4 md:mr-2 md:mb-0">
+                    <label className="block mb-2 text-sm font-bold text-gray-700" >
+                      Groom's Picture
+                    </label>
+                    <div className="mb-4 md:mr-2 md:mb-0 flex justify-center flex-col items-center">
+                      <input type='file' onChange={onChangeGroomImg} name='groomImg' accept='file/*' 
+                      className="w-full px-3 py-2 text-sm leading-tight flex justify-center flex-col items-center text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"/>
+                      {
+                        previewSourceGroom && (
+                          <img 
+                          src={previewSourceGroom}
+                          alt='chosen'
+                          className="rounded-lg mt-2"
+                          style={{height:'120px', width: '120px'}}
+                          />
+                        )
+                      }
+                    </div>
+                  </div>
+                  <div className="md:ml-2">
+                    <label className="block mb-2 text-sm font-bold text-gray-700" >
+                      Bride's Picture
+                    </label>
+                    <div className="mb-4 md:mr-2 md:mb-0 flex justify-center flex-col items-center">
+                      <input type='file' onChange={onChangeBrideImg} name='brideImg' accept='file/*' 
+                      className="w-full px-3 py-2 text-sm leading-tight flex justify-center flex-col items-center text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"/>
+                      {
+                        previewSourceBride && (
+                          <img 
+                          src={previewSourceBride}
+                          alt='chosen'
+                          className="rounded-lg mt-2"
+                          style={{height:'120px', width: '120px'}}
+                          />
+                        )
+                      }
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mb-6 mt-3 text-center">
+                      <button
+                        className="w-full px-4 py-2 font-bold text-white bg-red-400 rounded-full hover:bg-red-300 focus:outline-none focus:shadow-outline"
+                        type="submit"
+                      >
+                        Submit
+                      </button>
+                  </div>
+              </form>
+            </div>
           </div>
         </div>
-        <form onSubmit={ onSubmit }>
-        <div className="block mb-4 border border-gray-200 rounded-lg">
-          <input type="text" onChange={ onChange } name='title' value={ inputUser.title } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Title"/>
-        </div>
-        <div className="block mb-4 border border-gray-200 rounded-lg">
-          <input type="text" onChange={ onChange } name='address' value={ inputUser.address } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Address"/>
-        </div>
-        <div className="block mb-4 border border-gray-200 rounded-lg">
-          <input type="date" onChange={ onChange } name='date' value={ inputUser.date } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Date"/>
-        </div>
-        <div className="block mb-4 border border-gray-200 rounded-lg">
-          <input type="text" onChange={ onChange } name='groomName' value={ inputUser.groomName } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Groom Name"/>
-        </div>
-        <div className="block mb-4 border border-gray-200 rounded-lg">
-          <input type="text" onChange={ onChange } name='brideName' value={ inputUser.brideName } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Bride Name"/>
-        </div>
-        <div className="block">
-          <button className="w-full px-3 py-2 font-medium bg-red-400 text-white hover:bg-red-300 hover:text-gray-600 rounded-lg">SUBMIT</button>
-        </div>
-        <ImageUploader
-              withIcon={true}
-              buttonText='Choose images'
-              onChange={onDrop}
-              imgExtension={['.jpg', '.gif', '.png', '.gif']}
-              maxFileSize={5242880}
-          />
-          <img alt="" src={pictures[pictures.length - 1]}>
-
-          </img>
-
-          <ImageUploader
-              withIcon={true}
-              buttonText='Choose images'
-              onChange={onDropGroom}
-              imgExtension={['.jpg', '.gif', '.png', '.gif']}
-              maxFileSize={5242880}
-          />
-          <img alt="" src={picturesGroom[picturesGroom.length - 1]}></img>
-        </form>
       </div>
     </div>
     </>
   )
 }
+
+/*
+
+*/

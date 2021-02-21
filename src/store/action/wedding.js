@@ -34,6 +34,7 @@ export const fetchWedding = () => {
 }
 
 export const creatWedding = (input) => {
+  console.log('masuk sini')
   const { title, date, address, groomName, groomImg, brideImg, brideName, status } = input
   return async (dispatch, getState) => {
     try {

@@ -11,11 +11,12 @@ import { fetchWedding } from "../store/action/wedding"
 export default ({ routes }) => {
   const history = useHistory()
   const dispatch = useDispatch()
+  const { wedding } = useSelector(state => state.wedding)
 
   useEffect(() => {
     if(!localStorage.access_token) history.push('/')
     else {
-      // if(!weddings.title) history.push('/create')
+      if(!wedding.title) history.push('/create')
       dispatch(fetchGuest())
       dispatch(fetchInvitation())
       dispatch(fetchWedding())
