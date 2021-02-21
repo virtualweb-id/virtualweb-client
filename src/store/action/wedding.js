@@ -15,7 +15,7 @@ export const changeWeddingInfo = (payload) => {
   }
 }
 
-export const fetchWedding = () => {
+export const fetchWedding = (history) => {
   return async (dispatch, getState) => {
     try {
       const { data:wedding } = await axios({
@@ -25,15 +25,15 @@ export const fetchWedding = () => {
           access_token: localStorage.access_token
         }
       })
-      console.log(wedding, 'ini wedding')
       dispatch(changeWeddingInfo(wedding))
+      if(!wedding.id) history.push('/create')
     } catch (err) {
       console.log(err.response.data);
     }
   }
 }
 
-export const creatWedding = (input) => {
+export const creatWedding = (input, history) => {
   console.log('masuk sini')
   const { title, date, address, groomName, groomImg, brideImg, brideName, status } = input
   return async (dispatch, getState) => {
@@ -47,28 +47,29 @@ export const creatWedding = (input) => {
         }
       })
       dispatch(changeWeddingInfo(wedding))
+      history.push('/dashboard')
     } catch (err) {
       console.log(err);
     }
   }
 }
 
-export const updateWedding = (input) => {
-  console.log('masuk sini')
-  const { title, date, address, groomName, groomImg, brideImg, brideName, status, WeddingId, id } = input
+export const updateWedding = () => {
   return async (dispatch, getState) => {
     try {
-      const { data:wedding } = await axios({
+      const { wedding } = getState().wedding
+      console.log(wedding);
+      const { data } = await axios({
         method: 'put',
-        url: `/weddings/${id}`,
-        data: { title, date,WeddingId, id, address, groomName, groomImg, brideImg, brideName, status: status === 'true' ? true : false},
+        url: `/weddings/${wedding.id}`,
+        data: wedding,
         headers: {
           access_token: localStorage.access_token
         }
       })
-      dispatch(changeWeddingInfo(wedding))
+      dispatch(changeWeddingInfo(data))
     } catch (err) {
-      console.log(err);
+      console.log(err.response.data);
     }
   }
 }

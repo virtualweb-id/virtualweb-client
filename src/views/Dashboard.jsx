@@ -16,10 +16,9 @@ export default ({ routes }) => {
   useEffect(() => {
     if(!localStorage.access_token) history.push('/')
     else {
-      if(!wedding.title) history.push('/create')
       dispatch(fetchGuest())
       dispatch(fetchInvitation())
-      dispatch(fetchWedding())
+      dispatch(fetchWedding(history))
     }
   }, [])
 

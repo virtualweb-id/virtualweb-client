@@ -66,8 +66,7 @@ export default () => {
       brideName: userWedding.brideName, 
       brideImg: previewSourceBride, 
       groomImg: previewSourceGroom }
-    dispatch(creatWedding(weddingInput))
-    history.push('/dashboard')
+    dispatch(creatWedding(weddingInput, history))
   }
   
   return (
