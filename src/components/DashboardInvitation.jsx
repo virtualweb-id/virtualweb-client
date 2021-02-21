@@ -1,10 +1,8 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { changeState } from '../store/action/invitation'
+import { changeState, editInvitation } from '../store/action/invitation'
 import { changeWeddingState } from '../store/action/wedding'
 import { Invitation } from '../views'
-
-
 
 const DashboardInvitation = () => {
   const { wedding } = useSelector(state => state.wedding)
@@ -21,176 +19,191 @@ const DashboardInvitation = () => {
     dispatch(changeWeddingState(name, value))
   }
 
+  const handleSave = (e) => {
+    e.preventDefault()
+    dispatch(editInvitation())
+  }
+
   return (
     <>
       <div className="w-full h-full flex md:flex-row flex-col">
         <div className="md:w-1/2 w-full h-full m-3 px-2 p-5 ">
           {/* Couple Name */}
-          <h1 className="text-2xl font-bold text-gray-700  my-5 text-center">FORM </h1>
-          <form className="container-small overflow-y-scroll bg-gray-200 rounded-lg shadow p-5 overflow-x-hidden h-3/4">
-            <p className="font-small">Couple Name</p>
-            <div className=" mb-4 border border-gray-200 rounded-lg">
+          <form className="container-small overflow-y-scroll bg-gray-200 rounded-lg shadow p-5 overflow-x-hidden h-full">
+            <p className="font-small text-sm">Couple Name</p>
+            <div className="mb-4 border-t border-gray-900 py-2">
               <input 
                 type="text"
                 name="brigeNickname"
                 value={invitation.brigeNickname}
                 onChange={onChange}
-                className=" w-44 px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Bride Name"/>
+                className="text-sm w-1/3 px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Bride Name"/>
 
               <input 
                 type="text"
                 name="groomNickname"
                 value={invitation.groomNickname}
                 onChange={onChange}
-                className=" w-44 px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Groom Name"/>                        
+                className="text-sm w-1/3 px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Groom Name"/>                        
             </div>
 
             {/* Story */}
-            <p className="font-small">Your Story</p>
-            <div className=" mb-4 border border-gray-200 rounded-lg">
+            <p className="font-small text-sm">Your Story</p>
+            <div className="mb-4 border-t border-gray-900 py-2">
               <input 
                 type="text"
                 name="title"
                 value={invitation.title}
                 onChange={onChange}
-                className=" font-large w-45 px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Story Title"/>
+                className="text-sm w-1/2 px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Story Title"/>
 
               <textarea 
                 rows='3'
                 name="story"
                 value={invitation.story}
                 onChange={onChange}
-                className=" block w-full my-2  px-2 px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Your Story"/>                        
+                className="text-sm block w-full my-2  px-2 px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Your Story"/>                        
             </div>
             
             {/* Image Set */}
-            <p className="font-small">Image Set</p>
-            <div className=" mb-4 border border-gray-200 rounded-lg">
+            <p className="font-small text-sm">Image Set</p>
+            <div className=" mb-4 border-t border-gray-900 py-2">
               <input 
                 type="text"
                 name="backgroundImg"
                 value={invitation.backgroundImg}
                 onChange={onChange}
-                className=" w-44 px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Set Background Color"/>
+                className="text-sm w-full px-1 py-1 my-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Set Background Color"/>
 
               <input 
                 type="text"
                 name="additionalImg"
                 value={invitation.additionalImg}
                 onChange={onChange}
-                className=" w-44 px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Additional Image"/>                        
+                className="text-sm w-full px-1 py-1 my-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Additional Image"/>                        
             </div>
 
             {/* Video URL */}
-            <p className="font-small">Videos url</p>
-            <div className=" mb-4 border border-gray-200 rounded-lg">
+            <p className="font-small text-sm">Videos url</p>
+            <div className="mb-4 border-t border-gray-900 py-2">
               <input 
                 type="text"
                 name="videoUrl"
                 value={invitation.videoUrl}
                 onChange={onChange}
-                className=" w-full px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Ex: Your prewed video URL"/>
+                className="text-sm w-full px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Ex: Your prewed video URL"/>
 
               <input 
                 type="text"
                 name="youtubeUrl"
                 value={invitation.youtubeUrl}
                 onChange={onChange}
-                className=" w-full my-2  px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Your Wedding live URL"/>                        
+                className="text-sm w-full my-2  px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Your Wedding live URL"/>                        
             </div>
 
             {/* Set Backgound & font */}
-            <p className="font-small">Page Setting</p>
-            <div className=" mb-4 border border-gray-200 rounded-lg">
+            <p className="font-small text-sm">Page Setting</p>
+            <div className=" mb-4 border-t border-gray-900 py-2">
+              <div className="flex items-center gap-2 my-1">
+                <label for="backgroundColor" className="text-sm">Background Color:</label>
+                <input type="color" name="backgroundColor" value={invitation.backgroundColor} onChange={onChange}
+                  className="w-6 h-6" />
+              </div>
               <input 
                 type="text"
                 name="backgroundColor"
                 value={invitation.backgroundColor}
                 onChange={onChange}
-                className=" w-44 px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Background Color"/>
+                className="text-sm w-44 px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Background Color"/>
 
+              <div className="flex items-center gap-2 my-1">
+                <label for="textColor" className="text-sm">Text Color:</label>
+                <input type="color" name="textColor" value={invitation.textColor} onChange={onChange}
+                  className="w-6 h-6" />
+              </div>
               <input 
                 type="text"
                 name="textColor"
                 value={invitation.textColor}
                 onChange={onChange}
-                className=" w-44 px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Font Color"/>                        
+                className="text-sm w-44 px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Font Color"/>                        
             </div>
 
             {/* Time Event  */}
-            <p className="font-small">Time Event Settings</p>
-            <div className=" mb-4 border border-gray-200 rounded-lg">
+            <p className="font-small text-sm">Time Event Settings</p>
+            <div className="text-sm mb-4 border-t border-gray-900 py-2">
               <input 
                 type="text"
                 name="timeEvent1"
                 value={invitation.timeEvent1}
                 onChange={onChange}
-                className=" w-44 px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Akad Time"/>
+                className="text-sm w-44 px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Akad Time"/>
 
               <input 
                 type="text"
                 name="timeEvent2"
                 value={invitation.timeEvent2}
                 onChange={onChange}
-                className=" w-44 px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Main Event"/>                        
+                className="text-sm w-44 px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Main Event"/>                        
             </div>
 
             {/* Wedding Data  */}
-            <p className="font-small">Wedding Information</p>
-            <div className=" mb-4 border border-gray-200 rounded-lg">
+            <p className="font-small text-sm">Wedding Information</p>
+            <div className="text-sm mb-4 border-t border-gray-900 py-2">
               <input 
                 type="text"
                 name="title"
                 onChange={onWeddingChange}
                 value={wedding.title}
-                className=" w-44 px-1 my-2 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Ex: Wedding"/>
+                className="text-sm w-44 px-1 my-2 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Ex: Wedding"/>
 
               <input 
-                type="text"
+                type="date"
                 name="date"
                 onChange={onWeddingChange}
                 value={wedding.date}
-                className=" w-44 px-1 my-2 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Wedding Date"/>
+                className="text-sm w-44 px-1 my-2 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Wedding Date"/>
 
               <input 
                 type="text"
                 name="address"
                 onChange={onWeddingChange}
                 value={wedding.address}
-                className="block w-full my-2 px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Wedding Location"/>     
+                className="text-sm block w-full my-2 px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Wedding Location"/>     
 
               <input 
                 type="text"
                 name="groomName"
                 onChange={onWeddingChange}
                 value={wedding.groomName}
-                className=" w-44 px-1 my-2 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Groom Name"/>
+                className="text-sm w-44 px-1 my-2 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Groom Name"/>
 
               <input 
                 type="text"
                 name="brideName"
                 onChange={onWeddingChange}
                 value={wedding.brideName}
-                className=" w-44 px-1 my-2 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Bride Name"/>
+                className="text-sm w-44 px-1 my-2 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Bride Name"/>
 
               <input 
                 type="text"
                 name="groomImg"
                 onChange={onWeddingChange}
                 value={wedding.groomImg}
-                className=" w-44 px-1 my-2 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Groom Photo"/>
+                className="text-sm w-44 px-1 my-2 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Groom Photo"/>
 
               <input 
                 type="text"
                 name="brideImg"
                 onChange={onWeddingChange}
                 value={wedding.brideImg}
-                className=" w-44 px-1 my-2 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Bride Photo"/>
+                className="text-sm w-44 px-1 my-2 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Bride Photo"/>
             </div>
 
             {/* Submit Button  */}
             <div className="block">
               <button 
+                onClick={handleSave}
                 className="w-20 px-1 py-1 font-medium text-white bg-gray-400 rounded-lg">Submit</button>
             </div>
           </form>

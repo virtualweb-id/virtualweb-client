@@ -3,7 +3,7 @@ const initialState = {
     id: 1,
     WeddingId: 604042321,
     title: 'Pernikahan' ,
-    date: '05-03-2021',
+    date: new Date().toJSON().slice(0,10),
     address: 'Jakarta Selatan',
     groomName: 'Cha Eun WOo',
     brideName: 'Amanda Rizqi',
