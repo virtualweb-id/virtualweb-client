@@ -1,6 +1,8 @@
 import React from 'react'
 import { Invitation } from '../views'
 
+
+
 const DashboardInvitation = () => {
   return (
     <>
@@ -129,14 +131,21 @@ const DashboardInvitation = () => {
               type="text"
               name="brideImg"
               className=" w-44 px-1 my-2 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Bride Photo"/>
+
+            </div>
+
+            {/* Submit Button  */}
+            <div className="block">
+              <button 
+                className="w-20 px-1 py-1 font-medium text-white bg-gray-400 rounded-lg">Submit</button>
             </div>
           </form>
         </div>
         <div className="md:w-1/2 w-full rounded m-3  px-2 p-5 ">
-        <h1 className="text-2xl font-bold text-gray-700 my-5 text-center">My Invitation </h1>
-        <div className="overflow-y-scroll rounded-lg shadow p-5 overflow-x-hidden h-3/4">
-          <Invitation/>
-          </div>
+          <h1 className="text-2xl font-bold text-gray-700 my-5 text-center">My Invitation </h1>
+          <div className="overflow-y-scroll rounded-lg shadow p-5 overflow-x-hidden h-3/4">
+            <Invitation/>
+            </div>
         </div>
       </div>
     </>
