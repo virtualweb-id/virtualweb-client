@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { changeState } from '../store/action/invitation'
+import { changeState, editInvitation } from '../store/action/invitation'
 import { changeWeddingState } from '../store/action/wedding'
 import { Invitation } from '../views'
 
@@ -17,6 +17,11 @@ const DashboardInvitation = () => {
   const onWeddingChange = e => {
     const { name, value } = e.target
     dispatch(changeWeddingState(name, value))
+  }
+
+  const handleSave = (e) => {
+    e.preventDefault()
+    dispatch(editInvitation())
   }
 
   return (
@@ -198,6 +203,7 @@ const DashboardInvitation = () => {
             {/* Submit Button  */}
             <div className="block">
               <button 
+                onClick={handleSave}
                 className="w-20 px-1 py-1 font-medium text-white bg-gray-400 rounded-lg">Submit</button>
             </div>
           </form>
