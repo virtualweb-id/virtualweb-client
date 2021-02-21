@@ -1,16 +1,17 @@
 import React, { useState, useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import axios from 'axios'
 import WeddingSummary from './WeddingSummary'
+import { updateWedding } from '../store/action/wedding'
 
 const DashboardWedding = () => {
+  const dispatch = useDispatch()
   const { wedding } = useSelector(state => state.wedding)
-  console.log(wedding, 'ini dari dashboard')
 
   const [ inputUser, setInputUser] = useState({
     email: '',
     password: ''
   })
+  
   const [userWedding, setUserWedding] = useState({
     id: 0,
     WeddingId: 0,
@@ -23,7 +24,7 @@ const DashboardWedding = () => {
     brideImg: '',
     status: false,
   })
-  
+  console.log(userWedding, 'ini dari dashboard')
 
   useEffect(() => {
     setUserWedding({
@@ -36,7 +37,7 @@ const DashboardWedding = () => {
       brideName: wedding.brideName,
       groomImg: wedding.groomImg,
       brideImg: wedding.brideImg,
-      status: false,
+      status: wedding.status,
     })
   }, [wedding])
 
@@ -45,8 +46,8 @@ const DashboardWedding = () => {
 
   const onChange = (e) => {
     let { name, value } = e.target
-    const newInput = { ...inputUser, [name]: value }
-    setInputUser(newInput)
+    const newInput = { ...userWedding, [name]: value }
+    setUserWedding(newInput)
   }
 
   const onChangeGroomImg = e => {
@@ -67,42 +68,14 @@ const DashboardWedding = () => {
     }
   }
 
-  const onSubmit = async (e) => {
+  const onSubmit = e => {
     e.preventDefault()
-    const { title, date, address, groomName, brideName } = inputUser
+    const { id, WeddingId, title, date, address, groomName, brideName } = userWedding
     const brideImg = previewSourceBride
     const groomImg = previewSourceGroom
-    console.log({
-      title,
-      date, 
-      address, 
-      groomName, 
-      brideName,
-      brideImg,
-      groomImg
-    })
-    try {
-      const add = await axios({
-        method: 'post',
-        url: 'http://localhost:3001/weddings',
-        headers: {
-          'content-type': 'application/json',
-          access_token: localStorage.getItem('access_token')
-        },
-        data: {
-          title,
-          date, 
-          address, 
-          groomName, 
-          brideName,
-          brideImg,
-          groomImg
-        }
-      })
-      console.log(add)
-    } catch (err) {
-      console.log(err)
-    }
+    const userWedding = { id, WeddingId, title, date, address, groomName, brideName, brideImg, groomImg }
+    console.log(userWedding)
+    dispatch(updateWedding(userWedding))
   }
 
   return (
