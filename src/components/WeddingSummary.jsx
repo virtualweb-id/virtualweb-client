@@ -6,7 +6,7 @@ const WeddingSummary = () => {
   const { wedding } = useSelector(state => state.wedding)
 
   return (
-    <div class="flex flex-col justify-between items-center lg:flex-row lg:items-start">
+    <div className="flex flex-col justify-between items-center lg:flex-row lg:items-start">
       <div className="w-full md:p-10 px-2 mt-5 bg-gray-800 rounded-lg shadow-lg text-gray-300 flex flex-col p-3">
           <p className="font-bold text-2xl text-center text-gray-400 p-3 rounded shadow-lg bg-gray-700">WEDDING SUMMARY</p>
           <div className="inline-block mt-2 pr-1 ">
@@ -26,7 +26,7 @@ const WeddingSummary = () => {
             <div className="flex md:w-1/2 w-full">
               <div className="inline-block mt-2 pr-1 flex flex-col justify-center items-center">
                 {
-                  wedding && <img src={wedding.groomImg}  alt="" class="rounded-3xl mx-5 my-2" style={{ width: '120px', height: '120px'}}/>
+                  wedding && <img src={wedding.groomImg}  alt="" className="rounded-3xl mx-5 my-2" style={{ width: '120px', height: '120px'}}/>
                 }
                 <p>{wedding.groomName}</p>
               </div>
@@ -34,7 +34,7 @@ const WeddingSummary = () => {
             <div className="flex md:w-1/2 w-full">
               <div className="inline-block mt-2 pr-1 flex flex-col justify-center items-center">
                 {
-                  wedding && <img src={wedding.brideImg}  alt="" class="rounded-3xl mx-5 my-2" style={{ width: '120px', height: '120px'}} />
+                  wedding && <img src={wedding.brideImg}  alt="" className="rounded-3xl mx-5 my-2" style={{ width: '120px', height: '120px'}} />
                 }
                 <p>{wedding.brideName}</p>
               </div>
