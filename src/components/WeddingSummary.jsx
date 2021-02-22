@@ -41,67 +41,6 @@ const WeddingSummary = () => {
             </div>
           </div>
       </div>
-      {/* <div class="w-full flex-1 p-8 order-1  text-gray-600 sm:w-96 lg:w-full lg:order-2 lg:mt-0">
-        <div class="mb-8 pb-8 flex items-center border-b border-gray-600">
-          <div class="ml-5 flex flex-col justify-center items-center">
-            <span class="block  text-2xl text-gray-800 font-extrabold ">Wedding Information</span>
-          </div>
-        </div>
-        <div class="mb-10 font-medium text-xl">
-          <div className="inline-block mt-2 w-1/2 pr-1">
-            <p className="font-light text-black text-medium">Event</p>
-          </div>
-          <div className="inline-block mt-2 w-1/2 pr-1">
-            <p>{wedding.title}</p>
-          </div>
-
-          <div className="inline-block mt-2 w-1/2 pr-1">
-            <p className="font-light text-black text-medium">Event Location</p>
-          </div>
-          <div className="inline-block mt-2 w-1/2 pr-1">
-            <p>{wedding.address}</p>
-          </div>
-
-          <div className="inline-block mt-2 w-1/2 pr-1">
-            <p className="font-light text-black text-medium">Event Date</p>
-          </div>
-          <div className="inline-block mt-2 w-1/2 pr-1">
-            <p>{moment(wedding.date).format("MMM Do YY")}</p>
-          </div>
-
-          <div className="inline-block mt-2 w-1/2 pr-1">
-            <p className="font-light text-black text-medium">Groom's Full Name</p>
-          </div>
-          <div className="inline-block mt-2 w-1/2 pr-1">
-            <p>{wedding.groomName}</p>
-          </div>
-          
-          <div className="inline-block mt-2 w-1/2 pr-1">
-            <p className="font-light text-black">Bride's Full Name</p>
-          </div>
-          <div className="inline-block mt-2 w-1/2 pr-1">
-            <p>{wedding.brideName}</p>
-          </div>
-
-          <div className="inline-block mt-2 w-full pr-1">
-            <p className="font-light text-black">Bride & Groom's Picture</p>
-          </div>
-          <div className="inline-block mt-2 w-full pr-1 flex justify-center items-center">
-            <div className="inline-block mt-2 w-1/2 pr-1 flex flex-col justify-center items-center">
-              {
-                wedding && <img src={wedding.groomImg}  alt="" class="rounded-3xl mx-5 my-2" style={{ width: '120px', height: '120px'}}/>
-              }
-               <p>{wedding.groomName}</p>
-            </div>
-            <div className="inline-block mt-2 w-1/2 pr-1 flex flex-col justify-center items-center">
-              {
-                wedding && <img src={wedding.brideImg}  alt="" class="rounded-3xl mx-5 my-2" style={{ width: '120px', height: '120px'}} />
-              }
-               <p>{wedding.brideName}</p>
-            </div>
-          </div>
-        </div>
-      </div> */}
     </div>
   )
 }
