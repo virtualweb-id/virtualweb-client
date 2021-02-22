@@ -35,13 +35,12 @@ const DashboardWedding = () => {
   if(isLoading) return <h1>Loading..</h1>
   return (
     <>
-    <div className="w-full h-full flex md:flex-row flex-col ">
+    <div className="w-full h-full flex md:flex-row flex-col">
       <div className="md:w-1/2 m-3 p-4">
           <WeddingSummary />
       </div>
-        {/* FORM EDIT/ADD */}
+      {/* FORM EDIT/ADD */}
       <div className="md:w-1/2 m-3 p-4 ">
-        {/*  */}
         <div className="leading-loose">
           <form className="max-w-xl m-4 p-10 bg-white rounded shadow-xl" onSubmit={ onSubmit }>
             <p className="text-gray-800 font-bold">Edit Wedding Information</p>
@@ -99,12 +98,11 @@ const DashboardWedding = () => {
                 }
             </div>
             <div className="mt-4">
-              <button className="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded hover:bg-gray-800" type="submit">Submit Changes</button>
+              <button id='weddingBtn' className="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded hover:bg-gray-800" type="submit">Submit Changes</button>
             </div>
           </form>
-        </div>{/* leading loose */} 
-      </div> {/* div nesting form */}
-      {/* div terluar */}
+        </div>
+      </div> 
     </div>
   </>
     
