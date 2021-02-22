@@ -1,10 +1,14 @@
 import { useState } from "react"
 import { useHistory } from "react-router-dom"
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import image from '../assets/card1.jpg'
 import { creatWedding } from '../store/action/wedding'
+import Lottie from "lottie-react"
+import paperplane from '../assets/love-hearts.json'
+import createBtnLoading from "../helpers/createBtnLoading"
 
 export default () => {
+  const { isLoading } = useSelector(state => state.wedding)
   const dispatch = useDispatch()
   const history = useHistory()
 
@@ -56,7 +60,7 @@ export default () => {
     }
   }
 
-  const onSubmit = e => {
+  const onSubmit = async (e) => {
     e.preventDefault()
     const weddingInput = { 
       title: userWedding.title, 
@@ -66,6 +70,7 @@ export default () => {
       brideName: userWedding.brideName, 
       brideImg: previewSourceBride, 
       groomImg: previewSourceGroom }
+    createBtnLoading('createWeddingBtn', 'Proccessing..')
     dispatch(creatWedding(weddingInput, history))
   }
   
@@ -101,6 +106,7 @@ export default () => {
                     Name of the Event
                   </label>
                   <input
+                    required
                     className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                     type="text" onChange={ onChange } name='title' 
                     value={ userWedding.title } placeholder="ex: Pernikahan"
@@ -112,6 +118,7 @@ export default () => {
                     Event Location
                   </label>
                   <input
+                    required
                     className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                     type="text" onChange={ onChange } name='address' value={ userWedding.address } placeholder="ex: Puri Setiabudhi - Jl. Dr. Setiabudi No.378, Kota Bandung, Jawa Barat"
                   />
@@ -124,6 +131,7 @@ export default () => {
                   <input
                     className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                     type="date" onChange={ onChange } name='date' value={ userWedding.date } 
+                    required
                   />
                 </div>
 
@@ -133,6 +141,7 @@ export default () => {
                       Groom Name
                     </label>
                     <input
+                      required
                       className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                       type="text" onChange={ onChange } name='groomName' value={ userWedding.groomName } placeholder="Semmi Verian Putra"
                     />
@@ -142,6 +151,7 @@ export default () => {
                       Bride Name
                     </label>
                     <input
+                      required
                       className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                       type="text" onChange={ onChange } name='brideName' value={ userWedding.brideName } placeholder="Sophia Latjuba"
                     />
@@ -154,7 +164,9 @@ export default () => {
                       Groom's Picture
                     </label>
                     <div className="mb-4 md:mr-2 md:mb-0 flex justify-center flex-col items-center">
-                      <input type='file' onChange={onChangeGroomImg} name='groomImg' accept='file/*' 
+                      <input 
+                        required
+                        type='file' onChange={onChangeGroomImg} name='groomImg' accept='file/*' 
                       className="w-full px-3 py-2 text-sm leading-tight flex justify-center flex-col items-center text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"/>
                       {
                         previewSourceGroom && (
@@ -173,7 +185,9 @@ export default () => {
                       Bride's Picture
                     </label>
                     <div className="mb-4 md:mr-2 md:mb-0 flex justify-center flex-col items-center">
-                      <input type='file' onChange={onChangeBrideImg} name='brideImg' accept='file/*' 
+                      <input 
+                        required
+                        type='file' onChange={onChangeBrideImg} name='brideImg' accept='file/*' 
                       className="w-full px-3 py-2 text-sm leading-tight flex justify-center flex-col items-center text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"/>
                       {
                         previewSourceBride && (
@@ -190,13 +204,14 @@ export default () => {
                 </div>
 
                 <div className="mb-6 mt-3 text-center">
-                      <button
-                        className="w-full px-4 py-2 font-bold text-white bg-red-400 rounded-full hover:bg-red-300 focus:outline-none focus:shadow-outline"
-                        type="submit"
-                      >
-                        Submit
-                      </button>
-                  </div>
+                  <button
+                    id="createWeddingBtn"
+                    className="w-full px-4 py-2 font-bold text-white bg-red-400 rounded-full hover:bg-red-300 focus:outline-none focus:shadow-outline"
+                    type="submit"
+                  >
+                    Submit
+                  </button>
+                </div>
               </form>
             </div>
           </div>

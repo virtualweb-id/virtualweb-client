@@ -2,6 +2,8 @@ import React, { useState, useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import WeddingSummary from './WeddingSummary'
 import { changeWeddingState, updateWedding } from '../store/action/wedding'
+import createBtnLoading from '../helpers/createBtnLoading'
+import cancelBtnLoading from '../helpers/cancelBtnLoading'
 
 const DashboardWedding = () => {
   const dispatch = useDispatch()
@@ -57,16 +59,18 @@ const DashboardWedding = () => {
     }
   }
 
-  const onSubmit = e => {
+  const onSubmit = async (e) => {
     e.preventDefault()
     // const { id, WeddingId, title, date, address, groomName, brideName } = userWedding
     // const brideImg = previewSourceBride
     // const groomImg = previewSourceGroom
     // const userWedding = { id, WeddingId, title, date, address, groomName, brideName, brideImg, groomImg }
     // console.log(userWedding)
-    dispatch(updateWedding())
+    createBtnLoading('weddingBtn', 'Saving..')
+    await dispatch(updateWedding())
+    cancelBtnLoading('weddingBtn', 'SUBMIT')
   }
-  console.log(isLoading);
+  
   if(isLoading) return <h1>Loading..</h1>
   return (
     <>
@@ -123,7 +127,7 @@ const DashboardWedding = () => {
             }
         </div>
         <div className="block">
-          <button className="w-full px-3 py-2 font-medium bg-red-400 text-white hover:bg-red-300 hover:text-gray-600 rounded-lg">SUBMIT</button>
+          <button id='weddingBtn' className="w-full px-3 py-2 font-medium bg-red-400 text-white hover:bg-red-300 hover:text-gray-600 rounded-lg">SUBMIT</button>
         </div>
             
         {/* <ImageUploader
