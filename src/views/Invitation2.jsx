@@ -92,11 +92,11 @@ const Invitation2 = ({ hours, minutes, seconds }) => {
             <div className="w-full flex flex-row justify-center" style={{backgroundColor: holder.backgroundColor}}>
               <img
                   alt="..."
-                  className=" h-full"
+                  className="md:w-1/2 w-full h-full"
                   src={holder.additionalImg}
-                  style={{ maxHeight: '500px', maxWidth: '90%'}}
+                  style={{ }}
                 />
-                <div className="flex flex-col justify-center items-center px-20 py-10 md:my-0  md:rounded-none rounded"
+                <div className="flex md:w-1/2 w-full flex-col justify-center items-center px-20 py-10 md:my-0  md:rounded-none rounded"
                 style={{backgroundColor: holder.backgroundColor, color: holder.textColor, maxWidth: '90%'}}>
                   <p className="m-3 text-4xl ">Akan Menikah</p>
                   <Countdown 
@@ -105,7 +105,7 @@ const Invitation2 = ({ hours, minutes, seconds }) => {
                     className="text-3xl font-extrabold "
                   >
                   </Countdown>
-                  <p className="m-3">{moment(wedding?.date).format("YYYY-MM-DD")}</p>
+                  <p className="m-3">{moment(wedding?.date).format('MMMM Do YYYY, h:mm:ss a')}</p>
                   <p className="m-3 "><svg className="w-6 h-6 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" /></svg>{wedding?.address}</p>
                   <div className="flex flex-row justify-center">
                   <div className="mt-5 mx-5 p-3 rounded-lg shadow-lg flex flex-col justify-center items-center" style={{ backgroundColor: holder.textColor, color: holder.backgroundColor,  minWidth: '150px'}}>
