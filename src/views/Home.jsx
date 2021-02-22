@@ -1,6 +1,6 @@
 import React from 'react'
 import { Footer } from '../components'
-import { LandingHero, Content } from '../components'
+import { LandingHero, Content, OurService } from '../components'
 
 
 const Home = () => {
@@ -8,6 +8,7 @@ const Home = () => {
     <div style={{position: 'relative', overflow:'hidden', fontFamily: 'poppins'}}>
       <LandingHero />
       <Content />
+      <OurService />
       <Footer />
     </div>
   )
