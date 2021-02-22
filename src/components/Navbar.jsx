@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import Fade from 'react-reveal/Fade';
 
 const Navbar = () => {
   const [loggedIn, setLogggedIn] = useState(false)
@@ -15,7 +14,6 @@ const Navbar = () => {
     style={{top: 0, zIndex: 99}}>
       <div className="mt-10 flex items-center">
         <p className="md:text-4xl text-xl text-gray-700 font-extrabold inline" >UNDANGANKU</p>
-        <div style={{width: '25px', width: '25px', borderRadius: '50%'}} className="bg-white text-gray-700 text-center inline-block ml-3"></div>
       </div>
       <div className="mt-10">
         { loggedIn ? <Link className="m-2 text-gray-100 font-bold hover:text-gray-700 hoverborderpink"  to="/dashboard">Dashboard</Link> : (

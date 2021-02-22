@@ -5,7 +5,6 @@ import Navbar from './Navbar'
 import Lottie from "lottie-react"
 import paperplane from '../assets/paper-plane.json'
 import Fade from 'react-reveal/Fade';
-import Zoom from 'react-reveal/Zoom'
 import imageplaceholder from '../assets/couple7.jpg'
 
 const LandingHero = () => {
