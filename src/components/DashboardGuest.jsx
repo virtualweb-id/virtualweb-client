@@ -51,7 +51,9 @@ export default () => {
 
   const onSubmit = (e) => {
     e.preventDefault()
-    dispatch(addGuest(input))
+    if(emailIsValid(input.email)) {
+      dispatch(addGuest(input))
+    }
     setInput({
       name: '',
       email: '',
@@ -62,7 +64,9 @@ export default () => {
 
   const onSubmitEdit = (id) => {
     setIsEdit('')
-    dispatch(editGuest(id, edit));
+    if (emailIsValid(edit.email)) {
+      dispatch(editGuest(id, edit));
+    }
   }
 
   const handleEdit = (id) => {
@@ -83,14 +87,18 @@ export default () => {
     })
   }
 
+  function emailIsValid (email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+  }
+
   return (
     <div className="w-full h-full p-2">
-      <div className="relative z-10 h-auto py-2 overflow-hidden bg-white border-b-2 border-gray-300 rounded-lg shadow-md">
         <div>
           <button
             onClick={() => setIsAdd(true)} 
             className="bg-blue-500 text-white py-1 px-2 rounded my-2 ml-3 shadow-md">Add Guest</button>
         </div>
+      <div className="relative z-10 h-auto py-2 overflow-scroll bg-white border-b-2 border-gray-300 rounded-lg shadow-md h-5/6">
         <table className="table w-full">
           <thead>
             <tr className="table-row border-b-2 border-t">
@@ -109,7 +117,7 @@ export default () => {
                   <td className="table-cell py-1 px-2 h-12 text-sm">{guest.name}</td>
                   <td className="table-cell text-sm">{guest.email}</td>
                   <td className="table-cell text-sm">{guest.phoneNumber}</td>
-                  <td className="table-cell text-sm">{guest.status ? 'Attend' : 'Not yet'}</td>
+                  <td className="table-cell text-sm">{guest.status === null ? 'Not Confirmed Yet' : guest.status ? 'Attend' : 'Not Attend'}</td>
                   <td className="table-cell text-sm">
                     <div className="flex gap-1">
                       <button 
@@ -142,7 +150,7 @@ export default () => {
                       id="email"
                       value={edit.email}
                       onChange={handleOnChangeEdit}
-                      type="Email" className="border p-1 text-sm"></input>
+                      type="email" className="border p-1 text-sm"></input>
                   </td>
                   <td className="table-cell w-1/4">
                     <input 
@@ -152,15 +160,6 @@ export default () => {
                       type="text" className="border p-1 text-sm"></input>
                   </td>
                   <td className="table-cell">
-                    <select 
-                      id="status" 
-                      value={edit.status}
-                      onChange={handleOnChangeEdit} 
-                      className="bg-white pr-2 text-sm"
-                    >
-                      <option value={false}>Not yet</option>
-                      <option value={true}>Attend</option>
-                    </select>
                   </td>
                   <td className="table-cell">
                     <div className="flex gap-1">
@@ -196,7 +195,7 @@ export default () => {
                   name="email"
                   value={input.email}
                   onChange={handleOnChange}
-                  type="Email" className="border p-1 text-sm"></input>
+                  type="email" className="border p-1 text-sm"></input>
               </td>
               <td className="table-cell w-1/4">
                 <input 
@@ -205,16 +204,8 @@ export default () => {
                   onChange={handleOnChange}
                   type="text" className="border p-1 text-sm"></input>
               </td>
-              <td className="table-cell">
-                <select 
-                  name="status" 
-                  value={input.status}
-                  onChange={handleOnChange} 
-                  className="bg-white pr-2 text-sm"
-                >
-                  <option value={false}>Not yet</option>
-                  <option value={true}>Attend</option>
-                </select>
+              <td className="table-cell w-1/4">
+                
               </td>
               <td className="table-cell">
                 <div className="flex gap-1">

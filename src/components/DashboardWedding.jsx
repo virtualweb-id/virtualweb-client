@@ -94,7 +94,7 @@ const DashboardWedding = () => {
           <input type="text" onChange={ onChange } name='address' value={ wedding.address } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Address"/>
         </div>
         <div className="block mb-4 border border-gray-200 rounded-lg">
-          <input type="date" onChange={ onChange } name='date' value={ wedding.date.slice(0,10) } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Date"/>
+          <input type="date" onChange={ onChange } name='date' value={ wedding.date?.slice(0,10) } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Date"/>
         </div>
         <div className="block mb-4 border border-gray-200 rounded-lg">
           <input type="text" onChange={ onChange } name='groomName' value={ wedding.groomName } className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Groom Name"/>
