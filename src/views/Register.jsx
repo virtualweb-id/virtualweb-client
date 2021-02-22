@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { signUp } from '../store/action/auth'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom'
+import Lottie from "lottie-react"
+import paperplane from '../assets/paper-plane.json'
 
 const Register = () => {
+  const { isLoading, isError } = useSelector(state => state.user)
   const [input, setInput] = useState({
     email: '',
     password: '',
@@ -88,10 +91,19 @@ const Register = () => {
                     className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Password"/>
                 </div>
                 <div className="block">
-                  <button 
-                    onClick={handleSignUp}
-                    className="w-full px-3 py-4 font-medium text-white bg-red-400 rounded-lg">Sign up</button>
+                  {!isLoading ?
+                    <button 
+                      onClick={handleSignUp}
+                      className="w-full px-3 py-4 font-medium text-white bg-red-400 rounded-lg">Sign up</button> :
+                    <div className="flex justify-center">
+                      <Lottie animationData={paperplane}
+                        loop 
+                        autoPlay 
+                        className="w-28"/>
+                    </div>
+                  }
                 </div>
+                
                 <div className="text-center mt-3">Have an account? <Link to='/login' className="text-red-400">Sign in</Link></div>
               </div>
               </div>

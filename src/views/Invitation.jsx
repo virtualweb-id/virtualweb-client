@@ -10,7 +10,7 @@ import CommentBox from '../components/CommentBox'
 import CommentForm from '../components/CommentForm'
 import { fetchComments } from '../store/action/comment'
 
-const Invitation = ({ hours, minutes, seconds }) => {
+const Invitation = () => {
   const { invitation:holder } = useSelector(state => state.invitation)
   const { wedding } = useSelector(state => state.wedding)
   const { comments, isLoading } = useSelector(state => state.comment)
@@ -19,10 +19,31 @@ const Invitation = ({ hours, minutes, seconds }) => {
   // useEffect(() => {
   //   dispatch(fetchComments(wedding.id))
   // }, [dispatch])
+  useEffect(() => {
+    dispatch(fetchComments(wedding.id))
+  }, [dispatch])
 
+  // function formatDate(date) {
+  //   console.log(date, 'ini date')
+  //   var monthNames = [
+  //     "Januari", "Februari", "Maret",
+  //     "April", "Mei", "Juni", "Juli",
+  //     "Agustus", "September", "Oktober",
+  //     "November", "Desember"
+  //   ];
+  
+  //   var day = date.getDate();
+  //   var monthIndex = date.getMonth();
+  //   var year = date.getFullYear();
+  
+  //   return day + ',' + ' ' + monthNames[monthIndex] + ' ' + year;
+  // }
+
+  // formatDate(wedding.date)
+  
   return (
     <>
-      <div className="relative pt-16 pb-32 flex content-center items-center justify-center "
+      <div className="relative pt-16 pb-32 flex content-center items-center justify-center font-sans"
           style={{
             minHeight: "75vh",
             overflow: 'hidden'
@@ -40,6 +61,7 @@ const Invitation = ({ hours, minutes, seconds }) => {
               {holder.groomNickname} &  {holder.brigeNickname}
             </h1>
             <p style={{ color: holder.textColor }} className="text-2xl">{moment(wedding.date).format("YYYY-MM-DD")}</p>
+            <p>{wedding.date}</p>
         </div>
       </div>
 
@@ -89,25 +111,24 @@ const Invitation = ({ hours, minutes, seconds }) => {
             {/* End of Bride groom information */}
 
             {/* prawed video */}
-           
-            <div className="flex flex-row justify-center my-20"
+            { holder.videoUrl ? <div className="flex flex-row justify-center my-20"
             style={{minWidth: '400px', minHeight: '400px'}}>
               <ReactPlayer
                 url={holder.videoUrl}
               />
-            </div>
+            </div> : '' }
             {/* prawed video */}
 
             {/* Additional image  & countdown */}
             <div className="w-full my-10 flex flex-wrap justify-center" style={{ }}>
               <img
                   alt="..."
-                  className=" h-full"
+                  className=" h-full m:w-1/2 w-screen"
                   src={holder.additionalImg}
-                  style={{ maxHeight: '500px', maxWidth: '90%'}}
+                  style={{}}
                 />
-                <div className="flex flex-col justify-center items-center px-20 py-10 md:my-0  md:rounded-none rounded"
-                style={{backgroundColor: holder.textColor, color: holder.backgroundColor, maxWidth: '90%'}}>
+                <div className="flex flex-col m:w-1/2 w-full justify-center items-center md:my-0 py-10 md:rounded-none rounded"
+                style={{backgroundColor: holder.textColor, color: holder.backgroundColor }}>
                   <p className="m-3">Akan Menikah</p>
                   <Countdown 
                     date={wedding.date}
@@ -132,12 +153,13 @@ const Invitation = ({ hours, minutes, seconds }) => {
             {/* end of additional image & countdown */}
 
             {/* Livestream video */}
+            { holder.youtubeUrl ? 
             <div className="flex flex-row justify-center my-20"
             style={{minWidth: '400px', minHeight: '400px'}}>
               <ReactPlayer
                 url={holder.youtubeUrl}
               />
-            </div>
+            </div> : '' }
             {/* Livestream video */}
 
             {/* Sawer */}
@@ -168,6 +190,7 @@ const Invitation = ({ hours, minutes, seconds }) => {
       </section>
   </>
   )
+
 }
 
 export default Invitation

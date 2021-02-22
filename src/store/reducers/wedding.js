@@ -1,6 +1,6 @@
 const initialState = {
   wedding: {},
-  isLoading: true,
+  isLoading: false,
   isError: '',
 }
 
@@ -22,6 +22,11 @@ export const weddingReducer = (state = initialState, action) => {
         isLoading: false, 
         isError: ''
       } 
+    case "WEDDING_CHANGE_LOADING": 
+      return {
+        ...state,
+        isLoading: payload
+      }
     default:
       return state
   }

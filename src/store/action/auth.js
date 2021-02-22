@@ -1,8 +1,16 @@
 import axios from '../../api/axios'
+import { createToast } from '../../helpers/createToast'
 
 const changeUser = (payload) => {
   return {
     type: 'CHANGE_USER',
+    payload
+  }
+}
+
+const changeLoading = (payload) => {
+  return {
+    type: 'USER_CHANGE_LOADING',
     payload
   }
 }
@@ -14,9 +22,17 @@ const changeError = (payload) => {
   }
 }
 
+const changeErrorSignUp = (payload) => {
+  return {
+    type: 'CHANGE_ERROR_SIGNUP',
+    payload
+  }
+}
+
 export const signUp = (input, history) => {
   return async (dispatch) => {
     try {
+      dispatch(changeLoading(true))
       await axios({
         method: 'post',
         url: '/register',
@@ -24,7 +40,10 @@ export const signUp = (input, history) => {
       })
       history.push('/login')
     } catch (err) {
-      dispatch(changeError(err.response.data.message))
+      createToast(err.response.data.message[0], 'error')
+      dispatch(changeErrorSignUp(err.response.data.message))
+    } finally {
+      dispatch(changeLoading(false))
     }
   }
 }
@@ -32,6 +51,7 @@ export const signUp = (input, history) => {
 export const signIn = (input, history) => {
   return async (dispatch) => {
     try {
+      dispatch(changeLoading(true))
       const { data } = await axios({
         method: 'post',
         url: '/login',
@@ -43,6 +63,8 @@ export const signIn = (input, history) => {
       history.push('/dashboard')
     } catch (err) {
       dispatch(changeError(err.response.data.message))
+    } finally {
+      dispatch(changeLoading(false))
     }
   }
 }

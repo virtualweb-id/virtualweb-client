@@ -1,4 +1,5 @@
 import axios from '../../api/axios'
+import { createToast } from '../../helpers/createToast'
 
 const guestChange = payload => {
   return {
@@ -59,8 +60,9 @@ export const addGuest = (input) => {
         }
       })
       dispatch(guestAdd(data))
+      createToast('Added successfully')
     } catch (err) {
-      console.log(err);
+      createToast(err.response.data.message[0], 'error')
     }
   }
 }
@@ -80,8 +82,9 @@ export const editGuest = (id, input) => {
       const { guests } = getState().guest
       const newGuests = guests.filter(guest => guest.id !== id)
       dispatch(guestChange([...newGuests, data]))
+      createToast('Updated successfully')
     } catch (err) {
-      console.log(err);
+      createToast(err.response.data.message[0], 'error')
     }
   }
 }
@@ -117,6 +120,7 @@ export const deleteGuest = (id) => {
       const { guests } = getState().guest
       const newGuests = guests.filter(guest => guest.id !== id)
       dispatch(guestChange(newGuests))
+      createToast('deleted successfully')
     } catch (err) {
       console.log(err.response.data);
     }

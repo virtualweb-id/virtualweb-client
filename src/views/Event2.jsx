@@ -90,7 +90,7 @@ const Invitation2 = ({ hours, minutes, seconds }) => {
                   style={{ maxHeight: '500px', maxWidth: '90%'}}
                 />
                 <div className="flex flex-col justify-center items-center px-20 py-10 md:my-0  md:rounded-none rounded"
-                style={{backgroundColor: holder.backgroundColor, color: holder.backgroundColor, maxWidth: '90%'}}>
+                style={{backgroundColor: holder.backgroundColor, color: holder.textColor, maxWidth: '90%'}}>
                   <p className="m-3 text-4xl ">Akan Menikah</p>
                   <Countdown 
                     date={holder.Wedding?.date}
@@ -101,13 +101,13 @@ const Invitation2 = ({ hours, minutes, seconds }) => {
                   <p className="m-3">{moment(holder.Wedding?.date).format("YYYY-MM-DD")}</p>
                   <p className="m-3 "><svg className="w-6 h-6 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" /></svg>{holder.Wedding?.address}</p>
                   <div className="flex flex-row justify-center">
-                  <div className="mt-5 mx-5 p-3 rounded-lg shadow-lg flex flex-col justify-center items-center" style={{ backgroundColor: holder.backgroundColor, color: holder.textColor,  minWidth: '150px'}}>
-                    <p className="font-extrabold" style={{ color: holder.backgroundColor }}>Akad Nikah</p>
-                    <p className="font-extrabold mt-3" style={{ color: holder.backgroundColor }}>{holder.timeEvent1}</p>
+                  <div className="mt-5 mx-5 p-3 rounded-lg shadow-lg flex flex-col justify-center items-center" style={{ backgroundColor: holder.textColor, color: holder.backgroundColor,  minWidth: '150px'}}>
+                    <p className="font-extrabold">Akad Nikah</p>
+                    <p className="font-extrabold mt-3">{holder.timeEvent1}</p>
                   </div>
-                  <div className="mt-5 mx-5 p-3 rounded-lg shadow-lg flex flex-col justify-center items-center" style={{ backgroundColor: holder.backgroundColor, color: holder.textColor,  minWidth: '150px'}}>
-                  <p className="font-extrabold" style={{ color: holder.backgroundColor }}>Resepsi</p>
-                  <p className="font-extrabold mt-3" style={{ color: holder.backgroundColor }}>{holder.timeEvent2}</p>
+                  <div className="mt-5 mx-5 p-3 rounded-lg shadow-lg flex flex-col justify-center items-center" style={{ backgroundColor: holder.textColor, color: holder.backgroundColor,  minWidth: '150px'}}>
+                  <p className="font-extrabold">Resepsi</p>
+                  <p className="font-extrabold mt-3">{holder.timeEvent2}</p>
                   </div>
                 </div>
                 </div>
@@ -143,7 +143,7 @@ const Invitation2 = ({ hours, minutes, seconds }) => {
                 /> */}
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill={holder.backgroundColor} fill-opacity="1" d="M0,32L48,48C96,64,192,96,288,122.7C384,149,480,171,576,186.7C672,203,768,213,864,192C960,171,1056,117,1152,96C1248,75,1344,85,1392,90.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
-            <div className="flex flex-col justify-center items-center" style={{backgroundColor: '#f4d160'}}>
+            <div className="flex flex-col justify-center items-center" style={{backgroundColor: holder.backgroundColor, color: holder.textColor}}>
             <p className="text-4xl mt-3 mb-4">Send wedding gift money to bride and groom!</p>
             <img alt="..."
                 className="cursor-pointer"
@@ -153,7 +153,7 @@ const Invitation2 = ({ hours, minutes, seconds }) => {
             </div>
 
             {/* Comment */}
-            <div className="flex flex-col justify-center items-center py-40" style={{backgroundColor: '#f4d160'}}>
+            <div className="flex flex-col justify-center items-center py-40" style={{backgroundColor: holder.backgroundColor, color: holder.textColor}}>
             {/* <div class="max-w-2xl bg-white py-10 px-5 m-auto w-full"> */}
             <CommentForm WeddingId={holder.Wedding?.id} />
             { isLoading && (<p>Loading...</p>) }

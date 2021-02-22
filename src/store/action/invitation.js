@@ -1,4 +1,6 @@
 import axios from '../../api/axios'
+import { createToast } from '../../helpers/createToast'
+import createBtnLoading from '../../helpers/createBtnLoading'
 
 export const changeState = (name, payload) => {
   return {
@@ -58,6 +60,7 @@ export const getDataById = (id) => {
 export const editInvitation = () => {
   return async (dispatch, getState) => {
     try {
+      dispatch(loadingInvitation(true))
       const { invitation } = getState().invitation
       const { data } = await axios({
         url: '/invitations/' + invitation.id,
@@ -67,9 +70,11 @@ export const editInvitation = () => {
         },
         data: invitation
       })
-      console.log(data);
+      createToast('Successfully update')
     } catch (err) {
       console.log(err.response.data);
+    } finally {
+      dispatch(loadingInvitation(false))
     }
   }
 }
