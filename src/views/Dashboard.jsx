@@ -26,8 +26,10 @@ export default ({ routes }) => {
   
   useEffect(() => {
     const setLarge = () => {
-      if (window.innerWidth < 768 ) {
+      if (window.innerWidth < 768) {
         setMobile(true)
+      } else {
+        setMobile(false)
       }
     }
 
@@ -36,31 +38,14 @@ export default ({ routes }) => {
     return () => {
       window.removeEventListener('resize', setLarge)
     }
-  }, [mobile])
-
-  /*
-  useEffect(() => {
-    const hidedropdown = () => {
-      if (window.innerWidth > 768 && dropdown) {
-        setDropdown(false)
-      }
-    }
-
-    window.addEventListener('resize', hidedropdown)
-
-    return () => {
-      window.removeEventListener('resize', hidedropdown)
-    }
-  }, [dropdown])
-  */
-  
+  }, [window.innerWidth])
 
   return (
     <div className="flex w-full flex-row h-screen">
       <div className="h-full flex flex-col w-1/6 bg-gray-200">
         { mobile ? 
-      <SidebarMobile /> : 
-      <Sidebar /> }
+        <SidebarMobile /> : 
+        <Sidebar /> }
       </div>
       <div className="h-full flex flex-col w-full">
         <DashboardNavbar />
