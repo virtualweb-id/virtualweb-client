@@ -1,6 +1,5 @@
 import { DashboardFinish, DashboardGuest, DashboardInvitation, DashboardProfile, DashboardWedding } from "../components";
-import { Create, Dashboard, Home, Invitation, Login, Register } from "../views";
-import GuestConfirmation from "../views/GuestConfirmation";
+import { Create, Dashboard, Home, Invitation, Login, Register, GuestConfirmation, Event } from "../views";
 
 
 const routes = [
@@ -34,6 +33,10 @@ const routes = [
   {
     path: '/guestConfirmation',
     component: GuestConfirmation,
+  },
+  {
+    path: '/event/:id',
+    component: Event,
   },
   {
     path: '/create',

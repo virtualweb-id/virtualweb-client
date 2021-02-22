@@ -15,6 +15,13 @@ const invitationChange = payload => {
   }
 }
 
+const loadingInvitation = payload => {
+  return {
+    type: 'INVITATION_LOADING',
+    payload
+  }
+}
+
 export const fetchInvitation = () => {
   return async (dispatch) => {
     try {
@@ -27,6 +34,23 @@ export const fetchInvitation = () => {
       dispatch(invitationChange(data))
     } catch (err) {
       console.log(err.response.data);
+    }
+  }
+}
+
+export const getDataById = (id) => {
+  return async (dispatch) => {
+    try {
+      dispatch(loadingInvitation(true))
+      const { data } = await axios({
+        url: '/events/' + id,
+      })
+      console.log(data, "<<< ini hasil fetch")
+      dispatch(loadingInvitation(false))
+      dispatch(invitationChange(data))
+    } catch (err) {
+      console.log(err.response.data);
+      dispatch(loadingInvitation(false))
     }
   }
 }
