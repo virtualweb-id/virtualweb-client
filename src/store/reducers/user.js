@@ -2,6 +2,7 @@ const initialState = {
   user: {},
   isLoading: false,
   isError: '',
+  isErrorSignUp: ''
 }
 
 export const userReducer = (state = initialState, action) => {
@@ -17,6 +18,16 @@ export const userReducer = (state = initialState, action) => {
       return {
         ...state,
         isError: payload
+      }
+    case 'CHANGE_ERROR_SIGNUP':
+      return {
+        ...state,
+        isErrorSignUp: payload
+      }
+    case "USER_CHANGE_LOADING":
+      return {
+        ...state,
+        isLoading: payload
       }
     default:
       return state

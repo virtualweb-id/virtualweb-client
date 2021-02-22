@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import cancelBtnLoading from '../helpers/cancelBtnLoading'
+import createBtnLoading from '../helpers/createBtnLoading'
 import { changeState, editInvitation } from '../store/action/invitation'
 import { changeWeddingState } from '../store/action/wedding'
 import { Invitation } from '../views'
@@ -21,9 +23,11 @@ const DashboardInvitation = () => {
     dispatch(changeWeddingState(name, value))
   }
 
-  const handleSave = (e) => {
+  const handleSave = async (e) => {
     e.preventDefault()
-    dispatch(editInvitation())
+    createBtnLoading('invitation', 'Saving..')
+    await dispatch(editInvitation())
+    cancelBtnLoading('invitation', 'Submit')
   }
 
   const onChangeBackgoundImg = e => {
@@ -225,14 +229,16 @@ const DashboardInvitation = () => {
             {/* Submit Button  */}
             <div className="block">
               <button 
+                id="invitation"
                 onClick={handleSave}
                 className="w-20 px-1 py-1 font-medium text-white bg-gray-400 rounded-lg">Submit</button>
             </div>
           </form>
         </div>
         <div className="relative md:w-2/3 w-full rounded m-1 p-2 overflow-hidden">
-          <h1 className="text-2xl font-bold text-gray-700 my-5 text-center"><Link to="/invitation">My Invitation</Link> </h1>
-          <div className="overflow-y-scroll rounded-lg shadow p-5 overflow-x-hidden h-3/4">
+          <h1 className="text-2xl font-bold text-gray-700 my-5 text-center">My Invitation</h1>
+          <Link to={`/event/${invitation.id}`} target="blank" className="bg-gray-900 rounded p-2 text-white"><i class="fas fa-tv"></i> Preview</Link>
+          <div className="overflow-y-scroll rounded-lg shadow p-5 overflow-x-hidden h-3/4 mt-2">
             <Invitation/>
             </div>
         </div>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
+import confirmDelete from "../helpers/confirmDelete"
 import { addGuest, deleteGuest, editGuest, showOneGuest } from "../store/action/guest"
 
 export default () => {
@@ -69,8 +70,17 @@ export default () => {
     dispatch(showOneGuest(id))
   }
 
+  const cancelAdd = () => {
+    setIsAdd(false)
+    setInput(defaultValue)
+  }
+
   const handleDelete = (id) => {
-    dispatch(deleteGuest(id))
+    confirmDelete().then(async (result) => {
+      if (result.isConfirmed) {
+        await dispatch(deleteGuest(id))
+      }
+    })
   }
 
   return (
@@ -215,7 +225,7 @@ export default () => {
                     <i className="fas fa-check text-blue-500 group-hover:text-white"></i>
                   </button>
                   <button 
-                    onClick={() => setIsAdd(false)}
+                    onClick={() => cancelAdd()}
                     className="group border border-red-500 py-1 px-2 rounded hover:bg-red-500"
                   >
                     <i className="fas fa-times text-red-500 group-hover:text-white"></i>
