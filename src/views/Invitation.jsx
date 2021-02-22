@@ -10,7 +10,7 @@ import CommentBox from '../components/CommentBox'
 import CommentForm from '../components/CommentForm'
 import { fetchComments } from '../store/action/comment'
 
-const Invitation = ({ hours, minutes, seconds }) => {
+const Invitation = () => {
   const { invitation:holder } = useSelector(state => state.invitation)
   const { wedding } = useSelector(state => state.wedding)
   const { comments, isLoading } = useSelector(state => state.comment)
@@ -19,37 +19,28 @@ const Invitation = ({ hours, minutes, seconds }) => {
   useEffect(() => {
     dispatch(fetchComments(wedding.id))
   }, [dispatch])
+
+  function formatDate(date) {
+    console.log(date, 'ini date')
+    var monthNames = [
+      "Januari", "Februari", "Maret",
+      "April", "Mei", "Juni", "Juli",
+      "Agustus", "September", "Oktober",
+      "November", "Desember"
+    ];
   
-  // const holder = {
-  //   brigeNickname: 'Amanda', 
-  //   groomNickname: 'Eunwoo', 
-  //   story: `❝ Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berfikir. ❞
+    var day = date.getDate();
+    var monthIndex = date.getMonth();
+    var year = date.getFullYear();
+  
+    return day + ',' + ' ' + monthNames[monthIndex] + ' ' + year;
+  }
 
-  //   (Ar-Rum: 21)`, 
-  //   title: 'Bismillah', 
-  //   backgroundImg: imgholder, 
-  //   additionalImg: imgholder2, 
-  //   videoUrl: 'https://www.youtube.com/watch?v=3-NBA3aSMqc&ab_channel=WildOakFilms-WeddingVideo%2CVideography', 
-  //   backgroundColor: '#1687a7', 
-  //   textColor: '#d3e0ea', 
-  //   timeEvent1: '18.00', 
-  //   timeEvent2: '19.00', 
-  //   youtubeUrl: 'https://www.youtube.com/watch?v=gIB2egm7tL8&ab_channel=KOMPASTV'
-  // }
-  // const wedding = {
-  //   title: 'Pernikahan' ,
-  //   date: '05-05-2021',
-  //   address: 'Jakarta Selatan',
-  //   groomName: 'Cha Eun WOo',
-  //   brideName: 'Amanda Rizqi',
-  //   groomImg: 'http://res.heraldm.com/phpwas/restmb_jhidxmake.php?idx=5&simg=201811201728261782524_20181120173103_01.jpg',
-  //   brideImg: 'https://cdn1-production-images-kly.akamaized.net/U-BtD9FAg3Y6_QPoW6E7IpQLnrQ=/1x155:1080x763/640x360/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/2291108/original/036690600_1532512066-22344544_139057696659969_8328654710428925952_n.jpg',
-  //   status: false,
-  // }
-
+  formatDate(wedding.date)
+  
   return (
     <>
-      <div className="relative pt-16 pb-32 flex content-center items-center justify-center "
+      <div className="relative pt-16 pb-32 flex content-center items-center justify-center font-sans"
           style={{
             minHeight: "75vh",
             overflow: 'hidden'
@@ -67,6 +58,7 @@ const Invitation = ({ hours, minutes, seconds }) => {
               {holder.groomNickname} &  {holder.brigeNickname}
             </h1>
             <p style={{ color: holder.textColor }} className="text-2xl">{moment(wedding.date).format("YYYY-MM-DD")}</p>
+            <p>{wedding.date}</p>
         </div>
       </div>
 
@@ -116,25 +108,24 @@ const Invitation = ({ hours, minutes, seconds }) => {
             {/* End of Bride groom information */}
 
             {/* prawed video */}
-           
-            <div className="flex flex-row justify-center my-20"
+            { holder.videoUrl ? <div className="flex flex-row justify-center my-20"
             style={{minWidth: '400px', minHeight: '400px'}}>
               <ReactPlayer
                 url={holder.videoUrl}
               />
-            </div>
+            </div> : '' }
             {/* prawed video */}
 
             {/* Additional image  & countdown */}
             <div className="w-full my-10 flex flex-wrap justify-center" style={{ }}>
               <img
                   alt="..."
-                  className=" h-full"
+                  className=" h-full m:w-1/2 w-screen"
                   src={holder.additionalImg}
-                  style={{ maxHeight: '500px', maxWidth: '90%'}}
+                  style={{}}
                 />
-                <div className="flex flex-col justify-center items-center px-20 py-10 md:my-0  md:rounded-none rounded"
-                style={{backgroundColor: holder.textColor, color: holder.backgroundColor, maxWidth: '90%'}}>
+                <div className="flex flex-col m:w-1/2 w-full justify-center items-center md:my-0 py-10 md:rounded-none rounded"
+                style={{backgroundColor: holder.textColor, color: holder.backgroundColor }}>
                   <p className="m-3">Akan Menikah</p>
                   <Countdown 
                     date={wedding.date}
@@ -159,12 +150,13 @@ const Invitation = ({ hours, minutes, seconds }) => {
             {/* end of additional image & countdown */}
 
             {/* Livestream video */}
+            { holder.youtubeUrl ? 
             <div className="flex flex-row justify-center my-20"
             style={{minWidth: '400px', minHeight: '400px'}}>
               <ReactPlayer
                 url={holder.youtubeUrl}
               />
-            </div>
+            </div> : '' }
             {/* Livestream video */}
 
             {/* Sawer */}
@@ -195,6 +187,7 @@ const Invitation = ({ hours, minutes, seconds }) => {
       </section>
   </>
   )
+
 }
 
 export default Invitation
