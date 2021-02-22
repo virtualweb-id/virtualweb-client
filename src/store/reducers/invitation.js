@@ -20,6 +20,11 @@ export const invitationReducer = (state = initialState, action) => {
         ...state,
         invitation: payload
       }
+    case 'INVITATION_LOADING':
+      return {
+        ...state,
+        isLoading: payload
+      }
     default:
       return state
   }
