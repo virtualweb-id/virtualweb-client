@@ -15,7 +15,7 @@ const Entertainme = () => {
     return (
       <>
       <div className=" flex justify-center items-center md:flex-row flex-col mb-5 poppins p-10 md:p-20 mt-10" id="content"
-      style={{width: '100%', height: '100%'}} >
+      style={{width: '100vw', height: '100vh'}} >
         {/* Left */}
         <div className="md:w-1/2 font-bold">
           <Fade left>

@@ -7,7 +7,7 @@ const Footer = () => {
   return (
   <footer className="bg-black pt-10 sm:mt-10 pt-10 flex flex-col">
       <div className="pt-2 m-5 flex flex-col justify-center items-center">
-        <h1 className="text-white text-3xl font-bold">
+        <h1 className="text-white md:text-3xl text-2xl font-bold">
           Subscribe to our Newsletter
         </h1>
         <form className="m-4 flex">
