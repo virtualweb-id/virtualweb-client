@@ -1,15 +1,24 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Countdown, { zeroPad, calcTimeDelta, formatTimeDelta } from 'react-countdown';
 import ReactPlayer from "react-player"
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import imgholder from '../assets/couple1.jpg'
 import imgholder2 from '../assets/couple2.jpg'
 import gift from '../assets/wedding-gift.png'
 import moment from 'moment'
+import CommentBox from '../components/CommentBox'
+import CommentForm from '../components/CommentForm'
+import { fetchComments } from '../store/action/comment'
 
 const Invitation = ({ hours, minutes, seconds }) => {
   const { invitation:holder } = useSelector(state => state.invitation)
   const { wedding } = useSelector(state => state.wedding)
+  const { comments, isLoading } = useSelector(state => state.comment)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchComments(wedding.id))
+  }, [dispatch])
   
   // const holder = {
   //   brigeNickname: 'Amanda', 
@@ -167,6 +176,21 @@ const Invitation = ({ hours, minutes, seconds }) => {
                 style={{width: '100px'}}
                 />
             </div>
+
+            {/* Comment */}
+            <div  className="flex flex-col justify-center items-center my-40 ">
+            {/* <div class="max-w-2xl bg-white py-10 px-5 m-auto w-full"> */}
+            <CommentForm WeddingId={wedding.id} />
+            { isLoading && (<p>Loading...</p>) }
+            {
+              comments?.map((comment, idx) => {
+                return (
+                  <CommentBox comment={comment} />
+                )
+              })
+            }
+            </div>
+            {/* </div> */}
         </div>
       </section>
   </>
