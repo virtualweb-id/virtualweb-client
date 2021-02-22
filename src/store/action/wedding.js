@@ -1,4 +1,5 @@
 import axios from "../../api/axios"
+import { createToast } from "../../helpers/createToast"
 
 export const changeWeddingState = (name, payload) => {
   return {
@@ -11,6 +12,13 @@ export const changeWeddingState = (name, payload) => {
 export const changeWeddingInfo = (payload) => {
   return {
     type: 'CHANGE_WEDDING',
+    payload
+  }
+}
+
+const changeLoading = payload => {
+  return {
+    type: 'WEDDING_CHANGE_LOADING',
     payload
   }
 }
@@ -34,10 +42,10 @@ export const fetchWedding = (history) => {
 }
 
 export const creatWedding = (input, history) => {
-  console.log('masuk sini')
   const { title, date, address, groomName, groomImg, brideImg, brideName, status } = input
   return async (dispatch, getState) => {
     try {
+      dispatch(changeLoading(true))
       const { data:wedding } = await axios({
         method: 'post',
         url: '/weddings',
@@ -49,7 +57,9 @@ export const creatWedding = (input, history) => {
       dispatch(changeWeddingInfo(wedding))
       history.push('/dashboard')
     } catch (err) {
-      console.log(err);
+      console.log(err.response.message);
+    } finally {
+      dispatch(changeLoading(false))
     }
   }
 }
@@ -67,6 +77,7 @@ export const updateWedding = () => {
           access_token: localStorage.access_token
         }
       })
+      createToast('Successfully update')
       dispatch(changeWeddingInfo(data))
     } catch (err) {
       console.log(err.response.data);

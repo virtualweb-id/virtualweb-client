@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom'
 import { signIn } from '../store/action/auth'
+import Lottie from "lottie-react"
+import paperplane from '../assets/paper-plane.json'
 
 const Login = () => {
-  const { isError } = useSelector(state => state.user)
+  const { isError, isLoading } = useSelector(state => state.user)
   const [input, setInput] = useState({
     email: '',
     password: ''
@@ -12,17 +14,12 @@ const Login = () => {
   const dispatch = useDispatch()
   const history = useHistory()
 
-  const handleLogout = () => {
-    localStorage.clear()
-    history.push('/')
-  }
-
   const redirectHome = () => {
     history.push('/')
   }
 
   useEffect(() => {
-    if(localStorage.access_token) history.push('/undanganku')
+    if(localStorage.access_token) history.push('/dashboard')
   }, [])
   
   const handleOnChange = (e) => {
@@ -78,9 +75,17 @@ const Login = () => {
                       className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none" placeholder="Password"/>
                   </div>
                   <div className="block">
+                    {!isLoading ?
                     <button 
                       onClick={onSubmit}
-                      className="w-full px-3 py-4 font-medium text-white bg-red-400 rounded-lg">Sign in</button>
+                      className="w-full px-3 py-4 font-medium text-white bg-red-400 rounded-lg">Sign in</button> :
+                      <div className="flex justify-center">
+                        <Lottie animationData={paperplane}
+                          loop 
+                          autoPlay 
+                          className="w-28"/>
+                      </div>
+                    }
                   </div>
                   <div className="text-center mt-3">Not a member? <Link to='/register' className="text-red-400">Sign up now</Link></div>
                 </div>

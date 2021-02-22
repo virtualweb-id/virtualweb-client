@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import Fade from 'react-reveal/Fade';
 
 const Navbar = () => {
   const [loggedIn, setLogggedIn] = useState(false)

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import cancelBtnLoading from '../helpers/cancelBtnLoading'
+import createBtnLoading from '../helpers/createBtnLoading'
 import { changeState, editInvitation } from '../store/action/invitation'
 import { changeWeddingState } from '../store/action/wedding'
 import { Invitation } from '../views'
@@ -21,9 +23,11 @@ const DashboardInvitation = () => {
     dispatch(changeWeddingState(name, value))
   }
 
-  const handleSave = (e) => {
+  const handleSave = async (e) => {
     e.preventDefault()
-    dispatch(editInvitation())
+    createBtnLoading('invitation', 'Saving..')
+    await dispatch(editInvitation())
+    cancelBtnLoading('invitation', 'Submit')
   }
 
   const onChangeBackgoundImg = e => {
@@ -39,8 +43,8 @@ const DashboardInvitation = () => {
 
   return (
     <>
-      <div className="w-full h-full flex md:flex-row flex-col">
-        <div className="md:w-1/2 w-full h-full m-3 px-2 p-5 ">
+      <div className="w-full h-full flex md:flex-row flex-col overflow-hidden">
+        <div className="md:w-1/3 w-full h-full m-3">
           {/* Couple Name */}
           <form className="container-small overflow-y-scroll bg-gray-200 rounded-lg shadow p-5 overflow-x-hidden h-full">
             <p className="font-small text-sm">Couple Name</p>
@@ -127,7 +131,7 @@ const DashboardInvitation = () => {
             <p className="font-small text-sm">Page Setting</p>
             <div className=" mb-4 border-t border-gray-900 py-2">
               <div className="flex items-center gap-2 my-1">
-                <label for="backgroundColor" className="text-sm">Background Color:</label>
+                <label for="backgroundColor" className="text-sm">Color 1:</label>
                 <input type="color" name="backgroundColor" value={invitation.backgroundColor} onChange={onChange}
                   className="w-6 h-6" />
               </div>
@@ -139,7 +143,7 @@ const DashboardInvitation = () => {
                 className="text-sm w-44 px-1 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Background Color"/>
 
               <div className="flex items-center gap-2 my-1">
-                <label for="textColor" className="text-sm">Text Color:</label>
+                <label for="textColor" className="text-sm">Color 2:</label>
                 <input type="color" name="textColor" value={invitation.textColor} onChange={onChange}
                   className="w-6 h-6" />
               </div>
@@ -170,7 +174,7 @@ const DashboardInvitation = () => {
             </div>
 
             {/* Wedding Data  */}
-            <p className="font-small text-sm">Wedding Information</p>
+            {/* <p className="font-small text-sm">Wedding Information</p>
             <div className="text-sm mb-4 border-t border-gray-900 py-2">
               <input 
                 type="text"
@@ -220,19 +224,21 @@ const DashboardInvitation = () => {
                 onChange={onWeddingChange}
                 value={wedding.brideImg}
                 className="text-sm w-44 px-1 my-2 py-1 mx-1 border-2 border-transparent rounded-lg focus:border-gray-400 focus:outline-none" placeholder="Bride Photo"/>
-            </div>
+            </div> */}
 
             {/* Submit Button  */}
             <div className="block">
               <button 
+                id="invitation"
                 onClick={handleSave}
                 className="w-20 px-1 py-1 font-medium text-white bg-gray-400 rounded-lg">Submit</button>
             </div>
           </form>
         </div>
-        <div className="md:w-1/2 w-full rounded m-3  px-2 p-5 ">
-          <h1 className="text-2xl font-bold text-gray-700 my-5 text-center"><Link to="/invitation">My Invitation</Link> </h1>
-          <div className="overflow-y-scroll rounded-lg shadow p-5 overflow-x-hidden h-3/4">
+        <div className="relative md:w-2/3 w-full rounded m-1 p-2 overflow-hidden">
+          <h1 className="text-2xl font-bold text-gray-700 my-5 text-center">My Invitation</h1>
+          <Link to={`/event/${invitation.id}`} target="blank" className="bg-gray-900 rounded p-2 text-white"><i class="fas fa-tv"></i> Preview</Link>
+          <div className="overflow-y-scroll rounded-lg shadow p-5 overflow-x-hidden h-3/4 mt-2">
             <Invitation/>
             </div>
         </div>
