@@ -12,7 +12,7 @@ const Navbar = () => {
   return (
     <nav
     className="fixed flex justify-around flex-row relative bg-transparent w-full p-4 poppins" role="navigation"
-    style={{top: 0, zIndex: '9'}}>
+    style={{top: 0, zIndex: 99}}>
       <div className="mt-10 flex items-center">
         <p className="md:text-4xl text-xl text-gray-700 font-extrabold inline" >UNDANGANKU</p>
         <div style={{width: '25px', width: '25px', borderRadius: '50%'}} className="bg-white text-gray-700 text-center inline-block ml-3"></div>
