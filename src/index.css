@@ -3,6 +3,7 @@
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Allura&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;500;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
 
 *,
 *::before,
@@ -53,4 +54,8 @@ code {
   opacity: 0.2;
   z-index: -2;
   align-self: flex-start;
+}
+
+.quicksand {
+  font-family: 'Quicksand', sans-serif;
 }

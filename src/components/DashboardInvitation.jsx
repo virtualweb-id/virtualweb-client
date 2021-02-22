@@ -5,7 +5,7 @@ import cancelBtnLoading from '../helpers/cancelBtnLoading'
 import createBtnLoading from '../helpers/createBtnLoading'
 import { changeState, editInvitation } from '../store/action/invitation'
 import { changeWeddingState } from '../store/action/wedding'
-import { Invitation } from '../views'
+import { Invitation, Invitation2 } from '../views'
 
 const DashboardInvitation = () => {
   const { wedding } = useSelector(state => state.wedding)
@@ -235,11 +235,13 @@ const DashboardInvitation = () => {
             </div>
           </form>
         </div>
-        <div className="relative md:w-2/3 w-full rounded m-1 p-2 overflow-hidden">
-          <h1 className="text-2xl font-bold text-gray-700 my-5 text-center">My Invitation</h1>
+              <div className="relative md:w-2/3 w-full rounded m-1 p-2 overflow-hidden">
+              <h1 className="text-2xl font-bold text-gray-700 my-5 text-center">My Invitation</h1>
           <Link to={`/event/${invitation.id}`} target="blank" className="bg-gray-900 rounded p-2 text-white"><i class="fas fa-tv"></i> Preview</Link>
           <div className="overflow-y-scroll rounded-lg shadow p-5 overflow-x-hidden h-3/4 mt-2">
-            <Invitation/>
+            {
+              !wedding.status ? <Invitation/> : <Invitation2/>
+            }
             </div>
         </div>
       </div>

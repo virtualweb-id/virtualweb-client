@@ -16,27 +16,30 @@ const Invitation = () => {
   const { comments, isLoading } = useSelector(state => state.comment)
   const dispatch = useDispatch()
 
+  // useEffect(() => {
+  //   dispatch(fetchComments(wedding.id))
+  // }, [dispatch])
   useEffect(() => {
     dispatch(fetchComments(wedding.id))
   }, [dispatch])
 
-  function formatDate(date) {
-    console.log(date, 'ini date')
-    var monthNames = [
-      "Januari", "Februari", "Maret",
-      "April", "Mei", "Juni", "Juli",
-      "Agustus", "September", "Oktober",
-      "November", "Desember"
-    ];
+  // function formatDate(date) {
+  //   console.log(date, 'ini date')
+  //   var monthNames = [
+  //     "Januari", "Februari", "Maret",
+  //     "April", "Mei", "Juni", "Juli",
+  //     "Agustus", "September", "Oktober",
+  //     "November", "Desember"
+  //   ];
   
-    var day = date.getDate();
-    var monthIndex = date.getMonth();
-    var year = date.getFullYear();
+  //   var day = date.getDate();
+  //   var monthIndex = date.getMonth();
+  //   var year = date.getFullYear();
   
-    return day + ',' + ' ' + monthNames[monthIndex] + ' ' + year;
-  }
+  //   return day + ',' + ' ' + monthNames[monthIndex] + ' ' + year;
+  // }
 
-  formatDate(wedding.date)
+  // formatDate(wedding.date)
   
   return (
     <>
