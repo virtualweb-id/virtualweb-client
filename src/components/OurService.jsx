@@ -19,7 +19,8 @@ const OurService = () => {
           <LazyLoadImage
             alt="happy bride"
             effect="blur"
-            style={{height: '100vh'}}
+            className=""
+            style={{maxHeight: '1000px'}}
             src={imageHolder} />
           </div>
           {/* Right */}
