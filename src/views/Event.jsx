@@ -2,8 +2,7 @@ import React, {useState, useEffect} from 'react'
 import Countdown, { zeroPad, calcTimeDelta, formatTimeDelta } from 'react-countdown';
 import ReactPlayer from "react-player"
 import { useSelector, useDispatch } from 'react-redux';
-import imgholder from '../assets/couple1.jpg'
-import imgholder2 from '../assets/couple2.jpg'
+import ModalPayment from '../components/ModalPayment'
 import gift from '../assets/wedding-gift.png'
 import moment from 'moment'
 import CommentBox from '../components/CommentBox'
@@ -147,13 +146,14 @@ const Event = ({ hours, minutes, seconds }) => {
                 {/* Livestream video */}
     
                 {/* Sawer */}
-                <div  className="flex flex-col justify-center items-center my-20 ">
+                <div  className="flex flex-col justify-center items-center my-20">
                 <p className="font-extrabold text-lg mt-3 mb-4">Send wedding gift money to bride and groom!</p>
                 <img alt="..."
                     className="cursor-pointer"
                     src={gift}
                     style={{width: '100px'}}
-                    />
+                    /><br/>
+                <ModalPayment />
                 </div>
     
                 {/* Comment */}
