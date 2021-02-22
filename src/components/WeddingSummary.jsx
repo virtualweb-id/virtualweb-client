@@ -17,7 +17,7 @@ const WeddingSummary = () => {
             <span class="ml-3 mb-3">Event: <span className="text-gray-700">{wedding.title}</span></span>
           </li>
           <li class="flex">
-            <span class="ml-3 my-3">Date of the event: <span className="text-gray-700">{wedding.date.slice(0, 10)}</span></span>
+            <span class="ml-3 my-3">Date of the event: <span className="text-gray-700">{wedding.date?.slice(0, 10)}</span></span>
           </li>
           <li class="flex">
             <span class="ml-3 my-3">Location: <span className="text-gray-700">{wedding.address}</span></span>
