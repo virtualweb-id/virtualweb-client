@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import image from '../assets/card1.jpg'
 import { creatWedding } from '../store/action/wedding'
 import Lottie from "lottie-react"
-import paperplane from '../assets/love-hearts.json'
+import paperplane from '../assets/paper-plane.json'
 import createBtnLoading from "../helpers/createBtnLoading"
 
 export default () => {
@@ -86,7 +86,7 @@ export default () => {
         </button>
 	    </nav>
 
-      <div className="font-sans">
+      <div className="pb-5">
 		
       <div className="container mx-auto">
         <div className="flex justify-center px-6 my-12">
@@ -223,7 +223,7 @@ export default () => {
                     type="submit"
                   >
                     Submit
-                  </button> : <div className="mb-6 mt-3 text-center"><Lottie animationData={paperplane}
+                  </button> : <div className="mb-6 mt-3 text-center flex justify-center items-center"><Lottie animationData={paperplane}
                           loop 
                           autoPlay 
                           className="w-28"/></div> }
