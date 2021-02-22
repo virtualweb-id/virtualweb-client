@@ -26,8 +26,8 @@ export default ({ routes }) => {
   
   useEffect(() => {
     const setLarge = () => {
-      if (window.innerWidth > 768 && !mobile) {
-        setMobile(false)
+      if (window.innerWidth < 768 ) {
+        setMobile(true)
       }
     }
 
@@ -37,6 +37,22 @@ export default ({ routes }) => {
       window.removeEventListener('resize', setLarge)
     }
   }, [mobile])
+
+  /*
+  useEffect(() => {
+    const hidedropdown = () => {
+      if (window.innerWidth > 768 && dropdown) {
+        setDropdown(false)
+      }
+    }
+
+    window.addEventListener('resize', hidedropdown)
+
+    return () => {
+      window.removeEventListener('resize', hidedropdown)
+    }
+  }, [dropdown])
+  */
   
 
   return (
