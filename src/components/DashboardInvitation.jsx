@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { changeState, editInvitation } from '../store/action/invitation'
 import { changeWeddingState } from '../store/action/wedding'
-import { Invitation } from '../views'
+import { Invitation, Invitation2 } from '../views'
 
 const DashboardInvitation = () => {
   const { wedding } = useSelector(state => state.wedding)
@@ -233,7 +233,9 @@ const DashboardInvitation = () => {
         <div className="md:w-1/2 w-full rounded m-3  px-2 p-5 ">
           <h1 className="text-2xl font-bold text-gray-700 my-5 text-center"><Link to="/invitation">My Invitation</Link> </h1>
           <div className="overflow-y-scroll rounded-lg shadow p-5 overflow-x-hidden h-3/4">
-            <Invitation/>
+            {
+              !wedding.status ? <Invitation/> : <Invitation2/>
+            }
             </div>
         </div>
       </div>

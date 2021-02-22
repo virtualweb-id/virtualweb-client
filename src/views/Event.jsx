@@ -17,10 +17,10 @@ const Event = ({ hours, minutes, seconds }) => {
   const dispatch = useDispatch()
   const {id} = useParams()
 
-  useEffect(() => {
-    dispatch(getDataById(id))
-    dispatch(fetchComments(id))
-  }, [dispatch])
+  // useEffect(() => {
+  //   // dispatch(getDataById(id))
+  //   // dispatch(fetchComments(id))
+  // }, [dispatch])
 
   if (isLoading) {
       return <h1>Loading...</h1>
