@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import Swal from 'sweetalert2'
 import axios from 'axios'
+import { useDispatch } from "react-redux";
+import { payment } from "../store/action/guest";
 
 export default function ModalPayment() {
   const [showModal, setShowModal] = useState(false);
@@ -11,6 +13,7 @@ export default function ModalPayment() {
     phone: '',
     amount: null
   })
+  const dispatch = useDispatch()
 
   const handleOnChange = (e) => {
     const { name, value } = e.target
@@ -35,24 +38,7 @@ export default function ModalPayment() {
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        axios({
-          method: 'post',
-          url: 'http://localhost:3001/guests/payment',
-          data: { inputData },
-        })
-        .then(({data}) => {
-          window.open(data.redirect_url)
-          setInputData({
-            firstName: '',
-            lastName: '',
-            email: '',
-            phone: '',
-            amount: null
-          })
-        })
-        .catch(err => {
-          console.log(err)
-        })
+        dispatch(payment(inputData))
       }
       setInputData({
         firstName: '',
