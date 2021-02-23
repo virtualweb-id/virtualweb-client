@@ -1,5 +1,6 @@
 import axios from '../../api/axios'
 import { createToast } from '../../helpers/createToast'
+import Swal from 'sweetalert2'
 
 const guestChange = payload => {
   return {
@@ -101,8 +102,19 @@ export const confirmGuest = (input) => {
       const { guests } = getState().guest
       const newGuests = guests.filter(guest => guest.id !== id)
       dispatch(guestChange([...newGuests, data]))
+      Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: 'Thanks you for your response, please check your email for the Event link',
+        showConfirmButton: true,
+      })
     } catch (err) {
-      console.log(err);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'invalid id or email',
+        showConfirmButton: true,
+      })
     }
   }
 }
@@ -123,6 +135,34 @@ export const deleteGuest = (id) => {
       createToast('deleted successfully')
     } catch (err) {
       console.log(err.response.data);
+    }
+  }
+}
+
+export const sendInvitation = () => {
+  return async (dispatch) => {
+    try {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: `You will send email to all guests`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+        reverseButtons: true
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          await axios({
+            url: '/guests/send',
+            headers: {
+              access_token: localStorage.access_token
+            }
+          })
+          createToast('successfully send')
+        }
+      })
+    } catch (err) {
+      createToast(err.response.data.message, 'error')
     }
   }
 }
