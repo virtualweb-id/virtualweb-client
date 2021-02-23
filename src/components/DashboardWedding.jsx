@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import WeddingSummary from './WeddingSummary'
-import { changeWeddingState, updateWedding } from '../store/action/wedding'
+import { changeWeddingState, fetchWedding, updateWedding } from '../store/action/wedding'
 import createBtnLoading from '../helpers/createBtnLoading'
 import cancelBtnLoading from '../helpers/cancelBtnLoading'
 
@@ -47,27 +47,27 @@ const DashboardWedding = () => {
             <div className="mt-2">
               <label className="block text-sm text-gray-600">Name of the Event</label>
               <input className="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
-               type="text" onChange={ onChange } name='title' value={ wedding.title } placeholder="Pernikahan" />
+               type="text" onChange={ onChange } name='title' value={ wedding?.title } placeholder="Pernikahan" />
             </div>
             <div className="mt-2">
               <label className="block text-sm text-gray-600">Event Location</label>
               <input className="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
-               type="text" onChange={ onChange } name='address' value={ wedding.address } placeholder="Gedung Perhutani, Pasar Minggu" />
+               type="text" onChange={ onChange } name='address' value={ wedding?.address } placeholder="Gedung Perhutani, Pasar Minggu" />
             </div>
             <div className="mt-2">
               <label className="block text-sm text-gray-600" >Event Date</label>
               <input className="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
-               type="date" onChange={ onChange } name='date' value={ wedding.date.slice(0,10) } />
+               type="date" onChange={ onChange } name='date' value={ wedding.date && wedding?.date.slice(0,10) } />
             </div>
             <div className="inline-block mt-2 w-1/2 pr-1">
               <label className="block text-sm text-gray-600">Groom's Full Name</label>
               <input className="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
-               type="text" onChange={ onChange } name='groomName' value={ wedding.groomName } placeholder="Semmi Verian Putra" />
+               type="text" onChange={ onChange } name='groomName' value={ wedding?.groomName } placeholder="Semmi Verian Putra" />
             </div>
             <div className="inline-block mt-2 w-1/2 pr-1">
               <label className="block text-sm text-gray-600">Bride's Full Name</label>
               <input className="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
-               type="text" onChange={ onChange } name='brideName' value={ wedding.brideName } placeholder="Sophia Latjuba" />
+               type="text" onChange={ onChange } name='brideName' value={ wedding?.brideName } placeholder="Sophia Latjuba" />
             </div>
             <div className="inline-block mt-2 w-1/2 pr-1" >
               <label className="block text-sm text-gray-600">Groom's Picture</label>

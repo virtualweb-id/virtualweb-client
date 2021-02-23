@@ -70,7 +70,7 @@ export const editInvitation = () => {
         },
         data: invitation
       })
-      createToast('Successfully update')
+      // createToast('Successfully update')
     } catch (err) {
       console.log(err.response.data);
     } finally {

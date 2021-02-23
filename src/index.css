@@ -59,3 +59,13 @@ code {
 .quicksand {
   font-family: 'Quicksand', sans-serif;
 }
+
+.form-invitation::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.form-invitation {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
