@@ -56,7 +56,7 @@ const Invitation = () => {
                 <div className="flex allura flex-col justify-center items-center m-3">
                   <img
                     alt="..."
-                    className="max-w-full shadow-lg m-2"
+                    className="max-w-full m-2"
                     src={wedding.brideImg}
                     style={{ borderRadius: '50%', width: '210px', height: '210px' }}
                   />
@@ -69,7 +69,7 @@ const Invitation = () => {
                 <div className="flex flex-col justify-center items-center m-3">
                   <img
                     alt="..."
-                    className="max-w-full shadow-lg m-2 "
+                    className="max-w-full m-2 "
                     src={wedding.groomImg}
                     style={{ borderRadius: '50%', width: '210px', height: '210px' }}
                   />
