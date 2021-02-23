@@ -4,7 +4,7 @@ import ReactPlayer from "react-player"
 import { useSelector, useDispatch } from 'react-redux';
 import imgholder from '../assets/couple1.jpg'
 import imgholder2 from '../assets/couple2.jpg'
-import gift from '../assets/wedding-gift.png'
+import gift from '../assets/gift-box.png'
 import moment from 'moment'
 import CommentBox from '../components/CommentBox'
 import CommentForm from '../components/CommentForm'
@@ -51,7 +51,7 @@ const Invitation = () => {
             {/* End of hero section */}
          <div className="body-font"
           style={{ color: holder.backgroundColor }}>
-            <div className="container px-8 mx-auto mb-40 lg:px-4">
+            <div className="container px-8 mx-auto lg:px-4">
             <div className="flex allura flex-col md:flex-row  justify-center items-center">
                 <div className="flex allura flex-col justify-center items-center m-3">
                   <img
@@ -82,7 +82,10 @@ const Invitation = () => {
             {/* End of story section */}
 
             {/* Bride groom information */}
-            <div className="w-full mt-5 flex flex-col flex-wrap justify-center items-center p-5 allura text-3xl"
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                  <path fill={holder.backgroundColor} fill-opacity="1" d="M0,32L48,48C96,64,192,96,288,133.3C384,171,480,213,576,224C672,235,768,213,864,186.7C960,160,1056,128,1152,101.3C1248,75,1344,53,1392,42.7L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+            <div className="w-full flex flex-col flex-wrap justify-center items-center p-5 allura text-3xl"
             style={{ backgroundColor: holder.backgroundColor, color: holder.textColor, minHeight: '300px' }}>
              <div className="flex flex-col w-full mx-auto mb-12 text-left lg:w-2/3 lg:text-center">
                     <h1 className="mb-6 text-2xl font-semibold tracking-tighter sm:text-5xl title-font text-center">
@@ -103,7 +106,7 @@ const Invitation = () => {
             {/* prawed video */}
 
             {/* Additional image  & countdown */}
-            <div className="w-full mb-10 flex allura text-2xl flex-wrap justify-center" style={{ }}>
+            <div className="w-full my-20 flex allura text-2xl flex-wrap justify-center" style={{ }}>
               <img
                   alt="..."
                   className=" h-full m:w-1/2 w-screen"
@@ -146,8 +149,8 @@ const Invitation = () => {
             {/* Livestream video */}
 
             {/* Sawer */}
-            <div  className="flex flex-col justify-center items-center my-20 ">
-            <p className="font-extrabold text-lg mt-3 mb-4">Send wedding gift money to bride and groom!</p>
+            <div  className="flex flex-col justify-center items-center my-20 " style={{ color: holder.textColor }}>
+            <p className="font-extrabold text-lg mt-3 mb-4 allura text-4xl">Send wedding gift money to bride and groom!</p>
             <img alt="..."
                 className="cursor-pointer"
                 src={gift}
@@ -156,7 +159,7 @@ const Invitation = () => {
             </div>
 
             {/* Comment */}
-            <div  className="flex flex-col justify-center items-center my-40 ">
+            <div  className="flex flex-col justify-center items-center my-40 quicksand " style={{ color: holder.textColor }}>
             {/* <div class="max-w-2xl bg-white py-10 px-5 m-auto w-full"> */}
             <CommentForm WeddingId={wedding.id} />
             { isLoading && (<p>Loading...</p>) }

@@ -6,6 +6,7 @@ import gift from '../assets/gift-box.png'
 import moment from 'moment'
 import CommentBox from '../components/CommentBox'
 import CommentForm from '../components/CommentForm'
+import ModalPayment from '../components/ModalPayment'
 
 const Invitation2 = ({ hours, minutes, seconds }) => {
   const { invitation:holder, isLoading } = useSelector(state => state.invitation)
@@ -16,7 +17,7 @@ const Invitation2 = ({ hours, minutes, seconds }) => {
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path fill={holder.backgroundColor} fill-opacity="1" d="M0,64L60,101.3C120,139,240,213,360,229.3C480,245,600,203,720,192C840,181,960,203,1080,224C1200,245,1320,267,1380,277.3L1440,288L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
     </svg>
-    <div className="relative mx-auto flex flex-col justify-center items-center font-bold allura"
+    <div className="relative mx-auto flex flex-col justify-center items-center allura"
         style={{ backgroundColor: holder.backgroundColor }}>
             <p style={{ color: holder.textColor }} className="text-8xl">The wedding of</p>
     </div>
@@ -61,7 +62,7 @@ const Invitation2 = ({ hours, minutes, seconds }) => {
                     <h1 className="mb-6 text-4xl font-semibold tracking-tighter sm:text-5xl title-font text-center quicksand" style={{ color: holder.backgroundColor }}>
                        {holder.title}
                     </h1>
-                    <p className="mx-auto text-base font-medium leading-relaxed lg:w-2/3" style={{ color: holder.backgroundColor }}
+                    <p className="mx-auto text-2xl text-base font-semibold leading-relaxed lg:w-2/3" style={{ color: holder.backgroundColor }}
                     >{holder.story}</p>
                 </div>
         </div>
@@ -149,7 +150,8 @@ const Invitation2 = ({ hours, minutes, seconds }) => {
                 className="cursor-pointer"
                 src={gift}
                 style={{width: '100px'}}
-                />
+                /><br/>
+                <ModalPayment />
             </div>
 
             {/* Comment */}
