@@ -47,7 +47,6 @@ export const getDataById = (id) => {
       const { data } = await axios({
         url: '/events/' + id,
       })
-      console.log(data, "<<< ini hasil fetch")
       dispatch(loadingInvitation(false))
       dispatch(invitationChange(data))
     } catch (err) {

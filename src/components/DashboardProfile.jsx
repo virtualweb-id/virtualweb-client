@@ -1,9 +1,13 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {Doughnut} from 'react-chartjs-2';
+import { useDispatch, useSelector } from "react-redux"
 import Countdown, { zeroPad, calcTimeDelta, formatTimeDelta } from 'react-countdown';
 import { FlipCountdown, SlideCountdown } from 'react-fancy-countdown'
 
 const DashboardProfile = () => {
+  const { wedding } = useSelector(state => state.wedding)
+  const { guestAttend } = useSelector(state => state.guest)
+  
   const data = {
     labels: [
       'Not Attend',
@@ -11,7 +15,7 @@ const DashboardProfile = () => {
       'No Info'
     ],
     datasets: [{
-      data: [300, 50, 100],
+      data: guestAttend,
       backgroundColor: [
       '#FF6384',
       '#36A2EB',
@@ -24,17 +28,6 @@ const DashboardProfile = () => {
       ]
     }]
   };
-
-  const wedding = {
-    title: 'Pernikahan' ,
-    date: '05-05-2021',
-    address: 'Jakarta Selatan',
-    groomName: 'Cha Eun WOo',
-    brideName: 'Amanda Rizqi',
-    groomImg: 'http://res.heraldm.com/phpwas/restmb_jhidxmake.php?idx=5&simg=201811201728261782524_20181120173103_01.jpg',
-    brideImg: 'https://cdn1-production-images-kly.akamaized.net/U-BtD9FAg3Y6_QPoW6E7IpQLnrQ=/1x155:1080x763/640x360/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/2291108/original/036690600_1532512066-22344544_139057696659969_8328654710428925952_n.jpg',
-    status: false,
-  }
 
   return (
     <>
@@ -61,7 +54,7 @@ const DashboardProfile = () => {
                             <div className="flex flex-row items-center">
                                 <div className="flex-1 text-right md:text-center">
                                   <h5 className="font-medium text-xs uppercase text-gray-600">Attend</h5>
-                                  <h3 className="font-medium text-xs">249 <span className="text-blue-500"><i className="fas fa-exchange-alt"></i></span></h3>
+                                  <h3 className="font-medium text-xs">{guestAttend[1]} <span className="text-blue-500"><i className="fas fa-exchange-alt"></i></span></h3>
                                 </div>
                               </div>
                           </div>
@@ -72,7 +65,7 @@ const DashboardProfile = () => {
                             <div className="flex flex-row items-center">
                                 <div className="flex-1 text-right md:text-center">
                                   <h5 className="font-medium text-xs uppercase text-gray-600">Not Attend</h5>
-                                  <h3 className="font-medium text-xs">300 <span className="text-red-500"><i className="fas fa-exchange-alt"></i></span></h3>
+                                  <h3 className="font-medium text-xs">{guestAttend[0]} <span className="text-red-500"><i className="fas fa-exchange-alt"></i></span></h3>
                                 </div>
                               </div>
                           </div>
@@ -83,7 +76,7 @@ const DashboardProfile = () => {
                             <div className="flex flex-row items-center">
                                 <div className="flex-1 text-right md:text-center">
                                   <h5 className="font-medium text-xs uppercase text-gray-600">No Info</h5>
-                                  <h3 className="font-medium text-xs">100 <span className="text-yellow-500"><i className="fas fa-exchange-alt"></i></span></h3>
+                                  <h3 className="font-medium text-xs">{guestAttend[2]} <span className="text-yellow-500"><i className="fas fa-exchange-alt"></i></span></h3>
                                 </div>
                               </div>
                           </div>

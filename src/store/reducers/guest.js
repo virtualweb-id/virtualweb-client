@@ -1,6 +1,7 @@
 const initialState = {
   guests: [],
   guest: {},
+  guestAttend : [0, 0, 0],
   isLoading: false,
   isError: '',
 }
@@ -22,7 +23,12 @@ export const guestReducer = (state = initialState, action) => {
       return {
         ...state,
         guest: payload
-      } 
+      }
+    case "GUEST_ATTENDANCE":
+      return {
+        ...state,
+        guestAttend: payload
+      }  
     default:
       return state
   }

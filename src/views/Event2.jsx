@@ -151,7 +151,7 @@ const Invitation2 = ({ hours, minutes, seconds }) => {
                 src={gift}
                 style={{width: '100px'}}
                 /><br/>
-                <ModalPayment />
+                <ModalPayment holder={holder} />
             </div>
 
             {/* Comment */}

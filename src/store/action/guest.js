@@ -16,6 +16,13 @@ const guestAdd = payload => {
   }
 }
 
+const guestAttendance = payload => {
+  return {
+    type: 'GUEST_ATTENDANCE',
+    payload
+  }
+}
+
 const changeOneGuest = payload => {
   return {
     type: 'GUEST_CHANGE_GUEST',
@@ -34,9 +41,33 @@ export const fetchGuest = () => {
         }
       })
       dispatch(guestChange(guests))
+      dispatch(fetchGuestAttendance())
     } catch (err) {
-      console.log(err.response.data);
+      err.response ? console.log(err.response.data) : console.log(err) 
     }
+  }
+}
+
+export const fetchGuestAttendance = () => {
+  return (dispatch, getState) => {
+    const { guests, guestAttend } = getState().guest
+    let filteredGuest = [0, 0, 0]
+    guests.forEach(eachGuest => {
+      let statusAttend = [
+        ...guestAttend
+      ]
+      switch (eachGuest.status) {
+        case null:
+          return filteredGuest[2] ++
+        case true:
+          return filteredGuest[1] ++
+        case false:
+        return filteredGuest[0] ++
+        default:
+          return
+      }
+    })
+    dispatch(guestAttendance(filteredGuest))
   }
 }
 
@@ -61,6 +92,7 @@ export const addGuest = (input) => {
         }
       })
       dispatch(guestAdd(data))
+      dispatch(fetchGuestAttendance())
       createToast('Added successfully')
     } catch (err) {
       createToast(err.response.data.message[0], 'error')
@@ -102,6 +134,7 @@ export const confirmGuest = (input) => {
       const { guests } = getState().guest
       const newGuests = guests.filter(guest => guest.id !== id)
       dispatch(guestChange([...newGuests, data]))
+      dispatch(fetchGuestAttendance())
       Swal.fire({
         icon: 'success',
         title: 'Success',
@@ -139,6 +172,22 @@ export const deleteGuest = (id) => {
   }
 }
 
+export const payment = (inputData) => {
+  const {firstName, lastName, email, phone, amount} = inputData
+  return async (dispatch, getState) => {
+    try {
+      const {data} = await axios({
+        method: 'post',
+        url: 'http://localhost:3001/guests/payment',
+        data: { inputData },
+      })
+      window.open(data.redirect_url)
+    } catch (err) {
+      console.log(err.response.data);
+    }
+  }
+}
+
 export const sendInvitation = () => {
   return async (dispatch) => {
     try {
@@ -158,6 +207,7 @@ export const sendInvitation = () => {
               access_token: localStorage.access_token
             }
           })
+          dispatch(fetchGuestAttendance())
           createToast('successfully send')
         }
       })
