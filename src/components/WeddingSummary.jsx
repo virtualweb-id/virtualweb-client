@@ -7,7 +7,7 @@ const WeddingSummary = () => {
 
   return (
     <div className="flex flex-col justify-between items-center lg:flex-row lg:items-start">
-      <div className="w-full md:p-10 px-2 mt-5 bg-gray-800 rounded-lg shadow-lg text-gray-300 flex flex-col p-3">
+      <div className="w-full p-10 mt-3 bg-gray-800 rounded-lg shadow-lg text-gray-300 flex flex-col">
           <p className="font-bold text-2xl text-center text-gray-400 p-3 rounded shadow-lg bg-gray-700">WEDDING SUMMARY</p>
           <div className="inline-block mt-2 pr-1 ">
             <p className="text-xl text-gray-300 divide-opacity-25 border-b-2 border-white py-2">Event: <span className="font-bold">{wedding.title}</span></p>

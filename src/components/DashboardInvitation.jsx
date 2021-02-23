@@ -48,18 +48,21 @@ const DashboardInvitation = () => {
   }
 
   return (
-    <div className="w-full h-full flex md:flex-row flex-col overflow-y-hidden overflow-x-hidden">
+    <div className="w-full h-full flex md:flex-row flex-col overflow-y-scroll overflow-x-hidden form-invitation p-5">
       {/* Start form  */}
-      <div className="md:w-1/3 w-full h-full">
-        <form className="container-small overflow-y-scroll bg-gray-200 shadow p-5 overflow-x-hidden h-full form-invitation">
+      {/* <div className="h-full flex md:flex-row flex-col overflow-x-hidden overflow-y-hidden form-invitation p-5"> */}
+      <div className="md:w-1/3 rounded md:h-full h-1/2 mr-4 ">
+        <form className=" bg-gray-800 rounded text-white overflow-y-scroll shadow p-4 overflow-x-hidden h-full w-full  form-invitation"
+        
+        >
           <p className={styles.label}>Theme</p>
           <div className="mb-4 border-t border-gray-900 py-2">
             <button 
               onClick={(e) => onChangeTheme(e, false)}
-              className={`border border-gray-900 rounded px-2 p-1 text-sm mx-1 ${!wedding.status && 'bg-gray-900 text-white'}`}>Theme 1</button>
+              className={`border border-gray-900 rounded px-2 p-1 text-sm mx-1 ${!wedding.status && 'bg-gray-500 text-white'}`}>Theme 1</button>
             <button 
               onClick={(e) => onChangeTheme(e, true)}
-              className={`border border-gray-900 rounded px-2 p-1 text-sm mx-1 ${wedding.status && 'bg-gray-900 text-white'}`}>Theme 2</button>
+              className={`border border-gray-900 rounded px-2 p-1 text-sm mx-1 ${wedding.status && 'bg-gray-500 text-white'}`}>Theme 2</button>
           </div>
           <p className={styles.label}>Couple Name</p>
           <div className="mb-4 border-t border-gray-900 py-2">
@@ -190,25 +193,27 @@ const DashboardInvitation = () => {
             <button 
               id="invitation"
               onClick={handleSave}
-              className="w-20 px-1 py-1 font-medium text-white bg-gray-400 rounded-lg">Submit</button>
+              className="w-20 px-1 py-1 font-medium text-gray-900 bg-gray-500 rounded-lg">Submit</button>
           </div>
         </form>
       </div>
     {/* End form  */}
 
     {/* Invitation */}
-      <div className="md:w-2/3 w-full h-full p-2 overflow-x-hidden overflow-y-hidden border-2 border-gray-900 m-1">
-        <div className="flex gap-4">
-          <Link to={`/event/${invitation.id}`} target="blank" className="sticky bg-gray-900 rounded p-1 px-2 text-white text-sm"><i class="fas fa-tv"></i> Preview</Link>
+      <div className=" md:w-2/3 rounded md:h-full h-1/2  border-2 border-gray-900 md:m-1 mt-4 p-5 overflow-y-hidden">
+        <div className="flex gap-4 ">
+          <Link to={`/event/${invitation.id}`} target="blank" className=" bg-gray-900 rounded p-1 px-2 text-white text-sm"><i class="fas fa-tv"></i> Preview</Link>
           <div className="w-3/4 border border-gray-900 rounded text-sm px-2 flex items-center">{`http://localhost:3000/event/${invitation.id}`}</div>
         </div>
-        <div className="overflow-y-scroll shadow overflow-x-hidden h-full mt-2">
+        <div className="overflow-y-scroll shadow h-full mt-2 overflow-x-hidden py-3 "
+        style={{minWidth: '400px'}}>
           {
             !wedding.status ? <Invitation/> : <Invitation2/>
           } 
         </div>
       </div>
     {/* End of Invitation */}
+    {/* </div> */}
     </div>
   )
 }
@@ -217,7 +222,7 @@ const styles = {
   label: "font-bold text-sm",
   subLabel: "font-small text-sm mt-2 mb-1",
   subLabel2: "text-sm w-1/2 px-1 py-1 border-2 border-transparent focus:border-gray-400 focus:outline-none",
-  input: "text-sm w-full px-1 py-1 border-2 border-transparent focus:border-gray-400 focus:outline-none"
+  input: "text-sm w-full rounded px-1 py-1 border-2 border-transparent focus:border-gray-400 focus:outline-none",
 }
 
 export default DashboardInvitation

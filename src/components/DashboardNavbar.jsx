@@ -9,7 +9,7 @@ export default () => {
   }
 
   return (
-    <nav className="relative w-full max-w-screen-xl flex items-center px-6 h-16 bg-gray-900 shadow-2xl text-gray-50">
+    <nav className="w-full max-w-screen-xl flex items-center px-6 h-16 bg-gray-900 shadow-2xl text-gray-50">
       <div className="ml-6 space-x-2 md:flex">
         <p className="h-10 flex items-center px-4 rounded font-medium font-bold" href="#">{localStorage.name}</p>
       </div>
