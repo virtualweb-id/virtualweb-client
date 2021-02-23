@@ -1,6 +1,7 @@
 import React from 'react'
 import {Doughnut} from 'react-chartjs-2';
 import Countdown, { zeroPad, calcTimeDelta, formatTimeDelta } from 'react-countdown';
+import { FlipCountdown, SlideCountdown } from 'react-fancy-countdown'
 
 const DashboardProfile = () => {
   const data = {
@@ -39,13 +40,9 @@ const DashboardProfile = () => {
     <>
       <div className="h-full w-1/2 flex flex-col">
         <div className="h-1/2  m-3">
-        <div className="flex flex-col justify-center items-center py-10 md:my-0 my-10 md:rounded-none rounded"
-          style={{backgroundColor: 'white', color: 'gray', minWidth: '40%'}}>
-            <Countdown date={wedding.date}
-            daysInHours={false}
-            className="text-3xl font-extrabold"
-            >
-            </Countdown>
+        <div className="flex flex-col border-black overflow-auto justify-center items-center py-10 md:my-0 my-10 md:rounded-none rounded"
+          style={{backgroundColor: 'white', color: 'black', minWidth: '40%', border: 'black'}}>
+  
           </div>
         </div>
         <div className="h-1/2 bg-gray-200 m-3">
@@ -53,9 +50,9 @@ const DashboardProfile = () => {
         </div>
       </div>
       <div className="h-full w-1/2 flex flex-col">
-        <div className="h-3/5 bg-transparent m-3 mx-10 px-7">
+        <div className="h-3/5 bg-transparent m-3 mx-10 px-3">
             <div className="bg-white border-transparent rounded-lg shadow-xl">
-              <div className="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
+              <div className="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-lg p-2">
                   <h5 className="font-bold uppercase text-gray-600">Guests Attendance Graph</h5>
                   <Doughnut data={data}/>
                   <section className="text-gray-700 body-font">
@@ -72,7 +69,6 @@ const DashboardProfile = () => {
                           </div>
                         </div>
 
-
                         <div className="py-6 mx-auto mb-1 lg:w-1/3 lg:mb-0">
                           <div className="bg-gradient-to-b from-red-200 to-red-100 border-red-500 rounded-lg  p-1">
                             <div className="flex flex-row items-center">
@@ -83,8 +79,6 @@ const DashboardProfile = () => {
                               </div>
                           </div>
                         </div>
-
-
 
                         <div className="py-6 mx-auto mb-1 lg:w-1/3 lg:mb-0">
                           <div className="bg-gradient-to-b from-yellow-200 to-yellow-100 border-yellow-500 rounded-lg  p-1">
@@ -97,26 +91,58 @@ const DashboardProfile = () => {
                           </div>
                         </div>
 
-
-
-
                       </div>
                     </div>
-
-
-
                     
                   </section>  
               </div>
                    
-
-
-
                    
             </div>
           </div>
-        <div className="bg-gray-200 m-3 h-1/5">
-      <div>e-invitation</div>
+       
+        <div className="h-3/5  bg-transparent m-3 mx-10 ">
+            <div className="bg-white border-transparent rounded-lg shadow-xl">
+
+
+
+
+
+
+        <div className="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-lg p-2">
+                  <h5 className="font-bold uppercase text-gray-600 pb-1">Your Wedding Day</h5>
+                  
+
+                  <div className="flex flex-col border-black justify-center items-center pb-2 py-5 my-5 md:my-0 rounded-lg rounded"
+                      style={{backgroundColor: 'white', color: 'black'}}>
+                        <SlideCountdown
+                          weeks={false}
+                          deadline={wedding.date} />
+                      </div>
+
+
+
+
+
+
+
+                        </div>
+
+
+
+
+
+
+                    
+                  
+              </div>
+
+
+
+
+
+
+
       </div>
     </div>
     </>
