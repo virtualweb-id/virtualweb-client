@@ -53,7 +53,7 @@ const Event = ({ hours, minutes, seconds }) => {
              <div className="body-font"
               style={{ color: holder.backgroundColor }}>
                 <div className="container px-8 mx-auto mb-40 lg:px-4">
-                <div className="flex  flex-col md:flex-row  justify-center items-center">
+                <div className="flex allura flex-col md:flex-row  justify-center items-center">
                     <div className="flex flex-col justify-center items-center m-3">
                       <img
                         alt="..."
@@ -61,7 +61,7 @@ const Event = ({ hours, minutes, seconds }) => {
                         src={holder.Wedding?.brideImg}
                         style={{ borderRadius: '50%', width: '210px', height: '210px' }}
                       />
-                      <p className="font-extrabold mt-3 "
+                      <p className="font-extrabold mt-3 text-3xl"
                       >{holder.Wedding?.brideName}</p>
                     </div>
                     <div className="flex flex-col justify-center items-center m-3 text-6xl font-extrabold italic">
@@ -74,7 +74,7 @@ const Event = ({ hours, minutes, seconds }) => {
                         src={holder.Wedding?.groomImg}
                         style={{ borderRadius: '50%', width: '210px', height: '210px' }}
                       />
-                      <p className="font-extrabold mt-3"
+                      <p className="font-extrabold mt-3 text-3xl"
                       >{holder.Wedding?.groomName}</p>
                     </div>
                   </div>
@@ -83,12 +83,12 @@ const Event = ({ hours, minutes, seconds }) => {
     
                 {/* Bride groom information */}
                 <div className="w-full mt-5 flex flex-col flex-wrap justify-center items-center p-5 allura text-3xl"
-                style={{ backgroundColor: holder.backgroundColor, color: holder.textColor, minHeight: '500px' }}>
+                style={{ backgroundColor: holder.backgroundColor, color: holder.textColor, minHeight: '300px' }}>
                    <div className="flex flex-col w-full mx-auto mb-12 text-left lg:w-2/3 lg:text-center">
                         <h1 className="mb-6 text-2xl font-semibold tracking-tighter sm:text-5xl title-font text-center">
                            {holder.title}
                         </h1>
-                        <p className="mx-auto text-base font-medium leading-relaxed lg:w-2/3">{holder.story}</p>
+                        <p className="mx-auto text-3xl font-medium leading-relaxed lg:w-2/3">{holder.story}</p>
                     </div>
                   
                 </div>
@@ -105,7 +105,7 @@ const Event = ({ hours, minutes, seconds }) => {
                 {/* prawed video */}
     
                 {/* Additional image  & countdown */}
-                <div className="w-full my-10 flex flex-wrap justify-center" style={{ }}>
+                <div className="w-full my-10 allura text-2xl flex flex-wrap justify-center" style={{ }}>
                   <img
                       alt="..."
                       className=" h-full"
@@ -114,7 +114,7 @@ const Event = ({ hours, minutes, seconds }) => {
                     />
                     <div className="flex flex-col justify-center items-center px-20 py-10 md:my-0  md:rounded-none rounded"
                     style={{backgroundColor: holder.textColor, color: holder.backgroundColor, maxWidth: '90%'}}>
-                      <p className="m-3">Akan Menikah</p>
+                      <p className="m-3 font-bold text-4xl">Akan Menikah</p>
                       <Countdown 
                         date={holder.Wedding?.date}
                         daysInHours={false}

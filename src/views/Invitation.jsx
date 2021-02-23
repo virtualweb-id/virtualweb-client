@@ -52,15 +52,15 @@ const Invitation = () => {
          <div className="body-font"
           style={{ color: holder.backgroundColor }}>
             <div className="container px-8 mx-auto mb-40 lg:px-4">
-            <div className="flex  flex-col md:flex-row  justify-center items-center">
-                <div className="flex flex-col justify-center items-center m-3">
+            <div className="flex allura flex-col md:flex-row  justify-center items-center">
+                <div className="flex allura flex-col justify-center items-center m-3">
                   <img
                     alt="..."
                     className="max-w-full shadow-lg m-2"
                     src={wedding.brideImg}
                     style={{ borderRadius: '50%', width: '210px', height: '210px' }}
                   />
-                  <p className="font-extrabold mt-3 "
+                  <p className="font-extrabold mt-3 text-3xl"
                   >{wedding.brideName}</p>
                 </div>
                 <div className="flex flex-col justify-center items-center m-3 text-6xl font-extrabold italic">
@@ -73,7 +73,7 @@ const Invitation = () => {
                     src={wedding.groomImg}
                     style={{ borderRadius: '50%', width: '210px', height: '210px' }}
                   />
-                  <p className="font-extrabold mt-3"
+                  <p className="font-extrabold mt-3 text-3xl"
                   >{wedding.groomName}</p>
                 </div>
               </div>
@@ -83,12 +83,12 @@ const Invitation = () => {
 
             {/* Bride groom information */}
             <div className="w-full mt-5 flex flex-col flex-wrap justify-center items-center p-5 allura text-3xl"
-            style={{ backgroundColor: holder.backgroundColor, color: holder.textColor, minHeight: '500px' }}>
+            style={{ backgroundColor: holder.backgroundColor, color: holder.textColor, minHeight: '300px' }}>
              <div className="flex flex-col w-full mx-auto mb-12 text-left lg:w-2/3 lg:text-center">
                     <h1 className="mb-6 text-2xl font-semibold tracking-tighter sm:text-5xl title-font text-center">
                        {holder.title}
                     </h1>
-                    <p className="mx-auto text-base font-medium leading-relaxed lg:w-2/3">{holder.story}</p>
+                    <p className="mx-auto text-3xl font-medium leading-relaxed lg:w-2/3">{holder.story}</p>
                 </div>
             </div>
             {/* End of Bride groom information */}
@@ -103,7 +103,7 @@ const Invitation = () => {
             {/* prawed video */}
 
             {/* Additional image  & countdown */}
-            <div className="w-full mb-10 flex flex-wrap justify-center" style={{ }}>
+            <div className="w-full mb-10 flex allura text-2xl flex-wrap justify-center" style={{ }}>
               <img
                   alt="..."
                   className=" h-full m:w-1/2 w-screen"
@@ -112,7 +112,7 @@ const Invitation = () => {
                 />
                 <div className="flex flex-col m:w-1/2 w-full justify-center items-center md:my-0 py-10 md:rounded-none rounded"
                 style={{backgroundColor: holder.textColor, color: holder.backgroundColor }}>
-                  <p className="m-3">Akan Menikah</p>
+                  <p className="m-3 font-bold text-4xl allura">Akan Menikah</p>
                   <Countdown 
                     date={wedding.date}
                     daysInHours={false}
