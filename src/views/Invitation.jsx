@@ -115,7 +115,7 @@ const Invitation = () => {
                     day={true}
                     clockSeparator=""
                     style={{ color: "black", fontSize: 20 }}
-                    startDate={wedding.date.slice(0, 10)}
+                    startDate={wedding.date && wedding.date.slice(0, 10)}
                   />
                   {/* <Countdown 
                     date={wedding.date}
