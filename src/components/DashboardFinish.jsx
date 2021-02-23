@@ -287,7 +287,7 @@ const html =
             <tr>
               <td
                 style="font-size:23px; font-family: 'Montserrat', sans-serif, Arial, Helvetica; font-weight:400; text-align:center; text-transform: uppercase; letter-spacing: 5px; justify-content: center; align-items:center;">>>
-                <a style="color:#ffe05d; font-size:40px;" href="baseUrl/event/invitationId"> 💕 </a><<
+                <p style="color:#ffe05d; font-size:40px;" href="baseUrl/event/invitationId"> 💕 </p><<
               </td>
             </tr>
           </table>
@@ -300,14 +300,14 @@ const html =
               <td>
                 <table cellpadding="0" cellspacing="0" border="0" width="220" align="center" style="text-align:center;">
                   <tr>
-                    <td style="text-align:center;" width="44" height="44"><a href="#"><img border="0"
-                          src="images/icon-1.png" alt="" title="" /></a></td>
-                    <td width="44" height="44" style="text-align:center;"><a href="#"><img border="0"
-                          src="images/icon-2.png" alt="" title="" /></a></td>
-                    <td width="44" height="44" style="text-align:center;"><a href="#"><img border="0"
-                          src="images/icon-3.png" alt="" title="" /></a></td>
-                    <td width="44" height="44" style="text-align:center;"><a href="#"><img border="0"
-                          src="images/icon-4.png" alt="" title="" /></a></td>
+                    <td style="text-align:center;" width="44" height="44"><p href="#"><img border="0"
+                          src="images/icon-1.png" alt="" title="" /></p></td>
+                    <td width="44" height="44" style="text-align:center;"><p href="#"><img border="0"
+                          src="images/icon-2.png" alt="" title="" /></p></td>
+                    <td width="44" height="44" style="text-align:center;"><p href="#"><img border="0"
+                          src="images/icon-3.png" alt="" title="" /></p></td>
+                    <td width="44" height="44" style="text-align:center;"><p href="#"><img border="0"
+                          src="images/icon-4.png" alt="" title="" /></p></td>
 
                   </tr>
 
@@ -320,7 +320,7 @@ const html =
             <tr>
               <td
                 style="color:#4e4e4e; text-align: center; text-transform:uppercase; font-family: 'Montserrat', sans-serif, Arial, Helvetica; font-weight: 400; letter-spacing:3px; font-size:13px;">
-                FURTHER INFORMATION PLEASE CONTACT: <a href="#" style="color:#b3965a;"> +62 1234 1234</a></td>
+                FURTHER INFORMATION PLEASE CONTACT: <p href="#" style="color:#b3965a;"> +62 1234 1234</p></td>
             </tr>
             <tr>
               <td height="40"><img border="0" height="1" width="1" alt="" title="" /></td>
