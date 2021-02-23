@@ -20,9 +20,9 @@ export default () => {
   const [input, setInput] = useState(defaultValue)
   const [edit, setEdit] = useState(defaultValue)
 
-  useEffect(() => {
-    if(!wedding.title) history.push('/dashboard/wedding')
-  }, [])
+  // useEffect(() => {
+  //   if(!wedding.title) history.push('/dashboard/wedding')
+  // }, [])
 
   useEffect(() => {
     setEdit({
@@ -98,7 +98,7 @@ export default () => {
             onClick={() => setIsAdd(true)} 
             className="bg-blue-500 text-white py-1 px-2 rounded my-2 ml-3 shadow-md">Add Guest</button>
         </div>
-      <div className="relative z-10 h-auto py-2 overflow-scroll bg-white border-b-2 border-gray-300 rounded-lg shadow-md h-5/6">
+      <div className="relative z-10 h-auto py-2 overflow-y-scroll bg-white border-b-2 border-gray-300 rounded-lg shadow-md h-5/6">
         <table className="table w-full">
           <thead>
             <tr className="table-row border-b-2 border-t">
