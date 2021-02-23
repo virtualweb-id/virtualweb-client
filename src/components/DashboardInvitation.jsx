@@ -168,9 +168,9 @@ const DashboardInvitation = () => {
           </div>
 
           {/* Time Event  */}
-          <p className={styles.label}>Time Event</p>
+          <p className={styles.label}>Schedule</p>
           <div className="text-sm mb-4 border-t text-gray-400 border-gray-900 py-2">
-            <p className={styles.subLabel}>Event 1</p>
+            <p className={styles.subLabel}>Start</p>
             <input 
               type="time"
               name="timeEvent1"
@@ -178,7 +178,7 @@ const DashboardInvitation = () => {
               onChange={onChange}
               className={styles.subLabel2} placeholder="Akad Time"/>
 
-            <p className={styles.subLabel}>Event 2</p>
+            <p className={styles.subLabel}>Finish</p>
             <input 
               type="time"
               name="timeEvent2"
