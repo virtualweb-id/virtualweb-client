@@ -52,7 +52,7 @@ const DashboardInvitation = () => {
       {/* Start form  */}
       {/* <div className="h-full flex md:flex-row flex-col overflow-x-hidden overflow-y-hidden form-invitation p-5"> */}
       <div className="md:w-1/3 rounded md:h-full h-1/2 mr-4 ">
-        <form className=" bg-gray-800 rounded text-white overflow-y-scroll shadow p-4 overflow-x-hidden h-full w-full  form-invitation"
+        <form className=" bg-gray-800 rounded text-gray-200 overflow-y-scroll shadow p-4 overflow-x-hidden h-full w-full  form-invitation"
         
         >
           <p className={styles.label}>Theme</p>
@@ -66,7 +66,7 @@ const DashboardInvitation = () => {
           </div>
           <p className={styles.label}>Couple Name</p>
           <div className="mb-4 border-t border-gray-900 py-2">
-            <p className={styles.subLabel}>Bride name</p>
+            <p className={styles.subLabel}>Bride's Nickname</p>
             <input 
               type="text"
               name="brigeNickname"
@@ -74,7 +74,7 @@ const DashboardInvitation = () => {
               onChange={onChange}
               className={styles.input} placeholder="Bride Name"/>
 
-            <p className={styles.subLabel}>Groom name</p>
+            <p className={styles.subLabel}>Groom's Nickname</p>
             <input 
               type="text"
               name="groomNickname"
@@ -103,7 +103,7 @@ const DashboardInvitation = () => {
           </div>
         
           {/* Image Set */}
-          <p className={styles.label}>Image Set</p>
+          <p className={styles.label}>Images</p>
           <div className=" mb-4 border-t border-gray-900 py-2">
             <p className={styles.subLabel}>Image 1</p>
             <div className="mb-4">
@@ -120,9 +120,9 @@ const DashboardInvitation = () => {
           </div>
 
           {/* Video URL */}
-          <p className={styles.label}>Videos url</p>
+          <p className={styles.label}>Video URLs</p>
           <div className="mb-4 border-t border-gray-900 py-2">
-            <p className={styles.subLabel}>Video Url</p>
+            <p className={styles.subLabel}>Video URL (ex: pra wedding video)</p>
             <input 
               type="text"
               name="videoUrl"
@@ -130,7 +130,7 @@ const DashboardInvitation = () => {
               onChange={onChange}
               className={styles.input} placeholder="Ex: Your prewed video URL"/>
 
-            <p className={styles.subLabel}>LiveStream Url</p>
+            <p className={styles.subLabel}>LiveStream URL</p>
             <input 
               type="text"
               name="youtubeUrl"
@@ -140,7 +140,7 @@ const DashboardInvitation = () => {
           </div>
 
           {/* Set Backgound & font */}
-          <p className={styles.label}>Page Setting</p>
+          <p className={styles.label}>Color scheme</p>
           <div className=" mb-4 border-t border-gray-900 py-2">
             <div className="flex items-center gap-2 my-1">
               <label for="backgroundColor" className="text-sm">Color 1:</label>
@@ -168,8 +168,8 @@ const DashboardInvitation = () => {
           </div>
 
           {/* Time Event  */}
-          <p className={styles.label}>Time Event Settings</p>
-          <div className="text-sm mb-4 border-t border-gray-900 py-2">
+          <p className={styles.label}>Time Event</p>
+          <div className="text-sm mb-4 border-t text-gray-400 border-gray-900 py-2">
             <p className={styles.subLabel}>Event 1</p>
             <input 
               type="time"
@@ -193,7 +193,7 @@ const DashboardInvitation = () => {
             <button 
               id="invitation"
               onClick={handleSave}
-              className="w-20 px-1 py-1 font-medium text-gray-900 bg-gray-500 rounded-lg">Submit</button>
+              className="w-20 px-1 py-1 font-medium text-gray-900 bg-gray-500 rounded-lg hover:bg-gray-400">Submit</button>
           </div>
         </form>
       </div>
@@ -222,7 +222,7 @@ const styles = {
   label: "font-bold text-sm",
   subLabel: "font-small text-sm mt-2 mb-1",
   subLabel2: "text-sm w-1/2 px-1 py-1 border-2 border-transparent focus:border-gray-400 focus:outline-none",
-  input: "text-sm w-full rounded px-1 py-1 border-2 border-transparent focus:border-gray-400 focus:outline-none",
+  input: "text-sm w-full rounded px-1 py-1 border-2 border-transparent text-gray-600 focus:border-gray-400 focus:outline-none",
 }
 
 export default DashboardInvitation
