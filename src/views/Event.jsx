@@ -94,13 +94,13 @@ const Event = ({ hours, minutes, seconds }) => {
                 {/* End of Bride groom information */}
     
                 {/* prawed video */}
-               
+                { holder.videoUrl ?
                 <div className="flex flex-row justify-center my-20"
                 style={{minWidth: '400px', minHeight: '400px'}}>
                   <ReactPlayer
                     url={holder.videoUrl}
                   />
-                </div>
+                </div> : ''}
                 {/* prawed video */}
     
                 {/* Additional image  & countdown */}
@@ -137,12 +137,13 @@ const Event = ({ hours, minutes, seconds }) => {
                 {/* end of additional image & countdown */}
     
                 {/* Livestream video */}
+                { holder.youtubeUrl ?
                 <div className="flex flex-row justify-center my-20"
                 style={{minWidth: '400px', minHeight: '400px'}}>
                   <ReactPlayer
                     url={holder.youtubeUrl}
                   />
-                </div>
+                </div> : '' }
                 {/* Livestream video */}
     
                 {/* Sawer */}
