@@ -35,7 +35,7 @@ const DashboardWedding = () => {
   if(isLoading) return <h1>Loading..</h1>
   return (
     <>
-    <div className="w-full h-full flex md:flex-row flex-col">
+    <div className="w-full h-full overflow-y-scroll  flex md:flex-row flex-col">
       <div className="md:w-1/2 m-3 p-4">
           <WeddingSummary />
       </div>

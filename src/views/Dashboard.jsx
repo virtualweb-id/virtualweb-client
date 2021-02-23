@@ -26,7 +26,7 @@ export default ({ routes }) => {
   
   useEffect(() => {
     const setLarge = () => {
-      if (window.innerWidth < 768) {
+      if (window.innerWidth < 1100) {
         setMobile(true)
       } else {
         setMobile(false)
@@ -38,22 +38,25 @@ export default ({ routes }) => {
     return () => {
       window.removeEventListener('resize', setLarge)
     }
-  }, [window.innerWidth])
+  }, [mobile])
 
   return (
-    <div className="flex w-full flex-row h-screen">
-      <div className="h-full flex flex-col w-1/6 bg-gray-200">
+    <>
+    <div className="flex w-screen flex-row h-screen overflow-hidden">
+      {/* <div className="w-full h-full overflow-hidden"> */}
+      <div className="h-screen flex flex-col md:w-1/6 lg:w-1/6 w-1/12 bg-gray-200">
         { mobile ? 
         <SidebarMobile /> : 
         <Sidebar /> }
       </div>
-      <div className="h-full flex flex-col w-full">
+      <div className="h-screen flex flex-col w-11/12">
         <DashboardNavbar />
-        <div className="w-full h-full flex flex-row "
-        style={{overflowY: 'auto'}}>
+        <div className="w-full h-screen flex flex-row overflow-hidden">
           <RouterView routes={routes} />
         </div>
       </div>
+      {/* </div> */}
     </div>
+    </>
   )
 }
