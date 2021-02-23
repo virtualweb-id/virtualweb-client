@@ -1,11 +1,9 @@
 import React from 'react'
-import { Invitation } from '../views'
 import Frame from 'react-frame-component'
 import { useDispatch, useSelector } from 'react-redux'
 import { sendInvitation } from '../store/action/guest'
 
 const DashboardFinish = () => {
-  const { wedding } = useSelector(state => state.wedding)
   const dispatch = useDispatch()
   const handleSend = () => {
     dispatch(sendInvitation())
@@ -17,12 +15,12 @@ const DashboardFinish = () => {
       <div className="md:w-1/2 m-3 py-2  max-w-xl  rounded overflow-hidden">
         <h1 className="text-xl bg-gray-800 font-bold text-gray-300 text-center py-3 rounded shadow-lg  ">Email Body</h1>
         <div className=" max-w-2xl sm:w-xl overflow-y-scroll p-5 w-full  h-full form-invitation mail">
-        <Frame 
-          initialContent={html}
-          mountTarget='#surat'
-          className="w-full h-5/6 mail"
-        >
-        </Frame>
+          <Frame 
+            initialContent={html}
+            mountTarget='#surat'
+            className="w-full h-5/6 mail"
+          >
+          </Frame>
           {/* <Invitation/> */}
           </div>
         </div>
