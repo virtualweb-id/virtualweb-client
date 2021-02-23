@@ -91,7 +91,7 @@ const Invitation = () => {
                     <h1 className="mb-6 text-2xl font-semibold tracking-tighter sm:text-5xl allure title-font text-center">
                        {holder.title}
                     </h1>
-                    <p className="mx-auto text-2xl font-medium leading-relaxed lg:w-2/3">{holder.story}</p>
+                    <p className="text-center text-3xl font-medium leading-relaxed md:w-full">{holder.story}</p>
                 </div>
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill={holder.backgroundColor} fill-opacity="1" d="M0,96L60,90.7C120,85,240,75,360,80C480,85,600,107,720,122.7C840,139,960,149,1080,154.7C1200,160,1320,160,1380,160L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>
@@ -155,9 +155,9 @@ const Invitation = () => {
             </div>
 
             {/* Comment */}
-            <div  className="flex flex-col justify-center items-center curly" >
+            <div  className="flex py-10 flex-col justify-center items-center curly" >
             {/* <div class="max-w-2xl bg-white py-10 px-5 m-auto w-full"> */}
-            <CommentForm WeddingId={wedding.id} className="text-gray-400 font-bold"/>
+            <CommentForm WeddingId={wedding.id} className="text-gray-400 font-bold poppins"/>
             { isLoading && (<p>Loading...</p>) }
             {
               comments?.map((comment, idx) => {

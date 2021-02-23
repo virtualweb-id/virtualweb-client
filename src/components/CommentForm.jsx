@@ -48,7 +48,7 @@ const CommentForm = ({InvitationId}) => {
 
     return (
         <>
-             <div className="text-3xl mb-6 text-center ">
+             <div className="text-2xl mb-6 text-center ">
                 Send your wedding wish for this couple
             </div>
             <div className="grid grid-cols-2 gap-4 max-w-xl m-auto">
