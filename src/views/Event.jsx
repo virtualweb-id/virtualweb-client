@@ -40,11 +40,11 @@ const Event = ({ hours, minutes, seconds }) => {
             </div>
             <div className="container relative mx-auto flex flex-col justify-center items-center font-bold allura"
             style={{ color: holder.textColor }}>
-                <p style={{ color: holder.textColor }} className="text-2xl">The wedding of</p>
-                <h1 className="text-white italic font-semibold text-6xl m-5" style={{ color: holder.textColor }}>
+                <p style={{ color: holder.textColor }} className="text-3xl">The wedding of</p>
+                <h1 className="text-white italic font-semibold text-5xl m-5" style={{ color: holder.textColor }}>
                   {holder.groomNickname} &  {holder.brigeNickname}
                 </h1>
-                <p style={{ color: holder.textColor }} className="text-2xl">{moment(holder.Wedding?.date).format("YYYY-MM-DD")}</p>
+                <p style={{ color: holder.textColor }} className="text-3xl">{moment(holder.Wedding?.date).format("YYYY-MM-DD")}</p>
             </div>
           </div>
     
@@ -53,19 +53,7 @@ const Event = ({ hours, minutes, seconds }) => {
              <div className="body-font"
               style={{ color: holder.backgroundColor }}>
                 <div className="container px-8 mx-auto mb-40 lg:px-4">
-                    <div className="flex flex-col w-full mx-auto mb-12 text-left lg:w-2/3 lg:text-center">
-                        <h1 className="mb-6 text-2xl font-semibold tracking-tighter sm:text-5xl title-font text-center">
-                           {holder.title}
-                        </h1>
-                        <p className="mx-auto text-base font-medium leading-relaxed lg:w-2/3">{holder.story}</p>
-                    </div>
-            </div>
-                {/* End of story section */}
-    
-                {/* Bride groom information */}
-                <div className="w-full mt-5 flex flex-col flex-wrap justify-center items-center p-5 allura text-3xl"
-                style={{ backgroundColor: holder.backgroundColor, color: holder.textColor, minHeight: '500px' }}>
-                  <div className="flex  flex-col md:flex-row  justify-center items-center">
+                <div className="flex  flex-col md:flex-row  justify-center items-center">
                     <div className="flex flex-col justify-center items-center m-3">
                       <img
                         alt="..."
@@ -76,7 +64,7 @@ const Event = ({ hours, minutes, seconds }) => {
                       <p className="font-extrabold mt-3 "
                       >{holder.Wedding?.brideName}</p>
                     </div>
-                    <div className="flex flex-col justify-center items-center m-3 text-3xl font-extrabold italic">
+                    <div className="flex flex-col justify-center items-center m-3 text-6xl font-extrabold italic">
                       &
                     </div>
                     <div className="flex flex-col justify-center items-center m-3">
@@ -90,6 +78,19 @@ const Event = ({ hours, minutes, seconds }) => {
                       >{holder.Wedding?.groomName}</p>
                     </div>
                   </div>
+            </div>
+                {/* End of story section */}
+    
+                {/* Bride groom information */}
+                <div className="w-full mt-5 flex flex-col flex-wrap justify-center items-center p-5 allura text-3xl"
+                style={{ backgroundColor: holder.backgroundColor, color: holder.textColor, minHeight: '500px' }}>
+                   <div className="flex flex-col w-full mx-auto mb-12 text-left lg:w-2/3 lg:text-center">
+                        <h1 className="mb-6 text-2xl font-semibold tracking-tighter sm:text-5xl title-font text-center">
+                           {holder.title}
+                        </h1>
+                        <p className="mx-auto text-base font-medium leading-relaxed lg:w-2/3">{holder.story}</p>
+                    </div>
+                  
                 </div>
                 {/* End of Bride groom information */}
     
