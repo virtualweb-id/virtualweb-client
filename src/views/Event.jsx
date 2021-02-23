@@ -96,7 +96,7 @@ const Event = ({ hours, minutes, seconds }) => {
                     <h1 className="mb-6 text-5xl font-semibold tracking-tighter sm:text-5xl allure title-font text-center">
                        {holder.title}
                     </h1>
-                    <p className=" text-4xl font-medium leading-relaxed md:w-full">{holder.story}</p>
+                    <p className=" text-4xl text-center font-medium leading-relaxed md:w-full">{holder.story}</p>
                 </div>
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill={holder.backgroundColor} fill-opacity="1" d="M0,96L60,90.7C120,85,240,75,360,80C480,85,600,107,720,122.7C840,139,960,149,1080,154.7C1200,160,1320,160,1380,160L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>
@@ -113,14 +113,14 @@ const Event = ({ hours, minutes, seconds }) => {
 
             {/* Additional image  & countdown */}
             
-            <div className="w-full my-20 flex text-2xl flex-wrap justify-center md:flex-row flex-col" style={{ }}>
+            <div className="w-full h-full my-20 flex text-2xl flex-wrap justify-center md:flex-row flex-col" style={{ }}>
               <img
                   alt="..."
-                  className="md:w-1/2 h-full w-screen"
+                  className=" h-full w-screen"
                   src={holder.additionalImg}
                   style={{}}
                 />
-                <div className="md:w-1/2 flex flex-col  w-full justify-center items-center tallfont font-bold md:my-0 py-10 md:rounded-none rounded"
+                <div className="flex flex-col  w-full justify-center items-center tallfont font-bold md:my-0 py-10 md:rounded-none rounded"
                 style={{backgroundColor: holder.textColor, color: holder.backgroundColor }}>
                   <p className="m-3 font-bold text-4xl elegant">Save The Date!</p>
                   <SlideCountdown
