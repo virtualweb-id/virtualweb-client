@@ -172,6 +172,22 @@ export const deleteGuest = (id) => {
   }
 }
 
+export const payment = (inputData) => {
+  const {firstName, lastName, email, phone, amount} = inputData
+  return async (dispatch, getState) => {
+    try {
+      const {data} = await axios({
+        method: 'post',
+        url: 'http://localhost:3001/guests/payment',
+        data: { inputData },
+      })
+      window.open(data.redirect_url)
+    } catch (err) {
+      console.log(err.response.data);
+    }
+  }
+}
+
 export const sendInvitation = () => {
   return async (dispatch) => {
     try {
