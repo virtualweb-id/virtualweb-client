@@ -10,6 +10,7 @@
     "axios": "^0.21.1",
     "chart.js": "^2.9.4",
     "lottie-react": "^2.1.0",
+    "midtrans-client": "^1.2.2",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.33",
     "react": "^17.0.1",

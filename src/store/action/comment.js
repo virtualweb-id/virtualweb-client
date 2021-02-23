@@ -32,7 +32,6 @@ export const fetchComments = (InvitationId) => {
       dispatch(commentChange(comments))
       dispatch(loadingComment(false))
     } catch (err) {
-      console.log(err.response.data);
       dispatch(loadingComment(false))
     }
   }
@@ -40,7 +39,6 @@ export const fetchComments = (InvitationId) => {
 
 export const addComment = (input) => {
   const { name, relationship, message, InvitationId } = input
-  console.log({ name, relationship, message, InvitationId }, "<<< ini di action")
   return async (dispatch, getState) => {
     try {
       const { data } = await axios({

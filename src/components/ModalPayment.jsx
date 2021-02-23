@@ -1,15 +1,24 @@
 import React, {useState} from "react";
 import Swal from 'sweetalert2'
+import axios from 'axios'
 
 export default function ModalPayment() {
   const [showModal, setShowModal] = useState(false);
-  const [amount, setAmount] = useState('')
+  const [inputData, setInputData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    amount: null
+  })
 
   const handleOnChange = (e) => {
-    const { value } = e.target
-    setAmount(value)
+    const { name, value } = e.target
+    setInputData({
+      ...inputData,
+      [name]: value
+    })
   }
-
   const convertMoney = (money) => {
     return money.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.");
   }
@@ -18,7 +27,7 @@ export default function ModalPayment() {
     setShowModal(false)
     Swal.fire({
       title: 'Are you sure?',
-      text: `You will transfer Rp. ${convertMoney(amount)} to this couple`,
+      text: `You will transfer Rp.${convertMoney(inputData.amount)} to this couple`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Yes, transfer it!',
@@ -26,24 +35,32 @@ export default function ModalPayment() {
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        switch (amount) {
-          case "50000":
-            console.log('masuk sini')
-            window.open('https://app.sandbox.midtrans.com/payment-links/1613884225149')
-            break;
-          case "100000":
-            window.open('https://app.sandbox.midtrans.com/payment-links/1613885421269')
-            break;
-          case "200000":
-            window.open('https://app.sandbox.midtrans.com/payment-links/1613884861461')
-            break;
-          case "300000":
-            window.open('https://app.sandbox.midtrans.com/payment-links/1613884903936')
-            break;
-          default:
-            break;
-        }
+        axios({
+          method: 'post',
+          url: 'http://localhost:3001/guests/payment',
+          data: { inputData },
+        })
+        .then(({data}) => {
+          window.open(data.redirect_url)
+          setInputData({
+            firstName: '',
+            lastName: '',
+            email: '',
+            phone: '',
+            amount: null
+          })
+        })
+        .catch(err => {
+          console.log(err)
+        })
       }
+      setInputData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        amount: null
+      })
     })
     
   }
@@ -84,20 +101,31 @@ export default function ModalPayment() {
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
                   <p className="my-4 text-gray-600 text-lg leading-relaxed">
-                  Select the amount of money you want to transfer
+                  Fill out your data and amount to transfer 
                   </p>
                 </div>
-                <div className="block mb-4 border border-gray-200 rounded-lg w-1/2 mx-6">
-                    <select value={amount} onChange={handleOnChange} name='amount' className="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-red-300 focus:outline-none">
-                        <option value=''>Select one...</option>
-                        <option value={50000}>Rp. 50.000</option>
-                        <option value={100000}>Rp. 100.000</option>
-                        <option value={200000}>Rp. 200.000</option>
-                        <option value={300000}>Rp. 300.000</option>
-                    </select>
-                  </div>
-                {/*footer*/}
-                <div className="flex items-center justify-end p-6 border-t border-solid border-gray-300 rounded-b">
+                <div className="grid grid-cols-2 gap-4 max-w-xl m-auto">
+                <div className="col-span-2 lg:col-span-1">
+                <input type="text" name='firstName' value={inputData.firstName} onChange={handleOnChange} className="border-solid border-gray-200 border-2 p-3 md:text-xl w-full" placeholder="First name"/>
+                </div>
+
+                <div className="col-span-2 lg:col-span-1">
+                <input type="text" name='lastName' value={inputData.lastName} onChange={handleOnChange} className="border-solid border-gray-200 border-2 p-3 md:text-xl w-full" placeholder="Last name"/>
+                </div>
+
+                <div className="col-span-2">
+                <input cols="30" name='email' value={inputData.email} onChange={handleOnChange} rows="8" className="border-solid border-gray-200 border-2 p-3 md:text-xl w-full" placeholder="Email"></input>
+                </div>
+
+                <div className="col-span-2">
+                <input cols="30" name='phone' value={inputData.phone} onChange={handleOnChange} rows="8" className="border-solid border-gray-200 border-2 p-3 md:text-xl w-full" placeholder="Phone"></input>
+                </div>
+
+                <div className="col-span-2">
+                <input cols="30" name='amount' value={inputData.amount} onChange={handleOnChange} rows="8" className="border-solid border-gray-200 border-2 p-3 md:text-xl w-full" placeholder="Amount"></input>
+                </div>
+                </div>
+                <div className="flex items-center justify-end p-6 border-t border-solid border-gray-300 rounded-b mt-10">
                   <button
                     className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1"
                     type="button"
