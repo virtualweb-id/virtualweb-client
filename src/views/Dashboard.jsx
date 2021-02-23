@@ -44,12 +44,12 @@ export default ({ routes }) => {
     <>
     <div className="flex w-screen flex-row h-screen overflow-hidden">
       {/* <div className="w-full h-full overflow-hidden"> */}
-      <div className="h-screen flex flex-col md:w-1/6 lg:w-1/6 w-1/12 bg-gray-200">
+      <div className="h-screen flex flex-col bg-gray-200">
         { mobile ? 
         <SidebarMobile /> : 
         <Sidebar /> }
       </div>
-      <div className="h-screen flex flex-col w-11/12">
+      <div className="h-screen flex flex-col w-full">
         <DashboardNavbar />
         <div className="w-full h-screen flex flex-row overflow-hidden">
           <RouterView routes={routes} />

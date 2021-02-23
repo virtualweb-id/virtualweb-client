@@ -92,21 +92,21 @@ export default () => {
   }
 
   return (
-    <div className="w-full h-full p-2">
+    <div className="w-full h-full p-10 ">
         <div>
           <button
             onClick={() => setIsAdd(true)} 
-            className="bg-blue-500 text-white py-1 px-2 rounded my-2 ml-3 shadow-md">Add Guest</button>
+            className="bg-gray-800 text-gray-300 py-1 px-2 rounded my-2 ml-3 shadow-md hover:bg-gray-700">Add Guest</button>
         </div>
-      <div className="relative z-10 h-auto py-2 overflow-y-scroll bg-white border-b-2 border-gray-300 rounded-lg shadow-md h-5/6">
-        <table className="table w-full">
+      <div className="relative z-10 h-auto py-2 overflow-y-scroll bg-white border-b-2 border-gray-300 rounded-lg shadow-md h-5/6 form-invitation p-3 ">
+        <table className="table w-full mt-4 p-5">
           <thead>
-            <tr className="table-row border-b-2 border-t">
-              <td className="table-cell w-1/4 px-2">Name</td>
-              <td className="table-cell w-1/4">Email</td>
-              <td className="table-cell w-1/4">Phone Number</td>
-              <td className="table-cell">Status</td>
-              <td className="table-cell">Action</td>
+            <tr className="table-row border-b-2 border-t ">
+              <td className="table-cell w-1/4 px-2 py-3">Name</td>
+              <td className="table-cell w-1/4 py-3">Email</td>
+              <td className="table-cell w-1/4 py-3">Phone Number</td>
+              <td className="table-cell py-3">Status</td>
+              <td className="table-cell py-3">Action</td>
             </tr>
           </thead>
           <tbody>

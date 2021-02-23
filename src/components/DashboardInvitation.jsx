@@ -48,11 +48,12 @@ const DashboardInvitation = () => {
   }
 
   return (
-    <div className="w-full flex overflow-y-hidden overflow-x-hidden">
+    <div className="w-full h-full flex md:flex-row flex-col overflow-y-scroll overflow-x-hidden form-invitation p-5">
       {/* Start form  */}
-      <div className="h-full flex w-full md:flex-row flex-col overflow-x-hidden overflow-y-hidden form-invitation p-5">
-      <div className="md:w-1/3 rounded py-3 lg:w-1/3 w-full md:h-full h-1/2 overflow-y-hidden mr-4">
-        <form className="container-small bg-gray-800 rounded text-white overflow-y-scroll bg-gray-200 shadow p-4 overflow-x-hidden h-full form-invitation"
+      {/* <div className="h-full flex md:flex-row flex-col overflow-x-hidden overflow-y-hidden form-invitation p-5"> */}
+      <div className="md:w-1/3 rounded md:h-full h-1/2 mr-4 ">
+        <form className=" bg-gray-800 rounded text-white overflow-y-scroll shadow p-4 overflow-x-hidden h-full w-full  form-invitation"
+        
         >
           <p className={styles.label}>Theme</p>
           <div className="mb-4 border-t border-gray-900 py-2">
@@ -199,19 +200,20 @@ const DashboardInvitation = () => {
     {/* End form  */}
 
     {/* Invitation */}
-      <div className="md:w-2/3 rounded lg:w-2/3 w-full md:h-full h-1/2  border-2 border-gray-900 md:m-1 mt-4 p-5 overflow-y-hidden">
-        <div className="flex gap-4">
+      <div className=" md:w-2/3 rounded md:h-full h-1/2  border-2 border-gray-900 md:m-1 mt-4 p-5 overflow-y-hidden">
+        <div className="flex gap-4 ">
           <Link to={`/event/${invitation.id}`} target="blank" className=" bg-gray-900 rounded p-1 px-2 text-white text-sm"><i class="fas fa-tv"></i> Preview</Link>
           <div className="w-3/4 border border-gray-900 rounded text-sm px-2 flex items-center">{`http://localhost:3000/event/${invitation.id}`}</div>
         </div>
-        <div className="overflow-y-scroll shadow h-full mt-2 overflow-x-hidden p-3">
+        <div className="overflow-y-scroll shadow h-full mt-2 overflow-x-hidden py-3 "
+        style={{minWidth: '400px'}}>
           {
             !wedding.status ? <Invitation/> : <Invitation2/>
           } 
         </div>
       </div>
     {/* End of Invitation */}
-    </div>
+    {/* </div> */}
     </div>
   )
 }

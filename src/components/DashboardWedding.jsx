@@ -35,12 +35,12 @@ const DashboardWedding = () => {
   if(isLoading) return <h1>Loading..</h1>
   return (
     <>
-    <div className="w-full h-full overflow-y-scroll  flex md:flex-row flex-col">
-      <div className="md:w-1/2 m-3 p-4">
+    <div className="w-full h-full flex md:flex-row flex-col overflow-y-scroll overflow-x-hidden form-invitation">
+      <div className="md:w-1/2 m-3 p-3">
           <WeddingSummary />
       </div>
       {/* FORM EDIT/ADD */}
-      <div className="md:w-1/2 m-3 p-4 ">
+      <div className="md:w-1/2 m-3 ">
         <div className="leading-loose">
           <form className="max-w-xl m-4 p-10 bg-white rounded shadow-xl" onSubmit={ onSubmit }>
             <p className="text-gray-800 font-bold">Edit Wedding Information</p>
