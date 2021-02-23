@@ -25,15 +25,14 @@ const GuestConfirmation = () => {
   const onSubmit = () => {
       if (!input.email || !input.id || !input.status) {
         Swal.fire({
-            position: 'top',
-            icon: 'error',
-            title: 'Please fill out form completely',
-            showConfirmButton: false,
-            timer: 1500
-          })
+          icon: 'error',
+          title: 'Error',
+          text: 'Please fill out form completely',
+          showConfirmButton: true,
+        })
         setInput({
             email: '',
-            password: '',
+            id: '',
             status: ''
           })       
       } else {
@@ -41,7 +40,7 @@ const GuestConfirmation = () => {
           dispatch(confirmGuest(input))
           setInput({
             email: '',
-            password: '',
+            id: '',
             status: ''
           })
       }

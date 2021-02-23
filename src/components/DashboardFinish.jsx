@@ -1,8 +1,15 @@
 import React from 'react'
 import { Invitation } from '../views'
 import Frame from 'react-frame-component'
+import { useDispatch } from 'react-redux'
+import { sendInvitation } from '../store/action/guest'
 
 const DashboardFinish = () => {
+  const dispatch = useDispatch()
+  const handleSend = () => {
+    dispatch(sendInvitation())
+  }
+
   return (
     <>
       <div className="w-full h-full flex md:flex-row flex-col overflow-y-scroll overflow-x-hidden form-invitation">
@@ -10,11 +17,11 @@ const DashboardFinish = () => {
         <h1 className="text-xl bg-gray-800 font-bold text-gray-300 text-center py-3 rounded shadow-lg  ">My Invitation </h1>
         <div className=" max-w-2xl sm:w-xl overflow-y-scroll p-5 w-full  h-full form-invitation">
         {/* <Frame 
-       initialContent={html}
-       mountTarget='#mountHere'
+          initialContent={html}
+          mountTarget='#mountHere'
         >
         </Frame> */}
-          <Invitation/>
+          {/* <Invitation/> */}
           </div>
         </div>
         <div className="md:w-1/2 m-3 flex justify-center h-full">
@@ -23,7 +30,9 @@ const DashboardFinish = () => {
               <div className=" text-sm font-light text-gray-700 p-5">
                 <p className="italic">By clicking this button, I agree to send all invitation to the guests and that all guest information is correct.</p>
               </div>
-              <button className="w-3/4 p-3 font-bold bg-gray-800 rounded-lg text-white text-sm hover:bg-gray-700">Send invitation</button>
+              <button 
+                onClick={() => handleSend()}
+                className="w-3/4 p-3 font-bold bg-gray-800 rounded-lg text-white text-sm hover:bg-gray-700">Send invitation</button>
             </div>
           </div>
         </div>
