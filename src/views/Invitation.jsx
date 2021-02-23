@@ -157,7 +157,7 @@ const Invitation = () => {
             {/* Comment */}
             <div  className="flex py-10 flex-col justify-center items-center curly" >
             {/* <div class="max-w-2xl bg-white py-10 px-5 m-auto w-full"> */}
-            <CommentForm WeddingId={wedding.id} className="text-gray-400 font-bold"/>
+            <CommentForm WeddingId={wedding.id} className="text-gray-400 font-bold poppins"/>
             { isLoading && (<p>Loading...</p>) }
             {
               comments?.map((comment, idx) => {
