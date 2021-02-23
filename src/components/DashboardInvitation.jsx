@@ -50,7 +50,8 @@ const DashboardInvitation = () => {
   return (
     <div className="w-full h-full flex md:flex-row flex-col overflow-y-hidden overflow-x-hidden">
       {/* Start form  */}
-      <div className="md:w-1/3 w-full h-full">
+      <div className="overflow-y-scroll flex">
+      <div className="md:w-1/3 w-full h-full overflow-y-scroll">
         <form className="container-small overflow-y-scroll bg-gray-200 shadow p-5 overflow-x-hidden h-full form-invitation">
           <p className={styles.label}>Theme</p>
           <div className="mb-4 border-t border-gray-900 py-2">
@@ -197,18 +198,20 @@ const DashboardInvitation = () => {
     {/* End form  */}
 
     {/* Invitation */}
-      <div className="md:w-2/3 w-full h-full p-2 overflow-x-hidden overflow-y-hidden border-2 border-gray-900 m-1">
+      <div className="md:w-2/3 w-full h-full md:p-2 overflow-x-hidden border-2 border-gray-900 md:m-1 mt-5 p-5 overflow-y-hidden"
+      style={{minHeight: '600px'}}>
         <div className="flex gap-4">
-          <Link to={`/event/${invitation.id}`} target="blank" className="sticky bg-gray-900 rounded p-1 px-2 text-white text-sm"><i class="fas fa-tv"></i> Preview</Link>
+          <Link to={`/event/${invitation.id}`} target="blank" className=" bg-gray-900 rounded p-1 px-2 text-white text-sm"><i class="fas fa-tv"></i> Preview</Link>
           <div className="w-3/4 border border-gray-900 rounded text-sm px-2 flex items-center">{`http://localhost:3000/event/${invitation.id}`}</div>
         </div>
-        <div className="overflow-y-scroll shadow overflow-x-hidden h-full mt-2">
+        <div className="overflow-y-scroll shadow h-full mt-2">
           {
             !wedding.status ? <Invitation/> : <Invitation2/>
           } 
         </div>
       </div>
     {/* End of Invitation */}
+    </div>
     </div>
   )
 }
