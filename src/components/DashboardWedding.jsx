@@ -31,7 +31,7 @@ const DashboardWedding = () => {
     await dispatch(updateWedding())
     cancelBtnLoading('weddingBtn', 'SUBMIT')
   }
-  
+
   if(isLoading) return <h1>Loading..</h1>
   return (
     <>
@@ -72,7 +72,7 @@ const DashboardWedding = () => {
             <div className="inline-block mt-2 w-1/2 pr-1" >
               <label className="block text-sm text-gray-600">Groom's Picture</label>
               <input type='file' onChange={onChangeImg} name='groomImg' accept='file/*' 
-              className="text-gray-600 text-sm py-1 tracking-wider rounded "/>
+              className="text-gray-600 w-full text-sm py-1 tracking-wider rounded "/>
                 {
                   wedding.groomImg && (
                     <img 
@@ -84,9 +84,10 @@ const DashboardWedding = () => {
                 }
             </div>
             <div className="inline-block mt-2 w-1/2 pr-1">
-              <label className="block text-sm text-gray-600">Bride's Picture</label>
-              <input type='file' onChange={onChangeImg} name='brideImg' accept='file/*' 
-              className="text-gray-600 text-sm py-1 tracking-wider rounded "/>
+              <label className="block text-sm text-gray-600">Bride's Picture
+              </label>
+              <input type='file' onChange={onChangeImg} name='brideImg' accept='file/*'
+              className="text-gray-600 w-full text-sm py-1 tracking-wider rounded " />
                 {
                   wedding.brideImg && (
                     <img 

@@ -111,15 +111,18 @@ export default () => {
 
   return (
     <div className="w-full h-full px-5 py-3">
-        <div className="flex gap-2 items-center">
+        <div className="flex md:flex-row flex-col justify-between mb-2">
           <button
             onClick={() => setIsAdd(true)} 
             className="bg-gray-800 text-gray-300 py-1 px-2 rounded my-2 shadow-md hover:bg-gray-700">Add Guest</button>
-          <form onSubmit={submitGuests} enctype="multipart/form-data">
-            <input type="file" name="file" id="file" title="" onChange={onChangeFile} />
+          <form onSubmit={submitGuests} enctype="multipart/form-data"
+          className="rounded shadow px-4 ">
+            <input type="file" name="file" id="file" title="" onChange={onChangeFile} 
+            className="text-gray-600 text-sm tracking-wider rounded "/>
             <button className="bg-gray-800 text-gray-300 py-1 px-2 rounded my-2 shadow-md hover:bg-gray-700">Upload</button>
           </form>
-          <a target="_blank" href="https://cdn.discordapp.com/attachments/811934557783588954/814032959396380712/blank.xlsx">download template </a>
+          <button target="_blank" href="https://cdn.discordapp.com/attachments/811934557783588954/814032959396380712/blank.xlsx"
+          className="bg-gray-800 text-gray-300 py-1 px-2 rounded my-2 shadow-md hover:bg-gray-700">Download template </button>
         </div>
       <div className="relative z-10 h-auto py-2 overflow-y-scroll bg-white border-b-2 border-gray-300 rounded-lg shadow-md h-5/6 form-invitation p-3 ">
         <table className="table w-full mt-4 p-5">
