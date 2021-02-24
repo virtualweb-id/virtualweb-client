@@ -52,14 +52,14 @@ const Event = ({ hours, minutes, seconds }) => {
       </div>
 
       <section className="relative py-20"
-      style={{ backgroundImage: `url(${bunga})`, maxHeight: '1000px' }}>
+      style={{ backgroundImage: `url(${bunga})`,height: '100%', maxHeight: '1000px' }}>
             {/* End of hero section */}
          <div className="body-font text-gray-600">
             <div className="container px-8 mx-auto lg:px-4 flex justify-center items-center">
             <div className="flex elegant flex-col justify-center items-center">
               <p className="text-4xl text-gray-600 tallfont font-bold">We are getting married!</p>
               <div className="md:flex-row flex-col flex">
-                <div className="flex flex-col justify-center items-center m-3" style={{width: '30%'}}>
+                <div className="md:w-1/3 w-full  flex flex-col justify-center items-center m-3" >
                   <img
                     alt="..."
                     className="max-w-full m-2"
@@ -69,10 +69,10 @@ const Event = ({ hours, minutes, seconds }) => {
                   <p className="text-center font-extrabold mt-3 text-3xl"
                   >{holder.Wedding?.brideName}</p>
                 </div>
-                <div className="flex flex-col justify-center items-center m-3" style={{width: '30%'}}>
+                <div className="flex flex-col justify-center items-center m-3" >
                   <img src={bird} style={{width: '80px'}} />
                 </div>
-                <div className="flex flex-col justify-center items-center m-3" style={{width: '30%'}}>
+                <div className="md:w-1/3 w-full flex flex-col justify-center items-center m-3">
                   <img
                     alt="..."
                     className="max-w-full m-2 "
