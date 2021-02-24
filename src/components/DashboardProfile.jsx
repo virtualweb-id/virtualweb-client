@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {Doughnut} from 'react-chartjs-2';
+import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux"
 import Countdown, { zeroPad, calcTimeDelta, formatTimeDelta } from 'react-countdown';
 import { FlipCountdown, SlideCountdown } from 'react-fancy-countdown'
@@ -8,6 +9,7 @@ import Microlink from '@microlink/react'
 import moment from 'moment'
 
 const DashboardProfile = () => {
+  const { invitation } = useSelector(state => state.invitation)
   const { guestAttend } = useSelector(state => state.guest)
   const { wedding } = useSelector(state => state.wedding)
   
@@ -42,15 +44,14 @@ const DashboardProfile = () => {
               <div className=" uppercase text-gray-800 border-b-2 border-gray-300 rounded-lg px-4 py-5">
                   <h5 className="font-bold uppercase text-center mb-2 text-gray-800">Customize Your 
                   
-                  <button className='p-1 ml-2 rounded font-bold border-2 bg-gray-800 hover:bg-gray-700 px-3 border-black text-gray-200'>SETTINGS</button>
-          
+                  <Link to={`dashboard/invitation`} className="p-1 ml-2 rounded font-bold border-2 bg-gray-800 hover:bg-gray-700 px-2 border-black text-gray-200">Settings</Link>
+                    
                   </h5>
                   <IframeResizer
                     scrolling='true'
                     default='false'
                     minHeight='255'
-                    log
-                    src="http://localhost:3000/event/390635999"
+                    src={`http://localhost:3000/event/${invitation.id}`}
                     style={{ width: '10px', minWidth: '100%'}}
                   />
                     
@@ -137,9 +138,9 @@ const DashboardProfile = () => {
                 <div className="flex flex-col border-gray-200 justify-center items-center pb-2 py-5 my-5 md:my-0 rounded-lg rounded text-gray-300"
                 // style={{backgroundColor: 'white', color: 'black'}}
                 >
-                  <SlideCountdown
+                  {/* <SlideCountdown
                     weeks={false}
-                    deadline={wedding.date} />
+                    deadline={wedding.date} /> */}
                     {/* <p> {moment(wedding.date).format("YYYY-MM-DD")} </p> */}
                 </div>
               </div>

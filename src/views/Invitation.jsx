@@ -118,9 +118,9 @@ const Invitation = () => {
                 <div className="flex flex-col  w-full justify-center items-center tallfont font-bold md:my-0 py-10 md:rounded-none rounded"
                 style={{backgroundColor: holder.textColor, color: holder.backgroundColor }}>
                   <p className="m-3 font-bold text-4xl elegant">Save The Date!</p>
-                  <SlideCountdown
+                  {/* <SlideCountdown
                     weeks={false}
-                    deadline={wedding.date} />
+                    deadline={wedding.date} /> */}
                   <p className="m-3">{moment(wedding.date).format("MMM Do YY")}</p>
                   <p className="m-3"><svg className="w-6 h-6 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" /></svg>{wedding.address}</p>
                   <div className="mx-5 p-3 rounded-lg shadow-lg flex justify-center items-center" style={{ backgroundColor: holder.backgroundColor, color: holder.textColor,  minWidth: '150px'}}>
