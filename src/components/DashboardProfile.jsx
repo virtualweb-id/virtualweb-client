@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {Doughnut} from 'react-chartjs-2';
 import { useDispatch, useSelector } from "react-redux"
 import Countdown, { zeroPad, calcTimeDelta, formatTimeDelta } from 'react-countdown';
-import { FlipCountdown, SlideCountdown } from 'react-fancy-countdown'
+import { BasicCountdown, FlipCountdown, SlideCountdown } from 'react-fancy-countdown'
 import IframeResizer from 'iframe-resizer-react'
 import Microlink from '@microlink/react'
 import moment from 'moment'
@@ -137,9 +137,7 @@ const DashboardProfile = () => {
                 <div className="flex flex-col border-gray-200 justify-center items-center pb-2 py-5 my-5 md:my-0 rounded-lg rounded text-gray-300"
                 // style={{backgroundColor: 'white', color: 'black'}}
                 >
-                  <SlideCountdown
-                    weeks={false}
-                    deadline={wedding.date} />
+                  <Countdown date={wedding.date} />
                     {/* <p> {moment(wedding.date).format("YYYY-MM-DD")} </p> */}
                 </div>
               </div>
