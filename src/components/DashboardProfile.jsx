@@ -61,8 +61,8 @@ const DashboardProfile = () => {
 
 
        {/* moment video left bottom */}
-        <div className="h-3/5 m-4">
-            <div className="bg-gradient-to-b from-gray-900 to-gray-800  border-transparent rounded-lg shadow-xl">
+        <div className="h-3/5 w-full m-4">
+            <div className="bg-gradient-to-b from-gray-900 to-gray-800 bg-transparent border-transparent rounded-lg shadow-xl">
               <div className=" uppercase text-gray-200 border-b-2 border-gray-300 rounded-lg flex flex-col items-center">
                 <h5 className="text-center font-bold uppercase text-gray-200 py-2">Your Moment's Video </h5>
                 
@@ -76,6 +76,20 @@ const DashboardProfile = () => {
                       description: 'When you realise you want to spend the rest of your life with somebody, you want the rest of your life to start as soon as possible.'
                     })}
                   />
+                  <div className="absolute w-3/12 h-40  w-auto">
+                    
+                    <div className="px-8 py-10 relative z-10 w-full border border-gray-200 bg-white transform transition duration-500 hover:scale-125 opacity-0 hover:opacity-100">
+                      <iframe className="absolute inset-0 w-full h-full object-cover object-center" src="https://www.youtube.com/embed/WSOFpsZFMjo?rel=0&modestbranding=1&autohide=1&mute=1&showinfo=0&controls=0&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+                      <div className="h-40 w-9/12">
+
+                      </div>
+                    </div>
+                  </div>
+
+
+
+
+
               </div>
             </div>
          </div>
@@ -138,9 +152,9 @@ const DashboardProfile = () => {
                 <div className="flex flex-col border-gray-200 justify-center items-center pb-2 py-5 my-5 md:my-0 rounded-lg rounded text-gray-300"
                 // style={{backgroundColor: 'white', color: 'black'}}
                 >
-                  {/* <SlideCountdown
+                  <SlideCountdown
                     weeks={false}
-                    deadline={wedding.date} /> */}
+                    deadline={wedding.date} />
                     {/* <p> {moment(wedding.date).format("YYYY-MM-DD")} </p> */}
                 </div>
               </div>
