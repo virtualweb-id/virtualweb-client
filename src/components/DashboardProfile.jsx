@@ -3,10 +3,9 @@ import {Doughnut} from 'react-chartjs-2';
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux"
 import Countdown, { zeroPad, calcTimeDelta, formatTimeDelta } from 'react-countdown';
-import { BasicCountdown, FlipCountdown, SlideCountdown } from 'react-fancy-countdown'
 import IframeResizer from 'iframe-resizer-react'
 import Microlink from '@microlink/react'
-import moment from 'moment'
+import App from './CountDown' 
 
 const DashboardProfile = () => {
   const { invitation } = useSelector(state => state.invitation)
@@ -41,7 +40,9 @@ const DashboardProfile = () => {
     }]
   };
 
-  console.log(invitation.videoUrl)
+  
+
+  
 
   return (
     <>
@@ -111,10 +112,10 @@ const DashboardProfile = () => {
 
       {/* Right top - GRAPH ATTENDEE */}
       <div className="h-full md:w-1/2 w-full flex flex-col pt-0 pb-2 pl-2 pr-2">
-        <div className="h-3/5 bg-transparent m-4">
+        <div className="h-3/5 bg-transparent m-4 mb-1">
             <div className="bg-white border-transparent rounded-lg shadow-xl">
               <div className="p-5 uppercase text-gray-800 border-b-2 border-gray-300 rounded-lg p-2">
-                  <h5 className="font-bold uppercase text-center mb-2 text-gray-600">Guests Attendance Graph</h5>
+                  <h5 className="font-bold uppercase text-center mb-1 text-gray-600">Guests Attendance Graph</h5>
                   <Doughnut data={data}/>
                   <section className="text-gray-700 body-font">
                     <div className="container px-8 mx-auto lg:px-4">
@@ -162,12 +163,18 @@ const DashboardProfile = () => {
        {/* countdown rigght bottom */}
         <div className="h-3/5  m-4 mt-10">
             <div className="bg-white border-transparent rounded-lg shadow-xl">
-              <div className="bg-gradient-to-b from-gray-900 to-gray-800 uppercase text-gray-800 border-b-2 border-gray-300 rounded-lg px-2 py-3">
-                <h5 className="text-center font-bold uppercase text-gray-200 pb-1">Days till your Wedding Day</h5>
-                <div className="flex flex-col border-gray-200 justify-center items-center pb-2 py-5 my-5 md:my-0 rounded-lg rounded text-gray-300"
+              <div className="bg-gradient-to-b from-gray-900 to-gray-800 uppercase text-gray-800 border-b-2 border-gray-300 rounded-lg px-2 py-2">
+                <h5 className="text-center font-bold uppercase text-gray-200 ">Days till your Wedding Day</h5>
+                <div className="flex flex-col border-gray-200 justify-center items-center pb-1 py-5 my-5 md:my-0 rounded-lg rounded text-gray-300"
                 // style={{backgroundColor: 'white', color: 'black'}}
                 >
-                  <Countdown date={wedding.date} />
+                    <App/>
+                    
+                          {/* <Countdown
+                            date={wedding.date}
+                            renderer={renderer}
+                          /> */}
+                          {/* <Countdown date={wedding.date} /> */}
                     {/* <p> {moment(wedding.date).format("YYYY-MM-DD")} </p> */}
                 </div>
               </div>
