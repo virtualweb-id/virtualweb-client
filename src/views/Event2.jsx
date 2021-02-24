@@ -36,7 +36,8 @@ console.log(comments)
                   <p className="quicksand text-2xl font-extrabold mt-3 " style={{ color: holder.textColor, }}
                   >{holder.Wedding?.brideName}</p>
                 </div>
-                <div className="flex flex-col justify-center items-center m-3 text-8xl font-extrabold text-gray-800">
+                <div className="flex flex-col justify-center items-center m-3 text-8xl font-extrabold text-gray-800"
+                style={{ color: holder.textColor  }}>
                   &
                 </div>
                 <div className="flex flex-col justify-center items-center m-3">
@@ -97,11 +98,10 @@ console.log(comments)
                   <div className="flex flex-col justify-center items-center m-3" style={{width: '30%'}}>
                   <img src={bird} style={{width: '80px'}} />
                 </div>
-                  <p className="m-3 text-4xl poppins">{holder.title === "Title" ? '' : holder.title}</p>
                   <SlideCountdown
                     weeks={false}
                     deadline={holder.Wedding?.date} />
-                  <p className="m-3">{moment(holder.Wedding?.date).format("YYYY-MM-DD")}</p>
+                  <p className="m-3">{moment(holder.Wedding?.date).format('MMMM Do YYYY, h:mm:ss a')}</p>
                   <p className="m-3 "><svg className="w-6 h-6 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" /></svg>{holder.Wedding?.address}</p>
                   <div className="flex flex-row justify-center">
                   <div className="mt-5 mx-5 p-3 rounded-lg shadow-lg flex flex-col justify-center items-center" style={{ backgroundColor: holder.textColor, color: holder.backgroundColor,  minWidth: '150px'}}>
@@ -149,7 +149,6 @@ console.log(comments)
             <div className="flex flex-col poppins justify-center items-center" style={{backgroundColor: holder.backgroundColor, color: holder.textColor}}>
             <p className="text-4xl mt-3 mb-4">Send wedding gift money to bride and groom!</p>
             <img alt="..."
-                className="cursor-pointer"
                 src={gift}
                 style={{width: '100px'}}
                 /><br/>

@@ -154,7 +154,6 @@ const Event = ({ hours, minutes, seconds }) => {
             <div  className="flex flex-col justify-center items-center my-20 py-5 " style={{ backgroundImage: `url(${bunga})`, height: '100%' }}>
             <p className="font-extrabold text-lg mt-3 mb-4 tallfont text-4xl">Send wedding gift money to bride and groom!</p>
             <img alt="..."
-                className="cursor-pointer"
                 src={gift}
                 style={{width: '100px'}}
                 /><br />
@@ -162,9 +161,9 @@ const Event = ({ hours, minutes, seconds }) => {
             </div>
 
             {/* Comment */}
-            <div  className="flex py-10 flex-col justify-center items-center curly" >
+            <div  className="flex py-10 flex-col handwriting text-2xl font-bold justify-center items-center curly" >
             {/* <div class="max-w-2xl bg-white py-10 px-5 m-auto w-full"> */}
-            <CommentForm InvitationId={holder.id} className="text-gray-400 text-2xl font-bold"/>
+            <CommentForm InvitationId={holder.id} className="text-gray-400 handwriting text-2xl font-bold"/>
             { isLoading && (<p>Loading...</p>) }
             {
               comments?.map((comment, idx) => {

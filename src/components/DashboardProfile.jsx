@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react'
 import {Doughnut} from 'react-chartjs-2';
-import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux"
 import Countdown, { zeroPad, calcTimeDelta, formatTimeDelta } from 'react-countdown';
 import IframeResizer from 'iframe-resizer-react'
@@ -8,7 +7,6 @@ import Microlink from '@microlink/react'
 import App from './CountDown' 
 
 const DashboardProfile = () => {
-  const { invitation } = useSelector(state => state.invitation)
   const { guestAttend } = useSelector(state => state.guest)
   const { wedding } = useSelector(state => state.wedding)
   const [url, setUrl] = useState('')
@@ -55,6 +53,7 @@ const DashboardProfile = () => {
           {/* Left top */}
           <div className="h-3/5 bg-transparent m-4 mb-0 pb-0">
             <div className="bg-white border-transparent rounded-lg shadow-xl">
+
               <div className=" uppercase text-gray-800 border-b-2 border-gray-300 rounded-lg px-4 py-3">
                 <h5 className="font-bold uppercase text-center mb-2 text-gray-800">Customize Your 
                   <Link to={`dashboard/invitation`} className="p-1 ml-2 rounded font-bold border-2 bg-gray-800 hover:bg-gray-700 px-2 border-black text-gray-200">Settings</Link>
@@ -66,14 +65,15 @@ const DashboardProfile = () => {
                   src={`http://localhost:3000/event/${invitation.id}`}
                   style={{ width: '10px', minWidth: '100%'}}
                 />
+
               </div>
             </div>
           </div>
 
-
           {/* moment video left bottom */}
           <div className="h-2/5 w-full m-4 pt-0 pb-0 pl-2 pr-2">
             <div className="bg-gradient-to-b from-gray-900 to-gray-800 bg-transparent border-transparent rounded-lg shadow-xl">
+
               <div className=" uppercase text-gray-200 border-b-2 border-gray-300 rounded-lg flex flex-col items-center">
                 <h5 className="text-center font-bold uppercase text-gray-200 py-2 pb-1">Your Moment's Video </h5>
                 <div>
@@ -105,10 +105,6 @@ const DashboardProfile = () => {
           </div>
         </div>
       </div>
-
-
-
-
 
       {/* Right top - GRAPH ATTENDEE */}
       <div className="h-full md:w-1/2 w-full flex flex-col pt-0 pb-2 pl-2 pr-2">
