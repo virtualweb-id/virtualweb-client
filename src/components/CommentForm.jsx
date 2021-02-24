@@ -54,15 +54,15 @@ const CommentForm = ({InvitationId}) => {
             <div className="grid grid-cols-2 gap-4 max-w-xl m-auto">
 
                 <div className="col-span-2 lg:col-span-1">
-                <input type="text" name='name' value={inputComment.name} onChange={handleOnChange} className="border-solid border-gray-200 border-2 p-3 md:text-xl w-full" placeholder="Name"/>
+                <input type="text" name='name' value={inputComment.name} onChange={handleOnChange} className="border-solid border-gray-600 border-2 p-3 md:text-xl w-full" placeholder="Name"/>
                 </div>
 
                 <div className="col-span-2 lg:col-span-1">
-                <input type="text" name='relationship' value={inputComment.relationship} onChange={handleOnChange} className="border-solid border-gray-200 border-2 p-3 md:text-xl w-full" placeholder="Relationship"/>
+                <input type="text" name='relationship' value={inputComment.relationship} onChange={handleOnChange} className="border-solid border-gray-600 border-2 p-3 md:text-xl w-full" placeholder="Relationship"/>
                 </div>
 
                 <div className="col-span-2">
-                <textarea cols="30" name='message' value={inputComment.message} onChange={handleOnChange} rows="8" className="border-solid border-gray-200 border-2 p-3 md:text-xl w-full" placeholder="Message"></textarea>
+                <textarea cols="30" name='message' value={inputComment.message} onChange={handleOnChange} rows="8" className="border-solid border-gray-600 border-2 p-3 md:text-xl w-full" placeholder="Message"></textarea>
                 </div>
 
                 <div className="col-span-2 text-right">

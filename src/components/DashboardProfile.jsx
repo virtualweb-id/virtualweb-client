@@ -1,15 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import {Doughnut} from 'react-chartjs-2';
-import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux"
 import Countdown, { zeroPad, calcTimeDelta, formatTimeDelta } from 'react-countdown';
-import { BasicCountdown, FlipCountdown, SlideCountdown } from 'react-fancy-countdown'
+import { FlipCountdown, SlideCountdown } from 'react-fancy-countdown'
 import IframeResizer from 'iframe-resizer-react'
 import Microlink from '@microlink/react'
 import moment from 'moment'
 
 const DashboardProfile = () => {
-  const { invitation } = useSelector(state => state.invitation)
   const { guestAttend } = useSelector(state => state.guest)
   const { wedding } = useSelector(state => state.wedding)
   
@@ -44,14 +42,15 @@ const DashboardProfile = () => {
               <div className=" uppercase text-gray-800 border-b-2 border-gray-300 rounded-lg px-4 py-5">
                   <h5 className="font-bold uppercase text-center mb-2 text-gray-800">Customize Your 
                   
-                  <Link to={`dashboard/invitation`} className="p-1 ml-2 rounded font-bold border-2 bg-gray-800 hover:bg-gray-700 px-2 border-black text-gray-200">Settings</Link>
-                    
+                  <button className='p-1 ml-2 rounded font-bold border-2 bg-gray-800 hover:bg-gray-700 px-3 border-black text-gray-200'>SETTINGS</button>
+          
                   </h5>
                   <IframeResizer
                     scrolling='true'
                     default='false'
                     minHeight='255'
-                    src={`http://localhost:3000/event/${invitation.id}`}
+                    log
+                    src="http://localhost:3000/event/390635999"
                     style={{ width: '10px', minWidth: '100%'}}
                   />
                     
@@ -61,8 +60,8 @@ const DashboardProfile = () => {
 
 
        {/* moment video left bottom */}
-        <div className="h-3/5 w-full m-4">
-            <div className="bg-gradient-to-b from-gray-900 to-gray-800 bg-transparent border-transparent rounded-lg shadow-xl">
+        <div className="h-3/5 m-4">
+            <div className="bg-gradient-to-b from-gray-900 to-gray-800  border-transparent rounded-lg shadow-xl">
               <div className=" uppercase text-gray-200 border-b-2 border-gray-300 rounded-lg flex flex-col items-center">
                 <h5 className="text-center font-bold uppercase text-gray-200 py-2">Your Moment's Video </h5>
                 
@@ -76,20 +75,6 @@ const DashboardProfile = () => {
                       description: 'When you realise you want to spend the rest of your life with somebody, you want the rest of your life to start as soon as possible.'
                     })}
                   />
-                  <div className="absolute w-3/12 h-40  w-auto">
-                    
-                    <div className="px-8 py-10 relative z-10 w-full border border-gray-200 bg-white transform transition duration-500 hover:scale-125 opacity-0 hover:opacity-100">
-                      <iframe className="absolute inset-0 w-full h-full object-cover object-center" src="https://www.youtube.com/embed/WSOFpsZFMjo?rel=0&modestbranding=1&autohide=1&mute=1&showinfo=0&controls=0&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>
-                      <div className="h-40 w-9/12">
-
-                      </div>
-                    </div>
-                  </div>
-
-
-
-
-
               </div>
             </div>
          </div>
@@ -152,7 +137,7 @@ const DashboardProfile = () => {
                 <div className="flex flex-col border-gray-200 justify-center items-center pb-2 py-5 my-5 md:my-0 rounded-lg rounded text-gray-300"
                 // style={{backgroundColor: 'white', color: 'black'}}
                 >
-                  <Countdown date={wedding.date} />
+                   <Countdown date={wedding.date} />
                     {/* <p> {moment(wedding.date).format("YYYY-MM-DD")} </p> */}
                 </div>
               </div>

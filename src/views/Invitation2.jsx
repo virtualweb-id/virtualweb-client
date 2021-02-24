@@ -10,12 +10,13 @@ import { fetchComments } from '../store/action/comment'
 import { FlipCountdown, SlideCountdown } from 'react-fancy-countdown'
 import bird from '../assets/peace.png'
 
-const Invitation2 = ({ hours, minutes, seconds }) => {
+const Invitation2 = () => {
   const { invitation:holder } = useSelector(state => state.invitation)
   const { wedding } = useSelector(state => state.wedding)
   const { comments, isLoading } = useSelector(state => state.comment)
   const dispatch = useDispatch()
 
+  // console.log(holder, 'ini holder')
 //   useEffect(() => {
 //     dispatch(fetchComments(wedding.id))
 //   }, [dispatch])
@@ -42,7 +43,8 @@ const Invitation2 = ({ hours, minutes, seconds }) => {
                   <p className=" quicksand text-2xl font-extrabold mt-3 " style={{ color: holder.textColor }}
                   >{wedding?.brideName}</p>
                 </div>
-                <div className="flex flex-col justify-center items-center m-3 text-8xl font-extrabold text-gray-800">
+                <div className="flex flex-col justify-center items-center m-3 text-8xl font-extrabold text-gray-800"
+                style={{ color: holder.textColor  }}>
                   &
                 </div>
                 <div className="flex flex-col justify-center items-center m-3">
@@ -68,7 +70,6 @@ const Invitation2 = ({ hours, minutes, seconds }) => {
             <div className="container px-8 mx-auto mb-40 lg:px-4 quicksand">
                 <div className="flex flex-col w-full mx-auto mb-12 text-left lg:w-2/3 lg:text-center">
                     <h1 className="mb-6 text-4xl font-semibold tracking-tighter sm:text-5xl title-font text-center quicksand" style={{ color: holder.backgroundColor }}>
-                       {holder.title}
                     </h1>
                     <p className="mx-auto text-2xl text-base font-medium leading-relaxed lg:w-2/3" style={{ color: holder.backgroundColor }}
                     >{holder.story}</p>
@@ -101,7 +102,6 @@ const Invitation2 = ({ hours, minutes, seconds }) => {
                 <div className="flex w-full flex-col justify-center items-center px-20 py-5 md:my-0 poppins "
                 style={{backgroundColor: holder.backgroundColor, color: holder.textColor, maxWidth: '90%'}}>
                   <img src={bird} style={{width: '80px'}} />
-                  <p className="m-3 text-2xl poppins">{holder.title === "Title" ? '' : holder.title}</p>
                   {/* <SlideCountdown
                     weeks={false}
                     deadline={holder.Wedding?.date} /> */}
