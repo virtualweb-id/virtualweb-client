@@ -157,7 +157,8 @@ const Event = ({ hours, minutes, seconds }) => {
                 className="cursor-pointer"
                 src={gift}
                 style={{width: '100px'}}
-                />
+                /><br />
+                <ModalPayment holder={holder} />
             </div>
 
             {/* Comment */}
