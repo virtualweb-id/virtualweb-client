@@ -36,7 +36,8 @@ console.log(comments)
                   <p className="quicksand text-2xl font-extrabold mt-3 " style={{ color: holder.textColor, }}
                   >{holder.Wedding?.brideName}</p>
                 </div>
-                <div className="flex flex-col justify-center items-center m-3 text-8xl font-extrabold text-gray-800">
+                <div className="flex flex-col justify-center items-center m-3 text-8xl font-extrabold text-gray-800"
+                style={{ color: holder.textColor  }}>
                   &
                 </div>
                 <div className="flex flex-col justify-center items-center m-3">
