@@ -23,7 +23,7 @@ const Invitation2 = ({ hours, minutes, seconds }) => {
   return (
     <>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path fill={holder.backgroundColor} fill-opacity="1" d="M0,64L60,101.3C120,139,240,213,360,229.3C480,245,600,203,720,192C840,181,960,203,1080,224C1200,245,1320,267,1380,277.3L1440,288L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+        <path fill={holder.backgroundColor} fillOpacity="1" d="M0,64L60,101.3C120,139,240,213,360,229.3C480,245,600,203,720,192C840,181,960,203,1080,224C1200,245,1320,267,1380,277.3L1440,288L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
     </svg>
     <div className="relative mx-auto flex flex-col justify-center items-center font-bold allura"
         style={{ backgroundColor: holder.backgroundColor }}>
@@ -59,7 +59,7 @@ const Invitation2 = ({ hours, minutes, seconds }) => {
                 </div>
               </div>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path fill={holder.backgroundColor} fill-opacity="1" d="M0,64L60,101.3C120,139,240,213,360,229.3C480,245,600,203,720,192C840,181,960,203,1080,224C1200,245,1320,267,1380,277.3L1440,288L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
+        <path fill={holder.backgroundColor} fillOpacity="1" d="M0,64L60,101.3C120,139,240,213,360,229.3C480,245,600,203,720,192C840,181,960,203,1080,224C1200,245,1320,267,1380,277.3L1440,288L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
     </svg>
       <section className="relative">
             {/* End of hero section */}
@@ -90,7 +90,7 @@ const Invitation2 = ({ hours, minutes, seconds }) => {
             {/* prawed video */}
 
             {/* Additional image  & countdown */}
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill={holder.backgroundColor} fill-opacity="1" d="M0,224L48,197.3C96,171,192,117,288,122.7C384,128,480,192,576,186.7C672,181,768,107,864,80C960,53,1056,75,1152,85.3C1248,96,1344,96,1392,96L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill={holder.backgroundColor} fillOpacity="1" d="M0,224L48,197.3C96,171,192,117,288,122.7C384,128,480,192,576,186.7C672,181,768,107,864,80C960,53,1056,75,1152,85.3C1248,96,1344,96,1392,96L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
             <div className="w-full flex flex-col justify-center items-center" style={{backgroundColor: holder.backgroundColor}}>
               <img
                   alt="..."
@@ -119,7 +119,7 @@ const Invitation2 = ({ hours, minutes, seconds }) => {
                 </div>
                 </div>
             </div>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill={holder.backgroundColor} fill-opacity="1" d="M0,224L48,197.3C96,171,192,117,288,122.7C384,128,480,192,576,186.7C672,181,768,107,864,80C960,53,1056,75,1152,85.3C1248,96,1344,96,1392,96L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill={holder.backgroundColor} fillOpacity="1" d="M0,224L48,197.3C96,171,192,117,288,122.7C384,128,480,192,576,186.7C672,181,768,107,864,80C960,53,1056,75,1152,85.3C1248,96,1344,96,1392,96L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
             {/* end of additional image & countdown */}
 
             {/* Livestream video */}
@@ -149,7 +149,7 @@ const Invitation2 = ({ hours, minutes, seconds }) => {
                   style={{height: '50vh', color: 'white' }}
                 /> */}
             </div>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill={holder.backgroundColor} fill-opacity="1" d="M0,32L48,48C96,64,192,96,288,122.7C384,149,480,171,576,186.7C672,203,768,213,864,192C960,171,1056,117,1152,96C1248,75,1344,85,1392,90.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill={holder.backgroundColor} fillOpacity="1" d="M0,32L48,48C96,64,192,96,288,122.7C384,149,480,171,576,186.7C672,203,768,213,864,192C960,171,1056,117,1152,96C1248,75,1344,85,1392,90.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
             <div className="flex flex-col justify-center items-center" style={{backgroundColor: holder.backgroundColor, color: holder.textColor}}>
             <p className="text-2xl poppins mt-3 mb-4">Send wedding gift money to bride and groom!</p>
             <img alt="..."
@@ -161,7 +161,7 @@ const Invitation2 = ({ hours, minutes, seconds }) => {
 
             {/* Comment */}
             <div className="flex text-medium flex-col poppins justify-center items-center py-40" style={{backgroundColor: holder.backgroundColor, color: holder.textColor}}>
-            {/* <div class="max-w-2xl bg-white py-10 px-5 m-auto w-full"> */}
+            {/* <div className="max-w-2xl bg-white py-10 px-5 m-auto w-full"> */}
             <CommentForm WeddingId={wedding?.id} 
             className="text-xl"/>
             { isLoading && (<p>Loading...</p>) }

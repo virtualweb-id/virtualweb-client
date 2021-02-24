@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useHistory } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import confirmDelete from "../helpers/confirmDelete"
-import { addGuest, deleteGuest, editGuest, showOneGuest } from "../store/action/guest"
+import { createToast } from "../helpers/createToast"
+import { addGuest, deleteGuest, editGuest, showOneGuest, uploadGuest } from "../store/action/guest"
 
 export default () => {
   const { wedding } = useSelector(state => state.wedding)
@@ -19,6 +20,7 @@ export default () => {
   }
   const [input, setInput] = useState(defaultValue)
   const [edit, setEdit] = useState(defaultValue)
+  const [file, setFile] = useState()
 
   // useEffect(() => {
   //   if(!wedding.title) history.push('/dashboard/wedding')
@@ -53,6 +55,8 @@ export default () => {
     e.preventDefault()
     if(emailIsValid(input.email)) {
       dispatch(addGuest(input))
+    } else {
+      createToast('Email not valid', 'error')
     }
     setInput({
       name: '',
@@ -66,6 +70,8 @@ export default () => {
     setIsEdit('')
     if (emailIsValid(edit.email)) {
       dispatch(editGuest(id, edit));
+    } else {
+      createToast('Email not valid', 'error')
     }
   }
 
@@ -91,12 +97,32 @@ export default () => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
   }
 
+  const onChangeFile = (e) => {
+    const file = e.target.files[0]
+    setFile(file)
+  }
+
+  const submitGuests = async (e) => {
+    e.preventDefault()
+    const excel = document.getElementById('file')
+    await dispatch(uploadGuest(excel.files[0]))
+    excel.value = ''
+  }
+
   return (
     <div className="w-full h-full px-5 py-3">
-        <div>
+        <div className="flex md:flex-row flex-col justify-between mb-2">
           <button
             onClick={() => setIsAdd(true)} 
             className="bg-gray-800 text-gray-300 py-1 px-2 rounded my-2 shadow-md hover:bg-gray-700">Add Guest</button>
+          <form onSubmit={submitGuests} enctype="multipart/form-data"
+          className="rounded shadow px-4 ">
+            <input type="file" name="file" id="file" title="" onChange={onChangeFile} 
+            className="text-gray-600 text-sm tracking-wider rounded "/>
+            <button className="bg-gray-800 text-gray-300 py-1 px-2 rounded my-2 shadow-md hover:bg-gray-700">Upload</button>
+          </form>
+          <button target="_blank" href="https://cdn.discordapp.com/attachments/811934557783588954/814032959396380712/blank.xlsx"
+          className="bg-gray-800 text-gray-300 py-1 px-2 rounded my-2 shadow-md hover:bg-gray-700">Download template </button>
         </div>
       <div className="relative z-10 h-auto py-2 overflow-y-scroll bg-white border-b-2 border-gray-300 rounded-lg shadow-md h-5/6 form-invitation p-3 ">
         <table className="table w-full mt-4 p-5">

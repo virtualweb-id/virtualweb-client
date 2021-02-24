@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import ReactPlayer from "react-player"
 import { useSelector, useDispatch } from 'react-redux';
 import gift from '../assets/gift-box.png'
@@ -15,6 +15,7 @@ const Invitation = () => {
   const { wedding } = useSelector(state => state.wedding)
   const { comments, isLoading } = useSelector(state => state.comment)
   const dispatch = useDispatch()
+  const _ = useRef(wedding.date && wedding.date)
 
   useEffect(() => {
     dispatch(fetchComments(wedding.id))
@@ -46,14 +47,14 @@ const Invitation = () => {
       </div>
 
       <section className="relative py-20"
-      style={{ backgroundImage: `url(${bunga})`, height: '100%' }}>
+      style={{ backgroundImage: `url(${bunga})`, height: '100%', maxHeight: '1000px' }}>
             {/* End of hero section */}
          <div className="body-font text-gray-600">
             <div className="container px-8 mx-auto lg:px-4 flex justify-center items-center">
             <div className="flex elegant flex-col justify-center items-center">
               <p className="text-4xl text-gray-600 tallfont font-bold">We are getting married!</p>
               <div className="md:flex-row flex-col flex">
-                <div className="flex flex-col justify-center items-center m-3" style={{width: '30%'}}>
+                <div className=" md:w-1/3 w-full flex flex-col justify-center items-center m-3" >
                   <img
                     alt="..."
                     className="max-w-full m-2"
@@ -63,10 +64,10 @@ const Invitation = () => {
                   <p className="text-center font-extrabold mt-3 text-2xl"
                   >{wedding.brideName}</p>
                 </div>
-                <div className="flex flex-col justify-center items-center m-3" style={{width: '30%'}}>
-                  <img src={bird} style={{width: '80px'}} />
+                <div className="flex flex-col justify-center items-center m-3 md:w-1/3 w-full" >
+                  <img src={bird}  style={{width: '80px' }} />
                 </div>
-                <div className="flex flex-col justify-center items-center m-3" style={{width: '30%'}}>
+                <div className=" md:w-1/3 w-full flex flex-col justify-center items-center m-3" >
                   <img
                     alt="..."
                     className="max-w-full m-2 "
@@ -83,7 +84,7 @@ const Invitation = () => {
 
             {/* Bride groom information */}
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                  <path fill={holder.backgroundColor} fill-opacity="1" d="M0,32L48,48C96,64,192,96,288,133.3C384,171,480,213,576,224C672,235,768,213,864,186.7C960,160,1056,128,1152,101.3C1248,75,1344,53,1392,42.7L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+                  <path fill={holder.backgroundColor} fillOpacity="1" d="M0,32L48,48C96,64,192,96,288,133.3C384,171,480,213,576,224C672,235,768,213,864,186.7C960,160,1056,128,1152,101.3C1248,75,1344,53,1392,42.7L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
             </svg>
             <div className="w-full flex flex-col flex-wrap justify-center items-center p-5 handwriting text-2xl"
             style={{ backgroundColor: holder.backgroundColor, color: holder.textColor, minHeight: '300px' }}>
@@ -94,7 +95,7 @@ const Invitation = () => {
                     <p className="text-center text-3xl font-medium leading-relaxed md:w-full">{holder.story}</p>
                 </div>
             </div>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill={holder.backgroundColor} fill-opacity="1" d="M0,96L60,90.7C120,85,240,75,360,80C480,85,600,107,720,122.7C840,139,960,149,1080,154.7C1200,160,1320,160,1380,160L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill={holder.backgroundColor} fillOpacity="1" d="M0,96L60,90.7C120,85,240,75,360,80C480,85,600,107,720,122.7C840,139,960,149,1080,154.7C1200,160,1320,160,1380,160L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>
             {/* End of Bride groom information */}
 
             {/* prawed video */}
@@ -156,7 +157,7 @@ const Invitation = () => {
 
             {/* Comment */}
             <div  className="flex py-10 flex-col justify-center items-center curly" >
-            {/* <div class="max-w-2xl bg-white py-10 px-5 m-auto w-full"> */}
+            {/* <div className="max-w-2xl bg-white py-10 px-5 m-auto w-full"> */}
             <CommentForm WeddingId={wedding.id} className="text-gray-400 font-bold poppins"/>
             { isLoading && (<p>Loading...</p>) }
             {

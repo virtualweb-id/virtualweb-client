@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import Countdown, { zeroPad, calcTimeDelta, formatTimeDelta } from 'react-countdown';
 import ReactPlayer from "react-player"
 import { useSelector, useDispatch } from 'react-redux';
@@ -19,6 +19,7 @@ const Event = ({ hours, minutes, seconds }) => {
   const { comments } = useSelector(state => state.comment)
   const dispatch = useDispatch()
   const {id} = useParams()
+  const _ = useRef(holder.Wedding && holder.Wedding.date)
 
   // useEffect(() => {
   //   // dispatch(getDataById(id))
@@ -88,7 +89,7 @@ const Event = ({ hours, minutes, seconds }) => {
 
             {/* Bride groom information */}
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                  <path fill={holder.backgroundColor} fill-opacity="1" d="M0,32L48,48C96,64,192,96,288,133.3C384,171,480,213,576,224C672,235,768,213,864,186.7C960,160,1056,128,1152,101.3C1248,75,1344,53,1392,42.7L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+                  <path fill={holder.backgroundColor} fillOpacity="1" d="M0,32L48,48C96,64,192,96,288,133.3C384,171,480,213,576,224C672,235,768,213,864,186.7C960,160,1056,128,1152,101.3C1248,75,1344,53,1392,42.7L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
             </svg>
             <div className="w-full flex flex-col flex-wrap justify-center items-center p-5 handwriting text-2xl"
             style={{ backgroundColor: holder.backgroundColor, color: holder.textColor, minHeight: '300px' }}>
@@ -99,7 +100,7 @@ const Event = ({ hours, minutes, seconds }) => {
                     <p className=" text-4xl text-center font-medium leading-relaxed md:w-full">{holder.story}</p>
                 </div>
             </div>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill={holder.backgroundColor} fill-opacity="1" d="M0,96L60,90.7C120,85,240,75,360,80C480,85,600,107,720,122.7C840,139,960,149,1080,154.7C1200,160,1320,160,1380,160L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill={holder.backgroundColor} fillOpacity="1" d="M0,96L60,90.7C120,85,240,75,360,80C480,85,600,107,720,122.7C840,139,960,149,1080,154.7C1200,160,1320,160,1380,160L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>
             {/* End of Bride groom information */}
 
             {/* prawed video */}

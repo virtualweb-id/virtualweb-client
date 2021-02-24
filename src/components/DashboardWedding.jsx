@@ -23,11 +23,6 @@ const DashboardWedding = () => {
       console.log(reader.result);
       dispatch(changeWeddingState(name, reader.result))
     }
-    if (realBtnBride.value){
-      customTxtBride.innerHTML = realBtnBride.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1]
-    } else {
-      customTxtBride.innerHTML = "No file chosen, yet"
-    }
   }
 
   const onSubmit = async (e) => {
@@ -36,26 +31,6 @@ const DashboardWedding = () => {
     await dispatch(updateWedding())
     cancelBtnLoading('weddingBtn', 'SUBMIT')
   }
-  
-  const realBtnBride = document.getElementById('realButtonBride')
-  const customBtnBride = document.getElementById('customButtonBride')
-  const customTxtBride = document.getElementById('customTextBride')
-
-  const triggerBrideBtn = () => {
-    customBtnBride.addEventListener("click", () => {
-    realBtnBride.click()
-  })
-  }
-  
-
-  // realBtnBride.addEventListener('change', () => {
-  //   if (realBtnBride.value){
-  //     customTxtBride.innerHTML = realBtnBride.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1]
-  //   } else {
-  //     customTxtBride.innerHTML = "No file chosen, yet"
-  //   }
-  // })
-
 
   if(isLoading) return <h1>Loading..</h1>
   return (
@@ -97,7 +72,7 @@ const DashboardWedding = () => {
             <div className="inline-block mt-2 w-1/2 pr-1" >
               <label className="block text-sm text-gray-600">Groom's Picture</label>
               <input type='file' onChange={onChangeImg} name='groomImg' accept='file/*' 
-              className="text-gray-600 text-sm py-1 tracking-wider rounded "/>
+              className="text-gray-600 w-full text-sm py-1 tracking-wider rounded "/>
                 {
                   wedding.groomImg && (
                     <img 
@@ -109,13 +84,10 @@ const DashboardWedding = () => {
                 }
             </div>
             <div className="inline-block mt-2 w-1/2 pr-1">
-              <label className="block text-sm text-gray-600"
-              style={{}}>Bride's Picture
+              <label className="block text-sm text-gray-600">Bride's Picture
               </label>
-              <input id="realButtonBride" type='file' onChange={onChangeImg} name='brideImg' accept='file/*' hidden="hidden"/>
-              <button type='button' id="customButtonBride"
-              onClick={triggerBrideBtn()}>Choose File</button>
-              <span id="customTextBride">No file chosen, yet.</span>
+              <input type='file' onChange={onChangeImg} name='brideImg' accept='file/*'
+              className="text-gray-600 w-full text-sm py-1 tracking-wider rounded " />
                 {
                   wedding.brideImg && (
                     <img 

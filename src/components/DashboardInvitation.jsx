@@ -143,7 +143,7 @@ const DashboardInvitation = () => {
           <p className={styles.label}>Color scheme</p>
           <div className=" mb-4 border-t border-gray-900 py-2">
             <div className="flex items-center gap-2 my-1">
-              <label for="backgroundColor" className="text-sm">Color 1:</label>
+              <label className="text-sm">Color 1:</label>
               <input type="color" name="backgroundColor" value={invitation.backgroundColor} onChange={onChange}
                 className="w-6 h-6" />
             </div>
@@ -155,7 +155,7 @@ const DashboardInvitation = () => {
               className={styles.subLabel2} placeholder="Background Color"/>
 
             <div className="flex items-center gap-2 my-1">
-              <label for="textColor" className="text-sm">Color 2:</label>
+              <label className="text-sm">Color 2:</label>
               <input type="color" name="textColor" value={invitation.textColor} onChange={onChange}
                 className="w-6 h-6" />
             </div>
