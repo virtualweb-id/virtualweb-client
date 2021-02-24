@@ -69,7 +69,6 @@ const Invitation2 = () => {
             <div className="container px-8 mx-auto mb-40 lg:px-4 quicksand">
                 <div className="flex flex-col w-full mx-auto mb-12 text-left lg:w-2/3 lg:text-center">
                     <h1 className="mb-6 text-4xl font-semibold tracking-tighter sm:text-5xl title-font text-center quicksand" style={{ color: holder.backgroundColor }}>
-                       {holder.title}
                     </h1>
                     <p className="mx-auto text-2xl text-base font-medium leading-relaxed lg:w-2/3" style={{ color: holder.backgroundColor }}
                     >{holder.story}</p>
@@ -102,7 +101,6 @@ const Invitation2 = () => {
                 <div className="flex w-full flex-col justify-center items-center px-20 py-5 md:my-0 poppins "
                 style={{backgroundColor: holder.backgroundColor, color: holder.textColor, maxWidth: '90%'}}>
                   <img src={bird} style={{width: '80px'}} />
-                  <p className="m-3 text-2xl poppins">{wedding.title === "Title" ? '' : wedding.title}</p>
                   {/* <SlideCountdown
                     weeks={false}
                     deadline={holder.Wedding?.date} /> */}
