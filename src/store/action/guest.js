@@ -216,3 +216,23 @@ export const sendInvitation = () => {
     }
   }
 }
+
+export const uploadGuest = (file) => {
+  return async (dispatch) => {
+    try {
+      // console.log(file);
+      const formData = new FormData()
+      formData.append('file', file)
+      await axios.post('/guests/upload', formData, {
+        headers: {
+          'Content-Type': "multipart/form-data",
+          access_token: localStorage.access_token
+        }
+      })
+      dispatch(fetchGuest())
+      createToast('upload successfully')
+    } catch (err) {
+      createToast(err.response.data.message, 'error')
+    }
+  }
+}
