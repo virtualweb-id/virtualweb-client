@@ -149,7 +149,6 @@ console.log(comments)
             <div className="flex flex-col poppins justify-center items-center" style={{backgroundColor: holder.backgroundColor, color: holder.textColor}}>
             <p className="text-4xl mt-3 mb-4">Send wedding gift money to bride and groom!</p>
             <img alt="..."
-                className="cursor-pointer"
                 src={gift}
                 style={{width: '100px'}}
                 /><br/>

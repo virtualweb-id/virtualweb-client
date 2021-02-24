@@ -10,12 +10,13 @@ import { fetchComments } from '../store/action/comment'
 import { FlipCountdown, SlideCountdown } from 'react-fancy-countdown'
 import bird from '../assets/peace.png'
 
-const Invitation2 = ({ hours, minutes, seconds }) => {
+const Invitation2 = () => {
   const { invitation:holder } = useSelector(state => state.invitation)
   const { wedding } = useSelector(state => state.wedding)
   const { comments, isLoading } = useSelector(state => state.comment)
   const dispatch = useDispatch()
 
+  // console.log(holder, 'ini holder')
 //   useEffect(() => {
 //     dispatch(fetchComments(wedding.id))
 //   }, [dispatch])
@@ -101,7 +102,7 @@ const Invitation2 = ({ hours, minutes, seconds }) => {
                 <div className="flex w-full flex-col justify-center items-center px-20 py-5 md:my-0 poppins "
                 style={{backgroundColor: holder.backgroundColor, color: holder.textColor, maxWidth: '90%'}}>
                   <img src={bird} style={{width: '80px'}} />
-                  <p className="m-3 text-2xl poppins">{holder.title === "Title" ? '' : holder.title}</p>
+                  <p className="m-3 text-2xl poppins">{wedding.title === "Title" ? '' : wedding.title}</p>
                   {/* <SlideCountdown
                     weeks={false}
                     deadline={holder.Wedding?.date} /> */}
