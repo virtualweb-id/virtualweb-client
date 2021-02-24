@@ -13,7 +13,7 @@ import bird from '../assets/peace.png'
 const Invitation2 = () => {
   const { invitation:holder, isLoading } = useSelector(state => state.invitation)
   const { comments } = useSelector(state => state.comment)
-
+console.log(comments)
   return (
     <>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
@@ -159,7 +159,7 @@ const Invitation2 = () => {
             {/* Comment */}
             <div className="flex flex-col poppins justify-center items-center py-40" style={{backgroundColor: holder.backgroundColor, color: holder.textColor}}>
             {/* <div class="max-w-2xl bg-white py-10 px-5 m-auto w-full"> */}
-            <CommentForm WeddingId={holder.Wedding?.id} 
+            <CommentForm InvitationId={holder.id} 
             className="poppins"/>
             { isLoading && (<p>Loading...</p>) }
             {

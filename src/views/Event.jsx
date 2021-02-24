@@ -163,7 +163,7 @@ const Event = ({ hours, minutes, seconds }) => {
             {/* Comment */}
             <div  className="flex py-10 flex-col justify-center items-center curly" >
             {/* <div class="max-w-2xl bg-white py-10 px-5 m-auto w-full"> */}
-            <CommentForm WeddingId={holder.Wedding?.id} className="text-gray-400 text-2xl font-bold"/>
+            <CommentForm InvitationId={holder.id} className="text-gray-400 text-2xl font-bold"/>
             { isLoading && (<p>Loading...</p>) }
             {
               comments?.map((comment, idx) => {

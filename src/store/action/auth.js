@@ -40,8 +40,9 @@ export const signUp = (input, history) => {
       })
       history.push('/login')
     } catch (err) {
-      createToast(err.response.data.message[0], 'error')
-      dispatch(changeErrorSignUp(err.response.data.message))
+      console.log(err)
+      createToast(err.response.data?.message[0], 'error')
+      dispatch(changeErrorSignUp(err.response.data?.message))
     } finally {
       dispatch(changeLoading(false))
     }
