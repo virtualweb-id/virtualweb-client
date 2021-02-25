@@ -160,15 +160,6 @@ const Invitation2 = () => {
             {/* <div className="max-w-2xl bg-white py-10 px-5 m-auto w-full"> */}
             <CommentForm WeddingId={wedding?.id} 
             className="text-xl"/>
-            { isLoading && (<p>Loading...</p>) }
-            {
-              comments?.sort((a,b) => (a.createdAt < b.createdAt) ? 1 : ((b.createdAt < a.createdAt) ? -1 : 0))
-              .map((comment, idx) => {
-                return (
-                  <CommentBox comment={comment} />
-                )
-              })
-            }
             </div>
             {/* </div> */}
         </div>
