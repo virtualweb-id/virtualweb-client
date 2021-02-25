@@ -166,7 +166,8 @@ const Event = ({ hours, minutes, seconds }) => {
             <CommentForm InvitationId={holder.id} className="text-gray-400 handwriting text-2xl font-bold"/>
             { isLoading && (<p>Loading...</p>) }
             {
-              comments?.map((comment, idx) => {
+              comments?.sort((a,b) => (a.createdAt < b.createdAt) ? 1 : ((b.createdAt < a.createdAt) ? -1 : 0))
+              .map((comment, idx) => {
                 return (
                   <CommentBox comment={comment} />
                 )
