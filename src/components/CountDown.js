@@ -35,10 +35,6 @@ export default function App() {
   const stratTime = Date.now() / 1000; // use UNIX timestamp in seconds
   const endTime = weddingDay; // use UNIX timestamp in seconds
 
-  useEffect(() => {
-    
-  },[wedding])
-
   const remainingTime = endTime - stratTime;
   const days = Math.ceil(remainingTime / daySeconds);
   const daysDuration = days * daySeconds;
