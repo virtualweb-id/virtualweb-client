@@ -64,7 +64,7 @@ const DashboardProfile = () => {
                   default='false'
                   minHeight='255'
                   className="mb-5"
-                  src={`http://localhost:3000/event/${invitation.id}`}
+                  src={`https://undanganku-id.web.app/event/${invitation.id}`}
                   style={{ width: '10px', minWidth: '100%'}}
                 />
                 <Link to={`dashboard/invitation`} className="rounded font-bold bg-gray-700 hover:bg-gray-600 px-2 py-1 text-gray-200">Edit Invitation</Link>
