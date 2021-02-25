@@ -36,7 +36,6 @@ const GuestConfirmation = () => {
             status: ''
           })       
       } else {
-          console.log(input)
           dispatch(confirmGuest(input))
           setInput({
             email: '',

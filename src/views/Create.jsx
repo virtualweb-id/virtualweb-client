@@ -31,7 +31,6 @@ export default () => {
     brideImg: '',
     status: false,
   })
-  console.log(userWedding)
 
   const [previewSourceGroom, setPreviewResultGroom] = useState('')
   const [previewSourceBride, setPreviewResultBride] = useState('')

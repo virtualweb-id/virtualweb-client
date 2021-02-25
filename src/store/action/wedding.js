@@ -68,7 +68,6 @@ export const updateWedding = () => {
   return async (dispatch, getState) => {
     try {
       const { wedding } = getState().wedding
-      console.log(wedding);
       const { data } = await axios({
         method: 'put',
         url: `/weddings/${wedding.id}`,
