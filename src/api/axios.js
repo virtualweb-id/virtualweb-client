@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-  baseURL: 'http://54.251.164.37:3001'
+  baseURL: 'https://undanganku-id.herokuapp.com'
 })
 
 export default instance
