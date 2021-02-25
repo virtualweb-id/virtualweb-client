@@ -178,7 +178,7 @@ export const payment = (inputData) => {
     try {
       const {data} = await axios({
         method: 'post',
-        url: 'http://localhost:3001/guests/payment',
+        url: `/guests/payment`,
         data: { inputData },
       })
       window.open(data.redirect_url)
