@@ -2,10 +2,11 @@ import React, {useEffect, useState} from 'react'
 import {Doughnut} from 'react-chartjs-2';
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux"
-import Countdown, { zeroPad, calcTimeDelta, formatTimeDelta } from 'react-countdown';
 import IframeResizer from 'iframe-resizer-react'
 import Microlink from '@microlink/react'
 import App from './CountDown' 
+import add from '../assets/add.json'
+import Lottie from "lottie-react"
 
 const DashboardProfile = () => {
   const { invitation } = useSelector(state => state.invitation)
@@ -54,28 +55,29 @@ const DashboardProfile = () => {
 
           {/* Left top */}
           <div className="h-3/5 bg-transparent m-4 mb-0 pb-0">
-            <div className="bg-white border-transparent rounded-lg shadow-xl">
-              <div className=" uppercase text-gray-800 border-b-2 border-gray-300 rounded-lg px-4 py-3">
-                <h5 className="font-bold uppercase text-center mb-2 text-gray-800">Customize Your 
-                  <Link to={`dashboard/invitation`} className="p-1 ml-2 rounded font-bold border-2 bg-gray-800 hover:bg-gray-700 px-2 border-black text-gray-200">Settings</Link>
+            <div className="bg-gray-800 rounded-lg shadow-lg">
+              <div className=" uppercase flex flex-col justify-center items-center text-gray-500 border-b-2 border-gray-300 rounded-lg px-4 py-5">
+                <h5 className="font-bold uppercase text-center mb-2 text-gray-200">Customize Your Invitation 
                 </h5>
                 <IframeResizer
                   scrolling='true'
                   default='false'
                   minHeight='255'
+                  className="mb-5"
                   src={`http://localhost:3000/event/${invitation.id}`}
                   style={{ width: '10px', minWidth: '100%'}}
                 />
+                <Link to={`dashboard/invitation`} className="rounded font-bold bg-gray-700 hover:bg-gray-600 px-2 py-1 text-gray-200">Edit Invitation</Link>
               </div>
             </div>
           </div>
 
 
           {/* moment video left bottom */}
-          <div className="h-2/5 w-full m-4 pt-0 pb-0 pl-2 pr-2">
-            <div className="bg-gradient-to-b from-gray-900 to-gray-800 bg-transparent border-transparent rounded-lg shadow-xl">
+          <div className="h-2/5 pt-0 pb-0 px-4 w-full">
+            <div className="bg-gradient-to-b from-gray-900 to-gray-800 bg-transparent border-transparent rounded-lg shadow-lg">
               <div className=" uppercase text-gray-200 border-b-2 border-gray-300 rounded-lg flex flex-col items-center">
-                <h5 className="text-center font-bold uppercase text-gray-200 py-2 pb-1">Your Moment's Video </h5>
+                <h5 className="text-center font-bold uppercase text-gray-200 py-2 pb-1">Your Prewedding Clip </h5>
                 <div>
               </div>
               <div className="h-2/5 w-full px-5">
@@ -97,7 +99,7 @@ const DashboardProfile = () => {
                       <div className="h-40"></div>
                     </div>
                     </div>                  
-                    : <h5 className="text-center text-3xl font-bold uppercase text-yellow-300 py-2 pb-1"> Please add video on 'Invitation' Page </h5>
+                    : <h5 className="text-center text-xl font-bold uppercase my-4 pb-1 "> <Link to={`dashboard/invitation`} className="text-gray-600 hover:text-gray-700">Add a video on your invitation!</Link> </h5>
                   }
                 
               </div>
@@ -106,17 +108,19 @@ const DashboardProfile = () => {
         </div>
       </div>
 
-
-
-
-
       {/* Right top - GRAPH ATTENDEE */}
       <div className="h-full md:w-1/2 w-full flex flex-col pt-0 pb-2 pl-2 pr-2">
         <div className="h-3/5 bg-transparent m-4 mb-1">
-            <div className="bg-white border-transparent rounded-lg shadow-xl">
+            <div className="bg-white border-transparent rounded-lg shadow-lg">
               <div className="p-5 uppercase text-gray-800 border-b-2 border-gray-300 rounded-lg p-2">
                   <h5 className="font-bold uppercase text-center mb-1 text-gray-600">Guests Attendance Graph</h5>
-                  <Doughnut data={data}/>
+                  { guestAttend[2] == 0 ?  <div className="flex flex-col justify-center items-center">
+                  <Link to={`/dashboard/guests`} >
+                  <Lottie animationData={add} 
+                    loop 
+                    autoPlay 
+                    style={{width: '200px'}}/></Link></div> : 
+                  <Doughnut data={data}/> }
                   <section className="text-gray-700 body-font">
                     <div className="container px-8 mx-auto lg:px-4">
                       <div className="flex flex-wrap -m-4">
@@ -162,10 +166,10 @@ const DashboardProfile = () => {
           </div>
        {/* countdown rigght bottom */}
         <div className="h-3/5  m-4 mt-10">
-            <div className="bg-white border-transparent rounded-lg shadow-xl">
-              <div className="bg-gradient-to-b from-gray-900 to-gray-800 uppercase text-gray-800 border-b-2 border-gray-300 rounded-lg px-2 py-2">
-                <h5 className="text-center font-bold uppercase text-gray-200 ">Days till your Wedding Day</h5>
-                <div className="flex flex-col border-gray-200 justify-center items-center pb-1 py-5 my-5 md:my-0 rounded-lg rounded text-gray-300"
+            <div className="bg-white border-transparent rounded-lg shadow-lg">
+              <div className=" uppercase bg-white border-gray-200 text-gray-800 rounded-lg px-2 py-2">
+                <h5 className="text-center font-bold uppercase text-gray-600 ">Days till your Wedding Day</h5>
+                <div className="flex flex-col border-gray-200 justify-center text-sm items-center pb-1 py-5 my-5 mb-4 md:my-0 rounded-lg rounded text-gray-300"
                 // style={{backgroundColor: 'white', color: 'black'}}
                 >
                     <App/>

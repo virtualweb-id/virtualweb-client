@@ -16,10 +16,6 @@ const Invitation2 = () => {
   const { comments, isLoading } = useSelector(state => state.comment)
   const dispatch = useDispatch()
 
-  // console.log(holder, 'ini holder')
-//   useEffect(() => {
-//     dispatch(fetchComments(wedding.id))
-//   }, [dispatch])
 
   return (
     <>

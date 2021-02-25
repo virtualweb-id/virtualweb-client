@@ -20,7 +20,6 @@ const DashboardWedding = () => {
     const reader = new FileReader()
     reader.readAsDataURL(file)
     reader.onloadend = () => {
-      console.log(reader.result);
       dispatch(changeWeddingState(name, reader.result))
     }
   }

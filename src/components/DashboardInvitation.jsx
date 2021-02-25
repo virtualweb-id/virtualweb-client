@@ -37,7 +37,6 @@ const DashboardInvitation = () => {
     const reader = new FileReader()
     reader.readAsDataURL(file)
     reader.onloadend = () => {
-      console.log(reader.result);
       dispatch(changeState(name, reader.result))
     }
   }
