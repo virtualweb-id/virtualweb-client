@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from 'react'
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import "./styles.css";
 import moment from 'moment'
@@ -30,7 +30,7 @@ const getTimeDays = (time) => (time / daySeconds) | 0;
 
 export default function App() {
   const { wedding } = useSelector(state => state.wedding)
-  const weddingDay = moment.utc(wedding.date) // BELUM KEHANDLEE UNTUK WAKTUNYAAA......
+  const weddingDay = moment.utc(wedding.date).unix() // BELUM KEHANDLEE UNTUK WAKTUNYAAA......
   console.log(weddingDay, 'INI WEDDING DAY')
   const stratTime = Date.now() / 1000; // use UNIX timestamp in seconds
   const endTime = weddingDay; // use UNIX timestamp in seconds
