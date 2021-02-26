@@ -202,7 +202,7 @@ const DashboardInvitation = () => {
       <div className=" md:w-2/3 rounded md:h-full h-1/2  border-2 border-gray-900 md:m-1 mt-4 p-5 overflow-y-hidden">
         <div className="flex gap-4 ">
           <Link to={`/event/${invitation.id}`} target="blank" className=" bg-gray-900 rounded p-1 px-2 text-white text-sm"><i class="fas fa-tv"></i> Preview</Link>
-          <div className="w-3/4 border border-gray-900 rounded text-sm px-2 flex items-center">{`http://localhost:3000/event/${invitation.id}`}</div>
+          <div className="w-3/4 border border-gray-900 rounded text-sm px-2 flex items-center">{`https://undanganku-id.web.app/event/${invitation.id}`}</div>
         </div>
         <div className="overflow-y-scroll shadow h-full mt-2 overflow-x-hidden py-3 "
         style={{minWidth: '400px'}}>
