@@ -178,7 +178,7 @@ export const payment = (inputData) => {
     try {
       const {data} = await axios({
         method: 'post',
-        url: 'http://localhost:3001/guests/payment',
+        url: `https://undanganku-id.herokuapp.com/guests/payment`,
         data: { inputData },
       })
       window.open(data.redirect_url)
