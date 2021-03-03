@@ -22,9 +22,9 @@ const DashboardProfile = () => {
 
   const data = {
     labels: [
-      'Not Attend',
+      `Not Attend/Haven't confirmed`,
       'Attend',
-      'No Info'
+      `Haven't received invitation`
     ],
     datasets: [{
       data: guestAttend,
@@ -114,13 +114,15 @@ const DashboardProfile = () => {
             <div className="bg-white border-transparent rounded-lg shadow-lg">
               <div className="p-5 uppercase text-gray-800 border-b-2 border-gray-300 rounded-lg p-2">
                   <h5 className="font-bold uppercase text-center mb-1 text-gray-600">Guests Attendance Graph</h5>
-                  { guestAttend[2] == 0 ?  <div className="flex flex-col justify-center items-center">
+                  { guestAttend[0] == 0 && guestAttend[1] == 0 && guestAttend[2] == 0 ?
+                   <div className="flex flex-col justify-center items-center">
                   <Link to={`/dashboard/guests`} >
                   <Lottie animationData={add} 
                     loop 
                     autoPlay 
                     style={{width: '200px'}}/></Link></div> : 
-                  <Doughnut data={data}/> }
+                  <Doughnut data={data}/> 
+                  }
                   <section className="text-gray-700 body-font">
                     <div className="container px-8 mx-auto lg:px-4">
                       <div className="flex flex-wrap -m-4">
