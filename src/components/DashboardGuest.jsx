@@ -22,10 +22,6 @@ export default () => {
   const [edit, setEdit] = useState(defaultValue)
   const [file, setFile] = useState()
 
-  // useEffect(() => {
-  //   if(!wedding.title) history.push('/dashboard/wedding')
-  // }, [])
-
   useEffect(() => {
     setEdit({
       name: guest.name,
@@ -109,6 +105,9 @@ export default () => {
     excel.value = ''
   }
 
+  console.log(guests, '< ini guests')
+  console.log(guest, '< ini guest')
+
   return (
     <div className="w-full h-full px-5 py-3">
         <div className="flex md:flex-row flex-col justify-between mb-2">
@@ -143,7 +142,7 @@ export default () => {
                   <td className="table-cell py-1 px-2 h-12 text-sm">{guest.name}</td>
                   <td className="table-cell text-sm">{guest.email}</td>
                   <td className="table-cell text-sm">{guest.phoneNumber}</td>
-                  <td className="table-cell text-sm">{guest.status === null ? 'Not Confirmed Yet' : guest.status ? 'Attend' : 'Not Attend'}</td>
+                  <td className="table-cell text-sm">{guest.status === null ? 'Invitation not sent' : guest.status ? 'Attend' : `Not Attend or Hasn't confirmed`}</td>
                   <td className="table-cell text-sm">
                     <div className="flex gap-1">
                       <button 
